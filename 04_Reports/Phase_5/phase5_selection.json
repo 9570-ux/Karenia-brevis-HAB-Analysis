@@ -1,0 +1,99 @@
+{
+  "experiment": "D_environmental_temporal_spatial_cyclic__random_forest__balanced",
+  "validation_metrics": {
+    "accuracy": 0.5844598248080458,
+    "balanced_accuracy": 0.30964866804590296,
+    "macro_precision": 0.2522185346532734,
+    "macro_recall": 0.309648668045903,
+    "macro_f1": 0.25255772755920713,
+    "weighted_precision": 0.7316644089813866,
+    "weighted_recall": 0.5844598248080458,
+    "weighted_f1": 0.6438638321451994,
+    "per_class": {
+      "not observed": {
+        "precision": 0.8786694458919576,
+        "recall": 0.6754122438079979,
+        "f1-score": 0.763748914807685,
+        "support": 14979.0
+      },
+      "very low": {
+        "precision": 0.12243374393430384,
+        "recall": 0.2368231046931408,
+        "f1-score": 0.16141732283464566,
+        "support": 1385.0
+      },
+      "low": {
+        "precision": 0.0863674851820491,
+        "recall": 0.10069101678183613,
+        "f1-score": 0.09298085688240657,
+        "support": 1013.0
+      },
+      "medium": {
+        "precision": 0.11631205673758865,
+        "recall": 0.19854721549636803,
+        "f1-score": 0.14669051878354203,
+        "support": 826.0
+      },
+      "high": {
+        "precision": 0.05730994152046784,
+        "recall": 0.33676975945017185,
+        "f1-score": 0.09795102448775612,
+        "support": 291.0
+      }
+    },
+    "class_order": [
+      "not observed",
+      "very low",
+      "low",
+      "medium",
+      "high"
+    ],
+    "confusion_matrix": [
+      [
+        10117,
+        1902,
+        890,
+        899,
+        1171
+      ],
+      [
+        645,
+        328,
+        103,
+        151,
+        158
+      ],
+      [
+        427,
+        226,
+        102,
+        131,
+        127
+      ],
+      [
+        252,
+        178,
+        76,
+        164,
+        156
+      ],
+      [
+        73,
+        45,
+        10,
+        65,
+        98
+      ]
+    ],
+    "log_loss": 1.06335261777557,
+    "probability_column_order": [
+      "high",
+      "low",
+      "medium",
+      "not observed",
+      "very low"
+    ]
+  },
+  "test_predictions_made_this_run": 0,
+  "plan_sha256": "73e912bcd6b6f5018855f6641400969436f667a649c10df223e364df985482bd"
+}

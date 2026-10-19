@@ -1,0 +1,29 @@
+test_all_prior_data_models_results_inference_unchanged (tests.test_dashboard.TestDashboard) ... ok
+test_all_six_pages_render (tests.test_dashboard.TestDashboard) ... 2026-10-15 11:21:21.170 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_blank_form_has_no_invented_defaults_and_rejects_input (tests.test_dashboard.TestDashboard) ... 2026-10-15 11:21:27.761 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_dashboard_imports_without_running_ui (tests.test_dashboard.TestDashboard) ... 2026-10-15 11:21:27.912 No runtime found, using MemoryCacheStorageManager
+2026-10-15 11:21:27.913 No runtime found, using MemoryCacheStorageManager
+ok
+test_genuine_row_form_predicts_exact_phase6_result (tests.test_dashboard.TestDashboard) ... 2026-10-15 11:21:27.915 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_historical_rows_categories_and_missingness_preserved (tests.test_dashboard.TestDashboard) ... ok
+test_inference_is_direct_phase6_import_and_delegation (tests.test_dashboard.TestDashboard) ... ok
+test_invalid_resubmission_clears_old_prediction (tests.test_dashboard.TestDashboard) ... 2026-10-15 11:21:29.736 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_map_subset_contains_only_original_coordinates (tests.test_dashboard.TestDashboard) ... ok
+test_missing_environmental_form_passes_none_to_phase6 (tests.test_dashboard.TestDashboard) ... 2026-10-15 11:21:30.272 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_no_hardware_training_or_model_loading_implementation (tests.test_dashboard.TestDashboard) ... ok
+test_no_new_scientific_files_and_prediction_no_writes (tests.test_dashboard.TestDashboard) ... ok
+test_repeat_inference_through_helper_is_identical (tests.test_dashboard.TestDashboard) ... ok
+test_required_files_and_classes (tests.test_dashboard.TestDashboard) ... ok
+test_required_metrics_read_from_locked_reports (tests.test_dashboard.TestDashboard) ... ok
+test_scientific_limitations_visible_in_source_and_ui (tests.test_dashboard.TestDashboard) ... 2026-10-15 11:21:30.833 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 11.278s
+
+OK

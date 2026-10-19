@@ -1,0 +1,660 @@
+{
+  "majority_baseline": {
+    "accuracy": 0.8099383583865037,
+    "balanced_accuracy": 0.2,
+    "macro_precision": 0.16198767167730074,
+    "macro_recall": 0.2,
+    "macro_f1": 0.17899799838675948,
+    "weighted_precision": 0.6560001443858245,
+    "weighted_recall": 0.8099383583865037,
+    "weighted_f1": 0.72488672483921,
+    "per_class": {
+      "not observed": {
+        "precision": 0.8099383583865037,
+        "recall": 1.0,
+        "f1-score": 0.8949899919337974,
+        "support": 14979.0
+      },
+      "very low": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1385.0
+      },
+      "low": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1013.0
+      },
+      "medium": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 826.0
+      },
+      "high": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 291.0
+      }
+    },
+    "class_order": [
+      "not observed",
+      "very low",
+      "low",
+      "medium",
+      "high"
+    ],
+    "confusion_matrix": [
+      [
+        14979,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1385,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1013,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        826,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        291,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "log_loss": 6.850515932883464,
+    "probability_column_order": [
+      "high",
+      "low",
+      "medium",
+      "not observed",
+      "very low"
+    ]
+  },
+  "logistic_unweighted": {
+    "accuracy": 0.8098842867957176,
+    "balanced_accuracy": 0.19998664797383003,
+    "macro_precision": 0.1619856161790948,
+    "macro_recall": 0.19998664797383003,
+    "macro_f1": 0.17899139579349904,
+    "weighted_precision": 0.6559918202516116,
+    "weighted_recall": 0.8098842867957176,
+    "weighted_f1": 0.7248599863714779,
+    "per_class": {
+      "not observed": {
+        "precision": 0.809928080895474,
+        "recall": 0.9999332398691502,
+        "f1-score": 0.8949569789674953,
+        "support": 14979.0
+      },
+      "very low": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1385.0
+      },
+      "low": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1013.0
+      },
+      "medium": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 826.0
+      },
+      "high": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 291.0
+      }
+    },
+    "class_order": [
+      "not observed",
+      "very low",
+      "low",
+      "medium",
+      "high"
+    ],
+    "confusion_matrix": [
+      [
+        14978,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        1385,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1013,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        826,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        291,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "log_loss": 0.6966753680861373,
+    "probability_column_order": [
+      "high",
+      "low",
+      "medium",
+      "not observed",
+      "very low"
+    ]
+  },
+  "random_forest_unweighted": {
+    "accuracy": 0.8098842867957176,
+    "balanced_accuracy": 0.19998664797383003,
+    "macro_precision": 0.1619856161790948,
+    "macro_recall": 0.19998664797383003,
+    "macro_f1": 0.17899139579349904,
+    "weighted_precision": 0.6559918202516116,
+    "weighted_recall": 0.8098842867957176,
+    "weighted_f1": 0.7248599863714779,
+    "per_class": {
+      "not observed": {
+        "precision": 0.809928080895474,
+        "recall": 0.9999332398691502,
+        "f1-score": 0.8949569789674953,
+        "support": 14979.0
+      },
+      "very low": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1385.0
+      },
+      "low": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1013.0
+      },
+      "medium": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 826.0
+      },
+      "high": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 291.0
+      }
+    },
+    "class_order": [
+      "not observed",
+      "very low",
+      "low",
+      "medium",
+      "high"
+    ],
+    "confusion_matrix": [
+      [
+        14978,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        1385,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1013,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        826,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        291,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "log_loss": 0.8747652870837693,
+    "probability_column_order": [
+      "high",
+      "low",
+      "medium",
+      "not observed",
+      "very low"
+    ]
+  },
+  "hist_gradient_unweighted": {
+    "accuracy": 0.8092354277062831,
+    "balanced_accuracy": 0.19982642365979036,
+    "macro_precision": 0.161960932849954,
+    "macro_recall": 0.19982642365979036,
+    "macro_f1": 0.17891213389121338,
+    "weighted_precision": 0.6558918603761925,
+    "weighted_recall": 0.8092354277062831,
+    "weighted_f1": 0.7245390000963786,
+    "per_class": {
+      "not observed": {
+        "precision": 0.80980466424977,
+        "recall": 0.9991321182989519,
+        "f1-score": 0.8945606694560669,
+        "support": 14979.0
+      },
+      "very low": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1385.0
+      },
+      "low": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1013.0
+      },
+      "medium": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 826.0
+      },
+      "high": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 291.0
+      }
+    },
+    "class_order": [
+      "not observed",
+      "very low",
+      "low",
+      "medium",
+      "high"
+    ],
+    "confusion_matrix": [
+      [
+        14966,
+        0,
+        0,
+        1,
+        12
+      ],
+      [
+        1385,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1013,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        826,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        291,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "log_loss": 0.9775750596669208,
+    "probability_column_order": [
+      "high",
+      "low",
+      "medium",
+      "not observed",
+      "very low"
+    ]
+  },
+  "logistic_balanced": {
+    "accuracy": 0.5975451497783065,
+    "balanced_accuracy": 0.28809309419437434,
+    "macro_precision": 0.22446510347953913,
+    "macro_recall": 0.28809309419437434,
+    "macro_f1": 0.20273098770614473,
+    "weighted_precision": 0.7151323983374285,
+    "weighted_recall": 0.5975451497783065,
+    "weighted_f1": 0.6448570962218586,
+    "per_class": {
+      "not observed": {
+        "precision": 0.864974454626551,
+        "recall": 0.712063555644569,
+        "f1-score": 0.7811058220432077,
+        "support": 14979.0
+      },
+      "very low": {
+        "precision": 0.10721868365180467,
+        "recall": 0.14584837545126353,
+        "f1-score": 0.12358519424900581,
+        "support": 1385.0
+      },
+      "low": {
+        "precision": 0.1,
+        "recall": 0.017769002961500493,
+        "f1-score": 0.030176026823134954,
+        "support": 1013.0
+      },
+      "medium": {
+        "precision": 0.009009009009009009,
+        "recall": 0.0012106537530266344,
+        "f1-score": 0.0021344717182497333,
+        "support": 826.0
+      },
+      "high": {
+        "precision": 0.041123370110330994,
+        "recall": 0.563573883161512,
+        "f1-score": 0.0766534236971255,
+        "support": 291.0
+      }
+    },
+    "class_order": [
+      "not observed",
+      "very low",
+      "low",
+      "medium",
+      "high"
+    ],
+    "confusion_matrix": [
+      [
+        10666,
+        1372,
+        128,
+        85,
+        2728
+      ],
+      [
+        737,
+        202,
+        24,
+        19,
+        403
+      ],
+      [
+        499,
+        144,
+        18,
+        5,
+        347
+      ],
+      [
+        337,
+        132,
+        10,
+        1,
+        346
+      ],
+      [
+        92,
+        34,
+        0,
+        1,
+        164
+      ]
+    ],
+    "log_loss": 1.2751825919954,
+    "probability_column_order": [
+      "high",
+      "low",
+      "medium",
+      "not observed",
+      "very low"
+    ]
+  },
+  "random_forest_balanced": {
+    "accuracy": 0.7883637936628095,
+    "balanced_accuracy": 0.19960558055631622,
+    "macro_precision": 0.20321570952860696,
+    "macro_recall": 0.19960558055631622,
+    "macro_f1": 0.18530436124072247,
+    "weighted_precision": 0.6670514339094881,
+    "weighted_recall": 0.7883637936628095,
+    "weighted_f1": 0.7176066820647103,
+    "per_class": {
+      "not observed": {
+        "precision": 0.8082800777993887,
+        "recall": 0.9710261032111623,
+        "f1-score": 0.8822102262388548,
+        "support": 14979.0
+      },
+      "very low": {
+        "precision": 0.08539944903581267,
+        "recall": 0.022382671480144403,
+        "f1-score": 0.03546910755148741,
+        "support": 1385.0
+      },
+      "low": {
+        "precision": 0.05263157894736842,
+        "recall": 0.0009871668311944718,
+        "f1-score": 0.001937984496124031,
+        "support": 1013.0
+      },
+      "medium": {
+        "precision": 0.06976744186046512,
+        "recall": 0.0036319612590799033,
+        "f1-score": 0.006904487917146145,
+        "support": 826.0
+      },
+      "high": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 291.0
+      }
+    },
+    "class_order": [
+      "not observed",
+      "very low",
+      "low",
+      "medium",
+      "high"
+    ],
+    "confusion_matrix": [
+      [
+        14545,
+        317,
+        10,
+        38,
+        69
+      ],
+      [
+        1346,
+        31,
+        2,
+        1,
+        5
+      ],
+      [
+        1002,
+        9,
+        1,
+        1,
+        0
+      ],
+      [
+        821,
+        2,
+        0,
+        3,
+        0
+      ],
+      [
+        281,
+        4,
+        6,
+        0,
+        0
+      ]
+    ],
+    "log_loss": 0.9139556122337241,
+    "probability_column_order": [
+      "high",
+      "low",
+      "medium",
+      "not observed",
+      "very low"
+    ]
+  },
+  "hist_gradient_balanced": {
+    "accuracy": 0.7638152914458743,
+    "balanced_accuracy": 0.19987161540750978,
+    "macro_precision": 0.19958962269794037,
+    "macro_recall": 0.19987161540750978,
+    "macro_f1": 0.19010778419136398,
+    "weighted_precision": 0.6697674919236206,
+    "weighted_recall": 0.7638152914458743,
+    "weighted_f1": 0.7107799489301729,
+    "per_class": {
+      "not observed": {
+        "precision": 0.8133356485500955,
+        "recall": 0.938113358702183,
+        "f1-score": 0.8712797619047619,
+        "support": 14979.0
+      },
+      "very low": {
+        "precision": 0.0672358591248666,
+        "recall": 0.04548736462093863,
+        "f1-score": 0.05426356589147287,
+        "support": 1385.0
+      },
+      "low": {
+        "precision": 0.10588235294117647,
+        "recall": 0.008884501480750246,
+        "f1-score": 0.01639344262295082,
+        "support": 1013.0
+      },
+      "medium": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 826.0
+      },
+      "high": {
+        "precision": 0.011494252873563218,
+        "recall": 0.006872852233676976,
+        "f1-score": 0.008602150537634409,
+        "support": 291.0
+      }
+    },
+    "class_order": [
+      "not observed",
+      "very low",
+      "low",
+      "medium",
+      "high"
+    ],
+    "confusion_matrix": [
+      [
+        14052,
+        724,
+        57,
+        21,
+        125
+      ],
+      [
+        1297,
+        63,
+        6,
+        0,
+        19
+      ],
+      [
+        923,
+        66,
+        9,
+        0,
+        15
+      ],
+      [
+        741,
+        67,
+        5,
+        0,
+        13
+      ],
+      [
+        264,
+        17,
+        8,
+        0,
+        2
+      ]
+    ],
+    "log_loss": 0.8882747472462832,
+    "probability_column_order": [
+      "high",
+      "low",
+      "medium",
+      "not observed",
+      "very low"
+    ]
+  }
+}

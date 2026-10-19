@@ -1,0 +1,114 @@
+{
+  "accuracy": 0.6441841680129241,
+  "balanced_accuracy": 0.1979151221003093,
+  "macro_precision": 0.19608138828553545,
+  "macro_recall": 0.1979151221003093,
+  "macro_f1": 0.19697460958001423,
+  "weighted_precision": 0.6436920008230393,
+  "weighted_recall": 0.6441841680129241,
+  "weighted_f1": 0.6439268637598434,
+  "per_class": {
+    "not observed": {
+      "precision": 0.7861134631668077,
+      "recall": 0.7855813166356406,
+      "f1-score": 0.7858472998137802,
+      "support": 5909.0
+    },
+    "very low": {
+      "precision": 0.19429347826086957,
+      "recall": 0.20399429386590584,
+      "f1-score": 0.1990257480862909,
+      "support": 701.0
+    },
+    "low": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 431.0
+    },
+    "medium": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 297.0
+    },
+    "high": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 90.0
+    }
+  },
+  "class_order": [
+    "not observed",
+    "very low",
+    "low",
+    "medium",
+    "high"
+  ],
+  "confusion_matrix": [
+    [
+      4642,
+      491,
+      32,
+      10,
+      734
+    ],
+    [
+      548,
+      143,
+      0,
+      1,
+      9
+    ],
+    [
+      373,
+      57,
+      0,
+      0,
+      1
+    ],
+    [
+      256,
+      41,
+      0,
+      0,
+      0
+    ],
+    [
+      86,
+      4,
+      0,
+      0,
+      0
+    ]
+  ],
+  "log_loss": 1.2300808449589968,
+  "probability_column_order": [
+    "high",
+    "low",
+    "medium",
+    "not observed",
+    "very low"
+  ],
+  "selected_model": "logistic_balanced",
+  "test_evaluations_per_run": 1,
+  "calendar_subperiod_metrics": {
+    "2023": {
+      "rows": 6369,
+      "accuracy": 0.603548437745329,
+      "macro_f1_fixed_five_classes": 0.1935641771908963,
+      "absent_recorded_classes": []
+    },
+    "2024": {
+      "rows": 1059,
+      "accuracy": 0.8885741265344664,
+      "macro_f1_fixed_five_classes": 0.18819999999999998,
+      "absent_recorded_classes": [
+        "low",
+        "medium",
+        "high"
+      ]
+    }
+  }
+}

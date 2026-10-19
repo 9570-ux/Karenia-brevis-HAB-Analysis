@@ -1,0 +1,1555 @@
+{
+  "phase": 3,
+  "input": {
+    "filename": "data/processed/habsos_cleaned.csv",
+    "rows": 211834,
+    "columns": 37,
+    "sha256": "c7747c215658d3155f8227a5668ddf97635cf50b90c01eee99e5e0696696b2ec"
+  },
+  "protected_inputs_unchanged": true,
+  "protected_input_hashes": {
+    "data/raw/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "data/raw/habsos_20240430.csv": "0c561afc3239fc885afd161bbc0c3e9826969019f8266ffaade4adca7f700596",
+    "data/processed/habsos_cleaned.csv": "c7747c215658d3155f8227a5668ddf97635cf50b90c01eee99e5e0696696b2ec"
+  },
+  "outputs": {
+    "features.csv": {
+      "filename": "data/ml/features.csv",
+      "rows": 211834,
+      "sha256": "6ba376f4330930e6d7a8b46cea9f3fe2347b231f9708fda24ee4db72b6880bc6",
+      "size_bytes": 9466744
+    },
+    "target.csv": {
+      "filename": "data/ml/target.csv",
+      "rows": 211834,
+      "sha256": "94eb6914d314768b4b5c77fa23a9c090238d6896fc860893c8e78f0d6e375eb3",
+      "size_bytes": 5744572
+    },
+    "row_metadata.csv": {
+      "filename": "data/ml/row_metadata.csv",
+      "rows": 211834,
+      "sha256": "e6f9b87867c035948afe0cdea4ea396b72e8a74bdbbf1a55c7ddbf99ccad9d4d",
+      "size_bytes": 57401035
+    }
+  },
+  "output_rows": 211834,
+  "candidate_feature_count": 40,
+  "selected_feature_count": 8,
+  "excluded_feature_count": 32,
+  "predictor_columns": [
+    "WATER_TEMP",
+    "SALINITY",
+    "SAMPLE_DEPTH",
+    "LATITUDE",
+    "LONGITUDE",
+    "observation_year",
+    "observation_month",
+    "day_of_year"
+  ],
+  "lineage_columns_not_predictors": [
+    "SOURCE_ROW_NUMBER"
+  ],
+  "target_definition": {
+    "name": "observed_abundance_category",
+    "formulation": "Multiclass source-reported contemporaneous Karenia brevis abundance category",
+    "binary_risk_status": "No directly validated binary HAB-risk target was established from the available NOAA fields.",
+    "source_columns": [
+      "CATEGORY",
+      "GENUS",
+      "SPECIES",
+      "CELLCOUNT",
+      "CELLCOUNT_UNIT",
+      "CELLCOUNT_QA"
+    ],
+    "rule": "Copy CATEGORY verbatim when it is documented, organism is Karenia/brevis, cell-count unit is cells/L, count parses finitely and CELLCOUNT_QA is 1 or 5; otherwise blank target with explicit status. No numerical bin thresholds are inferred.",
+    "quality_policy": "QA=1 source good; QA=5 upstream converted, retained with caution in metadata; QA=9 and undocumented/missing QA excluded from supervised-label eligibility only. This is a project eligibility policy, not a NOAA-mandated filter.",
+    "source": "docs/HABSOS_Data_Dictionary.xlsx, Sheet1 A1:C32; docs/dataset.md; docs/phase2_preprocessing.md",
+    "eligible_observations": 210767,
+    "ineligible_observations": 1067,
+    "exclusion_status_counts": {
+      "category_missing": 856,
+      "cellcount_quality_unresolved_or_no_data": 211,
+      "eligible": 210767
+    },
+    "raw_category_distribution": {
+      "(missing)": 856,
+      "high": 3679,
+      "low": 12567,
+      "medium": 11705,
+      "not observed": 164102,
+      "very low": 18925
+    },
+    "class_distribution": {
+      "not observed": {
+        "count": 163936,
+        "percentage_of_eligible": 77.780677
+      },
+      "very low": {
+        "count": 18910,
+        "percentage_of_eligible": 8.971993
+      },
+      "low": {
+        "count": 12546,
+        "percentage_of_eligible": 5.952545
+      },
+      "medium": {
+        "count": 11700,
+        "percentage_of_eligible": 5.551154
+      },
+      "high": {
+        "count": 3675,
+        "percentage_of_eligible": 1.743632
+      }
+    },
+    "imbalance_ratio_largest_to_smallest": 44.60843537414966,
+    "forecast_horizon": null,
+    "claims_not_supported": [
+      "binary harm/toxicity risk",
+      "future bloom onset",
+      "early warning",
+      "validated forecast performance"
+    ]
+  },
+  "candidate_features": [
+    {
+      "feature_name": "STATE_ID",
+      "source_column": "STATE_ID",
+      "category": "spatial",
+      "type": "text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": false,
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Retain as geography/sampling metadata; initial matrix uses measured coordinates without invented regions"
+    },
+    {
+      "feature_name": "DESCRIPTION",
+      "source_column": "DESCRIPTION",
+      "category": "administrative_or_metadata",
+      "type": "text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.010858,
+      "missing_percentage": 0.010858,
+      "target_related": false,
+      "leakage_risk": "sampling_or_quality_proxy",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "High-cardinality site description with unresolved spelling variants; no site-identity encoding"
+    },
+    {
+      "feature_name": "RAW_UNNAMED_3",
+      "source_column": "RAW_UNNAMED_3",
+      "category": "administrative_or_metadata",
+      "type": "text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 100.0,
+      "missing_percentage": 100.0,
+      "target_related": false,
+      "leakage_risk": "sampling_or_quality_proxy",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Empty source column"
+    },
+    {
+      "feature_name": "LATITUDE",
+      "source_column": "LATITUDE",
+      "category": "spatial",
+      "type": "float",
+      "unit": "decimal degrees",
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": false,
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "selected": true,
+      "allowed_as_feature": true,
+      "reason": "Measured coordinate; no invented geographic bins"
+    },
+    {
+      "feature_name": "LONGITUDE",
+      "source_column": "LONGITUDE",
+      "category": "spatial",
+      "type": "float",
+      "unit": "decimal degrees",
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": false,
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "selected": true,
+      "allowed_as_feature": true,
+      "reason": "Measured coordinate; no invented geographic bins"
+    },
+    {
+      "feature_name": "SAMPLE_DATE",
+      "source_column": "SAMPLE_DATE",
+      "category": "temporal",
+      "type": "text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": false,
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Date/time or derived metadata retained for lineage; selected temporal fields derive only from SAMPLE_DATE"
+    },
+    {
+      "feature_name": "SAMPLE_TIME",
+      "source_column": "SAMPLE_TIME",
+      "category": "temporal",
+      "type": "text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 23.093554,
+      "missing_percentage": 23.093554,
+      "target_related": false,
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Date/time or derived metadata retained for lineage; selected temporal fields derive only from SAMPLE_DATE"
+    },
+    {
+      "feature_name": "SAMPLE_DEPTH",
+      "source_column": "SAMPLE_DEPTH",
+      "category": "environmental",
+      "type": "float",
+      "unit": "m",
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 2.597789,
+      "missing_percentage": 2.597789,
+      "target_related": false,
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "selected": true,
+      "allowed_as_feature": true,
+      "reason": "Documented environmental/context measurement; QA-aware missingness retained"
+    },
+    {
+      "feature_name": "GENUS",
+      "source_column": "GENUS",
+      "category": "biological",
+      "type": "text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": true,
+      "leakage_risk": "direct_or_target_context",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Target definition/context or direct abundance proxy; prevent label leakage"
+    },
+    {
+      "feature_name": "SPECIES",
+      "source_column": "SPECIES",
+      "category": "biological",
+      "type": "text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": true,
+      "leakage_risk": "direct_or_target_context",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Target definition/context or direct abundance proxy; prevent label leakage"
+    },
+    {
+      "feature_name": "CATEGORY",
+      "source_column": "CATEGORY",
+      "category": "target_related",
+      "type": "text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.40409,
+      "missing_percentage": 0.40409,
+      "target_related": true,
+      "leakage_risk": "direct_or_target_context",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Target definition/context or direct abundance proxy; prevent label leakage"
+    },
+    {
+      "feature_name": "CELLCOUNT",
+      "source_column": "CELLCOUNT",
+      "category": "target_related",
+      "type": "integer",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": true,
+      "leakage_risk": "direct_or_target_context",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Target definition/context or direct abundance proxy; prevent label leakage"
+    },
+    {
+      "feature_name": "CELLCOUNT_UNIT",
+      "source_column": "CELLCOUNT_UNIT",
+      "category": "target_related",
+      "type": "text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": true,
+      "leakage_risk": "direct_or_target_context",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Target definition/context or direct abundance proxy; prevent label leakage"
+    },
+    {
+      "feature_name": "CELLCOUNT_QA",
+      "source_column": "CELLCOUNT_QA",
+      "category": "target_related",
+      "type": "integer",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.090637,
+      "missing_percentage": 0.090637,
+      "target_related": true,
+      "leakage_risk": "direct_or_target_context",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Target definition/context or direct abundance proxy; prevent label leakage"
+    },
+    {
+      "feature_name": "SALINITY",
+      "source_column": "SALINITY",
+      "category": "environmental",
+      "type": "float",
+      "unit": "ppt",
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 48.97042,
+      "missing_percentage": 48.97042,
+      "target_related": false,
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "selected": true,
+      "allowed_as_feature": true,
+      "reason": "Documented environmental/context measurement; QA-aware missingness retained"
+    },
+    {
+      "feature_name": "SALINITY_UNIT",
+      "source_column": "SALINITY_UNIT",
+      "category": "administrative_or_metadata",
+      "type": "text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 48.97042,
+      "missing_percentage": 48.97042,
+      "target_related": false,
+      "leakage_risk": "sampling_or_quality_proxy",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Measurement metadata; units checked, no predictive encoding"
+    },
+    {
+      "feature_name": "SALINITY_QA",
+      "source_column": "SALINITY_QA",
+      "category": "quality",
+      "type": "integer",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": false,
+      "leakage_risk": "sampling_or_quality_proxy",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Quality/capture process metadata, used only for quality handling"
+    },
+    {
+      "feature_name": "WATER_TEMP",
+      "source_column": "WATER_TEMP",
+      "category": "environmental",
+      "type": "float",
+      "unit": "deg. C",
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 49.619041,
+      "missing_percentage": 49.619513,
+      "target_related": false,
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "selected": true,
+      "allowed_as_feature": true,
+      "reason": "Documented environmental/context measurement; QA-aware missingness retained"
+    },
+    {
+      "feature_name": "WATER_TEMP_UNIT",
+      "source_column": "WATER_TEMP_UNIT",
+      "category": "administrative_or_metadata",
+      "type": "text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 49.619041,
+      "missing_percentage": 49.619041,
+      "target_related": false,
+      "leakage_risk": "sampling_or_quality_proxy",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Measurement metadata; units checked, no predictive encoding"
+    },
+    {
+      "feature_name": "WATER_TEMP_QA",
+      "source_column": "WATER_TEMP_QA",
+      "category": "quality",
+      "type": "integer",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": false,
+      "leakage_risk": "sampling_or_quality_proxy",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Quality/capture process metadata, used only for quality handling"
+    },
+    {
+      "feature_name": "WIND_DIR",
+      "source_column": "WIND_DIR",
+      "category": "environmental",
+      "type": "float",
+      "unit": "deg",
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 99.514242,
+      "missing_percentage": 99.514242,
+      "target_related": false,
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Only 1,029 recorded values; direction origin/from-to convention undocumented; no cyclic/vector conversion"
+    },
+    {
+      "feature_name": "WIND_DIR_UNIT",
+      "source_column": "WIND_DIR_UNIT",
+      "category": "administrative_or_metadata",
+      "type": "text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 99.514242,
+      "missing_percentage": 99.514242,
+      "target_related": false,
+      "leakage_risk": "sampling_or_quality_proxy",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Measurement metadata; units checked, no predictive encoding"
+    },
+    {
+      "feature_name": "WIND_DIR_QA",
+      "source_column": "WIND_DIR_QA",
+      "category": "quality",
+      "type": "integer",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": false,
+      "leakage_risk": "sampling_or_quality_proxy",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Quality/capture process metadata, used only for quality handling"
+    },
+    {
+      "feature_name": "WIND_SPEED",
+      "source_column": "WIND_SPEED",
+      "category": "environmental",
+      "type": "float",
+      "unit": "mph",
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 99.059641,
+      "missing_percentage": 99.059641,
+      "target_related": false,
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Only 1,992 recorded values; exclude from initial candidate matrix rather than manufacture wind coverage"
+    },
+    {
+      "feature_name": "WIND_SPEED_UNIT",
+      "source_column": "WIND_SPEED_UNIT",
+      "category": "administrative_or_metadata",
+      "type": "text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 99.059641,
+      "missing_percentage": 99.059641,
+      "target_related": false,
+      "leakage_risk": "sampling_or_quality_proxy",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Measurement metadata; units checked, no predictive encoding"
+    },
+    {
+      "feature_name": "WIND_SPEED_QA",
+      "source_column": "WIND_SPEED_QA",
+      "category": "quality",
+      "type": "integer",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": false,
+      "leakage_risk": "sampling_or_quality_proxy",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Quality/capture process metadata, used only for quality handling"
+    },
+    {
+      "feature_name": "OBJECTID",
+      "source_column": "OBJECTID",
+      "category": "administrative_or_metadata",
+      "type": "integer",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": false,
+      "leakage_risk": "identifier",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Identifier/row linkage; never a predictor"
+    },
+    {
+      "feature_name": "RAW_UNNAMED_28",
+      "source_column": "RAW_UNNAMED_28",
+      "category": "administrative_or_metadata",
+      "type": "text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 100.0,
+      "missing_percentage": 100.0,
+      "target_related": false,
+      "leakage_risk": "sampling_or_quality_proxy",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Empty source column"
+    },
+    {
+      "feature_name": "SOURCE_ROW_NUMBER",
+      "source_column": "SOURCE_ROW_NUMBER",
+      "category": "administrative_or_metadata",
+      "type": "metadata/text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": false,
+      "leakage_risk": "identifier",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Identifier/row linkage; never a predictor"
+    },
+    {
+      "feature_name": "SAMPLE_DATE_ISO",
+      "source_column": "SAMPLE_DATE_ISO",
+      "category": "temporal",
+      "type": "metadata/text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": false,
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Date/time or derived metadata retained for lineage; selected temporal fields derive only from SAMPLE_DATE"
+    },
+    {
+      "feature_name": "SAMPLE_TIME_UTC_PARSED",
+      "source_column": "SAMPLE_TIME_UTC_PARSED",
+      "category": "temporal",
+      "type": "metadata/text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 23.565622,
+      "missing_percentage": 23.565622,
+      "target_related": false,
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Date/time or derived metadata retained for lineage; selected temporal fields derive only from SAMPLE_DATE"
+    },
+    {
+      "feature_name": "SAMPLE_DATETIME_UTC",
+      "source_column": "SAMPLE_DATETIME_UTC",
+      "category": "temporal",
+      "type": "metadata/text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 23.565622,
+      "missing_percentage": 23.565622,
+      "target_related": false,
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Date/time or derived metadata retained for lineage; selected temporal fields derive only from SAMPLE_DATE"
+    },
+    {
+      "feature_name": "TIME_STATUS",
+      "source_column": "TIME_STATUS",
+      "category": "temporal",
+      "type": "metadata/text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": false,
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Date/time or derived metadata retained for lineage; selected temporal fields derive only from SAMPLE_DATE"
+    },
+    {
+      "feature_name": "INVALID_FIELDS",
+      "source_column": "INVALID_FIELDS",
+      "category": "quality",
+      "type": "metadata/text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 100.0,
+      "missing_percentage": 100.0,
+      "target_related": true,
+      "leakage_risk": "direct_or_target_context",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Compound quality fields may disclose CELLCOUNT information; metadata only"
+    },
+    {
+      "feature_name": "SUSPICIOUS_FIELDS",
+      "source_column": "SUSPICIOUS_FIELDS",
+      "category": "quality",
+      "type": "metadata/text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 99.676162,
+      "missing_percentage": 99.676162,
+      "target_related": true,
+      "leakage_risk": "direct_or_target_context",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Compound quality fields may disclose CELLCOUNT information; metadata only"
+    },
+    {
+      "feature_name": "QA_NO_DATA_FIELDS",
+      "source_column": "QA_NO_DATA_FIELDS",
+      "category": "quality",
+      "type": "metadata/text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 0.050511,
+      "missing_percentage": 0.050511,
+      "target_related": true,
+      "leakage_risk": "direct_or_target_context",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Compound quality fields may disclose CELLCOUNT information; metadata only"
+    },
+    {
+      "feature_name": "EXACT_DUPLICATE_OF_SOURCE_ROW",
+      "source_column": "EXACT_DUPLICATE_OF_SOURCE_ROW",
+      "category": "administrative_or_metadata",
+      "type": "metadata/text",
+      "unit": null,
+      "origin": "Phase 2 input",
+      "original_missing_percentage": 100.0,
+      "missing_percentage": 100.0,
+      "target_related": false,
+      "leakage_risk": "identifier",
+      "selected": false,
+      "allowed_as_feature": false,
+      "reason": "Identifier/row linkage; never a predictor"
+    },
+    {
+      "feature_name": "observation_year",
+      "source_column": "SAMPLE_DATE",
+      "category": "temporal",
+      "type": "integer",
+      "unit": "calendar year",
+      "origin": "derived",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": false,
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "selected": true,
+      "allowed_as_feature": true,
+      "reason": "Calendar-only derivation from the same observation date; no future information"
+    },
+    {
+      "feature_name": "observation_month",
+      "source_column": "SAMPLE_DATE",
+      "category": "temporal",
+      "type": "integer",
+      "unit": "calendar month",
+      "origin": "derived",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": false,
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "selected": true,
+      "allowed_as_feature": true,
+      "reason": "Calendar-only derivation from the same observation date; no future information"
+    },
+    {
+      "feature_name": "day_of_year",
+      "source_column": "SAMPLE_DATE",
+      "category": "temporal",
+      "type": "integer",
+      "unit": "calendar day index",
+      "origin": "derived",
+      "original_missing_percentage": 0.0,
+      "missing_percentage": 0.0,
+      "target_related": false,
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "selected": true,
+      "allowed_as_feature": true,
+      "reason": "Calendar-only derivation from the same observation date; no future information"
+    }
+  ],
+  "excluded_fields": [
+    "STATE_ID",
+    "DESCRIPTION",
+    "RAW_UNNAMED_3",
+    "SAMPLE_DATE",
+    "SAMPLE_TIME",
+    "GENUS",
+    "SPECIES",
+    "CATEGORY",
+    "CELLCOUNT",
+    "CELLCOUNT_UNIT",
+    "CELLCOUNT_QA",
+    "SALINITY_UNIT",
+    "SALINITY_QA",
+    "WATER_TEMP_UNIT",
+    "WATER_TEMP_QA",
+    "WIND_DIR",
+    "WIND_DIR_UNIT",
+    "WIND_DIR_QA",
+    "WIND_SPEED",
+    "WIND_SPEED_UNIT",
+    "WIND_SPEED_QA",
+    "OBJECTID",
+    "RAW_UNNAMED_28",
+    "SOURCE_ROW_NUMBER",
+    "SAMPLE_DATE_ISO",
+    "SAMPLE_TIME_UTC_PARSED",
+    "SAMPLE_DATETIME_UTC",
+    "TIME_STATUS",
+    "INVALID_FIELDS",
+    "SUSPICIOUS_FIELDS",
+    "QA_NO_DATA_FIELDS",
+    "EXACT_DUPLICATE_OF_SOURCE_ROW"
+  ],
+  "temporal_features": {
+    "source": "SAMPLE_DATE",
+    "formulas": {
+      "observation_year": "date.year",
+      "observation_month": "date.month (1..12)",
+      "day_of_year": "date.timetuple().tm_yday (1..366)"
+    },
+    "withheld": {
+      "season": "No documented marine seasonal regime; no arbitrary season assignments",
+      "time_of_day": "49,920 blank/placeholder times; unnecessary for initial calendar-only representation"
+    }
+  },
+  "spatial_features": {
+    "LATITUDE": {
+      "unit": "decimal degrees",
+      "missing": 0,
+      "min": 24.0,
+      "max": 30.7149,
+      "domain_check": "finite valid latitude/longitude angular domain; no bins"
+    },
+    "LONGITUDE": {
+      "unit": "decimal degrees",
+      "missing": 0,
+      "min": -97.66535,
+      "max": -78.2789,
+      "domain_check": "finite valid latitude/longitude angular domain; no bins"
+    }
+  },
+  "environmental_features": {
+    "selected": [
+      "WATER_TEMP",
+      "SALINITY",
+      "SAMPLE_DEPTH"
+    ],
+    "excluded": [
+      "WIND_SPEED",
+      "WIND_DIR"
+    ],
+    "unit_conversions": [],
+    "quality_status_counts": {
+      "SALINITY": {
+        "caution": 18,
+        "good": 108080,
+        "no_data": 103736
+      },
+      "SAMPLE_DEPTH": {
+        "qa_not_available": 206331,
+        "unavailable": 5503
+      },
+      "WATER_TEMP": {
+        "caution": 649,
+        "good": 105403,
+        "no_data": 105111,
+        "source_converted": 671
+      },
+      "WIND_DIR": {
+        "no_data": 210805,
+        "source_converted": 1029
+      },
+      "WIND_SPEED": {
+        "good": 1791,
+        "no_data": 209842,
+        "source_converted": 201
+      }
+    }
+  },
+  "qa_handling": "QA metadata never predictors. 1=good; 4=caution retained; 5=upstream converted retained and distinguished from good; 9=missing in feature view even if populated in original. Unknown QA/unit masks feature, original preserved in row_metadata.",
+  "identifier_handling": "SOURCE_ROW_NUMBER is alignment metadata, not a predictor. OBJECTID and duplicate linkage only in row_metadata.",
+  "source_field_distributions": {
+    "CATEGORY": {
+      "": 856,
+      "high": 3679,
+      "low": 12567,
+      "medium": 11705,
+      "not observed": 164102,
+      "very low": 18925
+    },
+    "CELLCOUNT_QA": {
+      "": 192,
+      "1": 211049,
+      "5": 574,
+      "9": 19
+    },
+    "CELLCOUNT_UNIT": {
+      "cells/L": 211834
+    },
+    "GENUS": {
+      "Karenia": 211834
+    },
+    "SALINITY_QA": {
+      "1": 108080,
+      "4": 18,
+      "9": 103736
+    },
+    "SALINITY_UNIT": {
+      "": 103736,
+      "ppt": 108098
+    },
+    "SPECIES": {
+      "brevis": 211834
+    },
+    "WATER_TEMP_QA": {
+      "1": 105403,
+      "4": 649,
+      "5": 671,
+      "9": 105111
+    },
+    "WATER_TEMP_UNIT": {
+      "": 105110,
+      "deg. C": 106724
+    },
+    "WIND_DIR_QA": {
+      "5": 1029,
+      "9": 210805
+    },
+    "WIND_DIR_UNIT": {
+      "": 210805,
+      "deg": 1029
+    },
+    "WIND_SPEED_QA": {
+      "1": 1791,
+      "5": 201,
+      "9": 209842
+    },
+    "WIND_SPEED_UNIT": {
+      "": 209842,
+      "mph": 1992
+    }
+  },
+  "source_environmental_profiles": [
+    {
+      "name": "SAMPLE_DEPTH",
+      "raw_name": "SAMPLE_DEPTH",
+      "position": 8,
+      "total": 211834,
+      "meaning": "Depth below surface",
+      "unit": "m",
+      "data_type": "float",
+      "missing": 5503,
+      "missing_percentage": 2.597789,
+      "documented_missing_including_qa_or_placeholder": 5503,
+      "documented_missing_percentage": 2.597789,
+      "unique_nonblank_count": 560,
+      "categorical_values": null,
+      "minimum": 0.0,
+      "maximum": 600.0,
+      "median": 0.5,
+      "zeros": 4211,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "CELLCOUNT",
+      "raw_name": "CELLCOUNT",
+      "position": 12,
+      "total": 211834,
+      "meaning": "Karenia brevis abundance",
+      "unit": "cells/L",
+      "data_type": "integer",
+      "missing": 0,
+      "missing_percentage": 0.0,
+      "documented_missing_including_qa_or_placeholder": 19,
+      "documented_missing_percentage": 0.008969,
+      "unique_nonblank_count": 6386,
+      "categorical_values": null,
+      "minimum": 0.0,
+      "maximum": 388400000.0,
+      "median": 0.0,
+      "zeros": 164197,
+      "suspicious_values": 19,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "SALINITY",
+      "raw_name": "SALINITY",
+      "position": 15,
+      "total": 211834,
+      "meaning": "Sample salinity",
+      "unit": "ppt",
+      "data_type": "float",
+      "missing": 103736,
+      "missing_percentage": 48.97042,
+      "documented_missing_including_qa_or_placeholder": 103736,
+      "documented_missing_percentage": 48.97042,
+      "unique_nonblank_count": 6532,
+      "categorical_values": null,
+      "minimum": 0.0,
+      "maximum": 86.0,
+      "median": 33.0,
+      "zeros": 3,
+      "suspicious_values": 18,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "WATER_TEMP",
+      "raw_name": "WATER_TEMP",
+      "position": 18,
+      "total": 211834,
+      "meaning": "Water temperature",
+      "unit": "deg. C",
+      "data_type": "float",
+      "missing": 105110,
+      "missing_percentage": 49.619041,
+      "documented_missing_including_qa_or_placeholder": 105111,
+      "documented_missing_percentage": 49.619513,
+      "unique_nonblank_count": 2187,
+      "categorical_values": null,
+      "minimum": 4.0,
+      "maximum": 39.9,
+      "median": 25.4,
+      "zeros": 0,
+      "suspicious_values": 650,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "WIND_DIR",
+      "raw_name": "WIND_DIR",
+      "position": 21,
+      "total": 211834,
+      "meaning": "Wind direction",
+      "unit": "deg",
+      "data_type": "float",
+      "missing": 210805,
+      "missing_percentage": 99.514242,
+      "documented_missing_including_qa_or_placeholder": 210805,
+      "documented_missing_percentage": 99.514242,
+      "unique_nonblank_count": 15,
+      "categorical_values": null,
+      "minimum": 22.5,
+      "maximum": 360.0,
+      "median": 135.0,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "WIND_SPEED",
+      "raw_name": "WIND_SPEED",
+      "position": 24,
+      "total": 211834,
+      "meaning": "Wind speed",
+      "unit": "mph",
+      "data_type": "float",
+      "missing": 209842,
+      "missing_percentage": 99.059641,
+      "documented_missing_including_qa_or_placeholder": 209842,
+      "documented_missing_percentage": 99.059641,
+      "unique_nonblank_count": 164,
+      "categorical_values": null,
+      "minimum": 0.0,
+      "maximum": 34.5,
+      "median": 10.0,
+      "zeros": 63,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    }
+  ],
+  "missing_strategy": "No fitting or filling now. Preserve NA. Later select missing-aware estimator or fit imputer/missing indicators/scaler only inside each training fold; never use validation/test data for fitted preprocessing. Drop SOURCE_ROW_NUMBER before X.",
+  "wind_decision": "No cyclic or u/v features: only degree units are documented, not reference axis or meteorological from/to convention; coverage also sparse.",
+  "split_strategy": {
+    "status": "proposal only; no split files or fitted transformers",
+    "task": "Temporal generalization of contemporaneous abundance classification, not early-warning forecasting",
+    "proposal": {
+      "train": "1953-08-19 through 2020-12-31",
+      "validation": "2021-01-01 through 2022-12-31",
+      "test": "2023-01-01 through 2024-03-25"
+    },
+    "reason": "Chronological ordering matches later-time evaluation and observed coverage; calendar cutoffs are explicit design choices, not scientific thresholds.",
+    "safeguards": [
+      "Keep same-date samples together; no random record split",
+      "Fit every learned preprocessing step on training folds only",
+      "Rolling-origin folds within training period for later tuning",
+      "Freeze cutoffs before model development; audit class support and site/year shift",
+      "Report 2024 partial-year results separately from complete 2023",
+      "Coordinate/site overlap can remain; future unseen-site evaluation needs documented site grouping"
+    ],
+    "eligible_class_counts_by_year": {
+      "1953": {
+        "high": 3,
+        "low": 1,
+        "medium": 7,
+        "not observed": 5
+      },
+      "1954": {
+        "high": 21,
+        "low": 88,
+        "medium": 127,
+        "not observed": 558,
+        "very low": 31
+      },
+      "1955": {
+        "high": 3,
+        "low": 43,
+        "medium": 30,
+        "not observed": 2715,
+        "very low": 6
+      },
+      "1956": {
+        "not observed": 2995,
+        "very low": 29
+      },
+      "1957": {
+        "high": 54,
+        "low": 425,
+        "medium": 421,
+        "not observed": 2780,
+        "very low": 386
+      },
+      "1958": {
+        "low": 5,
+        "not observed": 1583,
+        "very low": 225
+      },
+      "1959": {
+        "high": 20,
+        "low": 70,
+        "medium": 26,
+        "not observed": 1424,
+        "very low": 205
+      },
+      "1960": {
+        "high": 17,
+        "low": 191,
+        "medium": 98,
+        "not observed": 864,
+        "very low": 203
+      },
+      "1961": {
+        "low": 9,
+        "medium": 7,
+        "not observed": 779,
+        "very low": 47
+      },
+      "1962": {
+        "low": 8,
+        "not observed": 295,
+        "very low": 17
+      },
+      "1963": {
+        "high": 6,
+        "low": 32,
+        "medium": 34,
+        "not observed": 381,
+        "very low": 27
+      },
+      "1964": {
+        "high": 2,
+        "low": 15,
+        "medium": 16,
+        "not observed": 831,
+        "very low": 57
+      },
+      "1965": {
+        "not observed": 38,
+        "very low": 14
+      },
+      "1966": {
+        "high": 1,
+        "low": 5,
+        "medium": 11,
+        "not observed": 281,
+        "very low": 51
+      },
+      "1967": {
+        "high": 14,
+        "low": 43,
+        "medium": 47,
+        "not observed": 238,
+        "very low": 70
+      },
+      "1968": {
+        "high": 17,
+        "low": 10,
+        "medium": 18,
+        "not observed": 44,
+        "very low": 30
+      },
+      "1969": {
+        "not observed": 16
+      },
+      "1970": {
+        "medium": 1
+      },
+      "1971": {
+        "high": 90,
+        "low": 82,
+        "medium": 106,
+        "not observed": 147,
+        "very low": 52
+      },
+      "1972": {
+        "high": 3,
+        "low": 44,
+        "medium": 46,
+        "not observed": 73,
+        "very low": 30
+      },
+      "1973": {
+        "high": 3,
+        "low": 13,
+        "medium": 36,
+        "not observed": 49,
+        "very low": 13
+      },
+      "1974": {
+        "high": 77,
+        "low": 190,
+        "medium": 346,
+        "not observed": 924,
+        "very low": 207
+      },
+      "1975": {
+        "low": 2,
+        "not observed": 413,
+        "very low": 6
+      },
+      "1976": {
+        "high": 17,
+        "low": 32,
+        "medium": 73,
+        "not observed": 679,
+        "very low": 117
+      },
+      "1977": {
+        "high": 4,
+        "low": 9,
+        "medium": 29,
+        "not observed": 422,
+        "very low": 66
+      },
+      "1978": {
+        "high": 24,
+        "low": 67,
+        "medium": 98,
+        "not observed": 505,
+        "very low": 93
+      },
+      "1979": {
+        "high": 4,
+        "low": 33,
+        "medium": 23,
+        "not observed": 466,
+        "very low": 93
+      },
+      "1980": {
+        "high": 9,
+        "low": 132,
+        "medium": 90,
+        "not observed": 467,
+        "very low": 221
+      },
+      "1981": {
+        "low": 12,
+        "medium": 7,
+        "not observed": 114,
+        "very low": 38
+      },
+      "1982": {
+        "high": 19,
+        "low": 49,
+        "medium": 60,
+        "not observed": 448,
+        "very low": 108
+      },
+      "1983": {
+        "high": 31,
+        "low": 46,
+        "medium": 50,
+        "not observed": 195,
+        "very low": 50
+      },
+      "1984": {
+        "high": 3,
+        "low": 19,
+        "medium": 8,
+        "not observed": 132,
+        "very low": 60
+      },
+      "1985": {
+        "high": 3,
+        "low": 4,
+        "medium": 14,
+        "not observed": 95,
+        "very low": 22
+      },
+      "1986": {
+        "high": 22,
+        "low": 19,
+        "medium": 50,
+        "not observed": 136,
+        "very low": 49
+      },
+      "1987": {
+        "high": 7,
+        "low": 44,
+        "medium": 17,
+        "not observed": 937,
+        "very low": 113
+      },
+      "1988": {
+        "high": 2,
+        "low": 14,
+        "medium": 13,
+        "not observed": 714,
+        "very low": 37
+      },
+      "1989": {
+        "low": 15,
+        "medium": 10,
+        "not observed": 682,
+        "very low": 27
+      },
+      "1990": {
+        "low": 26,
+        "medium": 5,
+        "not observed": 684,
+        "very low": 85
+      },
+      "1991": {
+        "high": 24,
+        "low": 76,
+        "medium": 134,
+        "not observed": 788,
+        "very low": 140
+      },
+      "1992": {
+        "high": 85,
+        "low": 34,
+        "medium": 73,
+        "not observed": 837,
+        "very low": 67
+      },
+      "1993": {
+        "low": 4,
+        "not observed": 677,
+        "very low": 6
+      },
+      "1994": {
+        "high": 65,
+        "low": 145,
+        "medium": 166,
+        "not observed": 746,
+        "very low": 96
+      },
+      "1995": {
+        "high": 95,
+        "low": 385,
+        "medium": 374,
+        "not observed": 1392,
+        "very low": 362
+      },
+      "1996": {
+        "(ineligible)": 31,
+        "high": 42,
+        "low": 310,
+        "medium": 248,
+        "not observed": 1693,
+        "very low": 375
+      },
+      "1997": {
+        "(ineligible)": 3,
+        "high": 3,
+        "low": 46,
+        "medium": 36,
+        "not observed": 1506,
+        "very low": 112
+      },
+      "1998": {
+        "high": 12,
+        "low": 110,
+        "medium": 58,
+        "not observed": 1377,
+        "very low": 137
+      },
+      "1999": {
+        "(ineligible)": 30,
+        "high": 49,
+        "low": 251,
+        "medium": 246,
+        "not observed": 2222,
+        "very low": 424
+      },
+      "2000": {
+        "(ineligible)": 1,
+        "high": 40,
+        "low": 231,
+        "medium": 334,
+        "not observed": 2770,
+        "very low": 425
+      },
+      "2001": {
+        "(ineligible)": 6,
+        "high": 224,
+        "low": 402,
+        "medium": 518,
+        "not observed": 1855,
+        "very low": 408
+      },
+      "2002": {
+        "(ineligible)": 25,
+        "high": 58,
+        "low": 353,
+        "medium": 173,
+        "not observed": 2007,
+        "very low": 577
+      },
+      "2003": {
+        "(ineligible)": 6,
+        "high": 31,
+        "low": 530,
+        "medium": 279,
+        "not observed": 2129,
+        "very low": 701
+      },
+      "2004": {
+        "high": 7,
+        "low": 113,
+        "medium": 105,
+        "not observed": 1847,
+        "very low": 200
+      },
+      "2005": {
+        "(ineligible)": 101,
+        "high": 267,
+        "low": 844,
+        "medium": 784,
+        "not observed": 1986,
+        "very low": 855
+      },
+      "2006": {
+        "(ineligible)": 14,
+        "high": 223,
+        "low": 699,
+        "medium": 592,
+        "not observed": 4578,
+        "very low": 701
+      },
+      "2007": {
+        "(ineligible)": 147,
+        "high": 59,
+        "low": 289,
+        "medium": 240,
+        "not observed": 5939,
+        "very low": 488
+      },
+      "2008": {
+        "(ineligible)": 14,
+        "low": 61,
+        "medium": 23,
+        "not observed": 5483,
+        "very low": 191
+      },
+      "2009": {
+        "(ineligible)": 18,
+        "high": 41,
+        "low": 202,
+        "medium": 144,
+        "not observed": 6049,
+        "very low": 391
+      },
+      "2010": {
+        "(ineligible)": 31,
+        "low": 28,
+        "medium": 9,
+        "not observed": 5780,
+        "very low": 132
+      },
+      "2011": {
+        "(ineligible)": 34,
+        "high": 184,
+        "low": 403,
+        "medium": 525,
+        "not observed": 5849,
+        "very low": 383
+      },
+      "2012": {
+        "(ineligible)": 33,
+        "high": 54,
+        "low": 572,
+        "medium": 345,
+        "not observed": 5123,
+        "very low": 873
+      },
+      "2013": {
+        "(ineligible)": 14,
+        "high": 88,
+        "low": 430,
+        "medium": 365,
+        "not observed": 5795,
+        "very low": 886
+      },
+      "2014": {
+        "(ineligible)": 13,
+        "high": 17,
+        "low": 143,
+        "medium": 132,
+        "not observed": 7036,
+        "very low": 413
+      },
+      "2015": {
+        "(ineligible)": 142,
+        "high": 177,
+        "low": 351,
+        "medium": 398,
+        "not observed": 5829,
+        "very low": 495
+      },
+      "2016": {
+        "(ineligible)": 76,
+        "high": 182,
+        "low": 720,
+        "medium": 772,
+        "not observed": 6360,
+        "very low": 1016
+      },
+      "2017": {
+        "(ineligible)": 13,
+        "high": 28,
+        "low": 376,
+        "medium": 256,
+        "not observed": 7827,
+        "very low": 920
+      },
+      "2018": {
+        "(ineligible)": 123,
+        "high": 577,
+        "low": 986,
+        "medium": 1020,
+        "not observed": 7931,
+        "very low": 1498
+      },
+      "2019": {
+        "high": 163,
+        "low": 165,
+        "medium": 263,
+        "not observed": 9377,
+        "very low": 426
+      },
+      "2020": {
+        "high": 23,
+        "low": 46,
+        "medium": 41,
+        "not observed": 6151,
+        "very low": 241
+      },
+      "2021": {
+        "high": 226,
+        "low": 852,
+        "medium": 656,
+        "not observed": 7570,
+        "very low": 1166
+      },
+      "2022": {
+        "high": 65,
+        "low": 161,
+        "medium": 170,
+        "not observed": 7409,
+        "very low": 219
+      },
+      "2023": {
+        "(ineligible)": 192,
+        "high": 90,
+        "low": 431,
+        "medium": 297,
+        "not observed": 4852,
+        "very low": 699
+      },
+      "2024": {
+        "not observed": 1057,
+        "very low": 2
+      }
+    }
+  },
+  "limitations": [
+    "Same-sample CATEGORY is a documented reported bin, not independently validated harm or future-risk ground truth",
+    "No CATEGORY thresholds reconstructed; source labeling may vary across agencies/decades",
+    "Retained QA=4 and QA=5 values require sensitivity review; depth has no QA field",
+    "Observed spatial/temporal context can encode sampling bias despite removal of direct label fields",
+    "pH, turbidity, TDS, dissolved oxygen and chlorophyll-a not available",
+    "Missingness and sparse winds remain; no deployability/accuracy claim"
+  ],
+  "metadata_source": "docs/HABSOS_Data_Dictionary.xlsx, Sheet1 A1:C32; docs/dataset.md; docs/phase2_preprocessing.md"
+}

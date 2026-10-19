@@ -1,0 +1,424 @@
+{
+  "file": "C:\\Users\\mahad\\OneDrive\\Desktop\\Fog and Edge Computing\\data\\raw\\habsos_20240430.csv",
+  "size_bytes": 29951499,
+  "sha256": "0c561afc3239fc885afd161bbc0c3e9826969019f8266ffaade4adca7f700596",
+  "row_count": 211834,
+  "column_names": [
+    "STATE_ID",
+    "DESCRIPTION",
+    "",
+    "LATITUDE",
+    "LONGITUDE",
+    "SAMPLE_DATE",
+    "SAMPLE_TIME",
+    "SAMPLE_DEPTH",
+    "GENUS",
+    "SPECIES",
+    "CATEGORY",
+    "CELLCOUNT",
+    "CELLCOUNT_UNIT",
+    "CELLCOUNT_QA",
+    "SALINITY",
+    "SALINITY_UNIT",
+    "SALINITY_QA",
+    "WATER_TEMP",
+    "WATER_TEMP_UNIT",
+    "WATER_TEMP_QA",
+    "WIND_DIR",
+    "WIND_DIR_UNIT",
+    "WIND_DIR_QA",
+    "WIND_SPEED",
+    "WIND_SPEED_UNIT",
+    "WIND_SPEED_QA",
+    "OBJECTID",
+    ""
+  ],
+  "columns": {
+    "STATE_ID [column 1]": {
+      "blank_values": 0,
+      "nonblank_values": 211834,
+      "numeric_values": 0,
+      "integer_values": 0,
+      "nonfinite_values": 0,
+      "minimum": null,
+      "maximum": null,
+      "inferred_type": "text (dates are not inferred)",
+      "unique_values_if_at_most_50": [
+        "AL",
+        "FL",
+        "MS",
+        "TX"
+      ]
+    },
+    "DESCRIPTION [column 2]": {
+      "blank_values": 23,
+      "nonblank_values": 211811,
+      "numeric_values": 703,
+      "integer_values": 703,
+      "nonfinite_values": 0,
+      "minimum": null,
+      "maximum": null,
+      "inferred_type": "mixed text/numeric",
+      "unique_values_if_at_most_50": "more than 50"
+    },
+    "(unnamed) [column 3]": {
+      "blank_values": 211834,
+      "nonblank_values": 0,
+      "numeric_values": 0,
+      "integer_values": 0,
+      "nonfinite_values": 0,
+      "minimum": null,
+      "maximum": null,
+      "inferred_type": "empty",
+      "unique_values_if_at_most_50": []
+    },
+    "LATITUDE [column 4]": {
+      "blank_values": 0,
+      "nonblank_values": 211834,
+      "numeric_values": 211834,
+      "integer_values": 206,
+      "nonfinite_values": 0,
+      "minimum": 24.0,
+      "maximum": 30.7149,
+      "inferred_type": "float",
+      "unique_values_if_at_most_50": "more than 50"
+    },
+    "LONGITUDE [column 5]": {
+      "blank_values": 0,
+      "nonblank_values": 211834,
+      "numeric_values": 211834,
+      "integer_values": 283,
+      "nonfinite_values": 0,
+      "minimum": -97.66535,
+      "maximum": -78.2789,
+      "inferred_type": "float",
+      "unique_values_if_at_most_50": "more than 50"
+    },
+    "SAMPLE_DATE [column 6]": {
+      "blank_values": 0,
+      "nonblank_values": 211834,
+      "numeric_values": 0,
+      "integer_values": 0,
+      "nonfinite_values": 0,
+      "minimum": null,
+      "maximum": null,
+      "inferred_type": "text (dates are not inferred)",
+      "unique_values_if_at_most_50": "more than 50"
+    },
+    "SAMPLE_TIME [column 7]": {
+      "blank_values": 48920,
+      "nonblank_values": 162914,
+      "numeric_values": 0,
+      "integer_values": 0,
+      "nonfinite_values": 0,
+      "minimum": null,
+      "maximum": null,
+      "inferred_type": "text (dates are not inferred)",
+      "unique_values_if_at_most_50": "more than 50"
+    },
+    "SAMPLE_DEPTH [column 8]": {
+      "blank_values": 5503,
+      "nonblank_values": 206331,
+      "numeric_values": 206331,
+      "integer_values": 20410,
+      "nonfinite_values": 0,
+      "minimum": 0.0,
+      "maximum": 600.0,
+      "inferred_type": "float",
+      "unique_values_if_at_most_50": "more than 50"
+    },
+    "GENUS [column 9]": {
+      "blank_values": 0,
+      "nonblank_values": 211834,
+      "numeric_values": 0,
+      "integer_values": 0,
+      "nonfinite_values": 0,
+      "minimum": null,
+      "maximum": null,
+      "inferred_type": "text (dates are not inferred)",
+      "unique_values_if_at_most_50": [
+        "Karenia"
+      ]
+    },
+    "SPECIES [column 10]": {
+      "blank_values": 0,
+      "nonblank_values": 211834,
+      "numeric_values": 0,
+      "integer_values": 0,
+      "nonfinite_values": 0,
+      "minimum": null,
+      "maximum": null,
+      "inferred_type": "text (dates are not inferred)",
+      "unique_values_if_at_most_50": [
+        "brevis"
+      ]
+    },
+    "CATEGORY [column 11]": {
+      "blank_values": 856,
+      "nonblank_values": 210978,
+      "numeric_values": 0,
+      "integer_values": 0,
+      "nonfinite_values": 0,
+      "minimum": null,
+      "maximum": null,
+      "inferred_type": "text (dates are not inferred)",
+      "unique_values_if_at_most_50": [
+        "high",
+        "low",
+        "medium",
+        "not observed",
+        "very low"
+      ]
+    },
+    "CELLCOUNT [column 12]": {
+      "blank_values": 0,
+      "nonblank_values": 211834,
+      "numeric_values": 211834,
+      "integer_values": 211834,
+      "nonfinite_values": 0,
+      "minimum": 0.0,
+      "maximum": 388400000.0,
+      "inferred_type": "integer",
+      "unique_values_if_at_most_50": "more than 50"
+    },
+    "CELLCOUNT_UNIT [column 13]": {
+      "blank_values": 0,
+      "nonblank_values": 211834,
+      "numeric_values": 0,
+      "integer_values": 0,
+      "nonfinite_values": 0,
+      "minimum": null,
+      "maximum": null,
+      "inferred_type": "text (dates are not inferred)",
+      "unique_values_if_at_most_50": [
+        "cells/L"
+      ]
+    },
+    "CELLCOUNT_QA [column 14]": {
+      "blank_values": 192,
+      "nonblank_values": 211642,
+      "numeric_values": 211642,
+      "integer_values": 211642,
+      "nonfinite_values": 0,
+      "minimum": 1.0,
+      "maximum": 9.0,
+      "inferred_type": "integer",
+      "unique_values_if_at_most_50": [
+        "1",
+        "5",
+        "9"
+      ]
+    },
+    "SALINITY [column 15]": {
+      "blank_values": 103736,
+      "nonblank_values": 108098,
+      "numeric_values": 108098,
+      "integer_values": 32197,
+      "nonfinite_values": 0,
+      "minimum": 0.0,
+      "maximum": 86.0,
+      "inferred_type": "float",
+      "unique_values_if_at_most_50": "more than 50"
+    },
+    "SALINITY_UNIT [column 16]": {
+      "blank_values": 103736,
+      "nonblank_values": 108098,
+      "numeric_values": 0,
+      "integer_values": 0,
+      "nonfinite_values": 0,
+      "minimum": null,
+      "maximum": null,
+      "inferred_type": "text (dates are not inferred)",
+      "unique_values_if_at_most_50": [
+        "ppt"
+      ]
+    },
+    "SALINITY_QA [column 17]": {
+      "blank_values": 0,
+      "nonblank_values": 211834,
+      "numeric_values": 211834,
+      "integer_values": 211834,
+      "nonfinite_values": 0,
+      "minimum": 1.0,
+      "maximum": 9.0,
+      "inferred_type": "integer",
+      "unique_values_if_at_most_50": [
+        "1",
+        "4",
+        "9"
+      ]
+    },
+    "WATER_TEMP [column 18]": {
+      "blank_values": 105110,
+      "nonblank_values": 106724,
+      "numeric_values": 106724,
+      "integer_values": 21753,
+      "nonfinite_values": 0,
+      "minimum": 4.0,
+      "maximum": 39.9,
+      "inferred_type": "float",
+      "unique_values_if_at_most_50": "more than 50"
+    },
+    "WATER_TEMP_UNIT [column 19]": {
+      "blank_values": 105110,
+      "nonblank_values": 106724,
+      "numeric_values": 0,
+      "integer_values": 0,
+      "nonfinite_values": 0,
+      "minimum": null,
+      "maximum": null,
+      "inferred_type": "text (dates are not inferred)",
+      "unique_values_if_at_most_50": [
+        "deg. C"
+      ]
+    },
+    "WATER_TEMP_QA [column 20]": {
+      "blank_values": 0,
+      "nonblank_values": 211834,
+      "numeric_values": 211834,
+      "integer_values": 211834,
+      "nonfinite_values": 0,
+      "minimum": 1.0,
+      "maximum": 9.0,
+      "inferred_type": "integer",
+      "unique_values_if_at_most_50": [
+        "1",
+        "4",
+        "5",
+        "9"
+      ]
+    },
+    "WIND_DIR [column 21]": {
+      "blank_values": 210805,
+      "nonblank_values": 1029,
+      "numeric_values": 1029,
+      "integer_values": 879,
+      "nonfinite_values": 0,
+      "minimum": 22.5,
+      "maximum": 360.0,
+      "inferred_type": "float",
+      "unique_values_if_at_most_50": [
+        "112.5",
+        "135",
+        "157.5",
+        "180",
+        "22.5",
+        "225",
+        "247.5",
+        "270",
+        "292.5",
+        "315",
+        "337.5",
+        "360",
+        "45",
+        "67.5",
+        "90"
+      ]
+    },
+    "WIND_DIR_UNIT [column 22]": {
+      "blank_values": 210805,
+      "nonblank_values": 1029,
+      "numeric_values": 0,
+      "integer_values": 0,
+      "nonfinite_values": 0,
+      "minimum": null,
+      "maximum": null,
+      "inferred_type": "text (dates are not inferred)",
+      "unique_values_if_at_most_50": [
+        "deg"
+      ]
+    },
+    "WIND_DIR_QA [column 23]": {
+      "blank_values": 0,
+      "nonblank_values": 211834,
+      "numeric_values": 211834,
+      "integer_values": 211834,
+      "nonfinite_values": 0,
+      "minimum": 5.0,
+      "maximum": 9.0,
+      "inferred_type": "integer",
+      "unique_values_if_at_most_50": [
+        "5",
+        "9"
+      ]
+    },
+    "WIND_SPEED [column 24]": {
+      "blank_values": 209842,
+      "nonblank_values": 1992,
+      "numeric_values": 1992,
+      "integer_values": 1352,
+      "nonfinite_values": 0,
+      "minimum": 0.0,
+      "maximum": 34.5,
+      "inferred_type": "float",
+      "unique_values_if_at_most_50": "more than 50"
+    },
+    "WIND_SPEED_UNIT [column 25]": {
+      "blank_values": 209842,
+      "nonblank_values": 1992,
+      "numeric_values": 0,
+      "integer_values": 0,
+      "nonfinite_values": 0,
+      "minimum": null,
+      "maximum": null,
+      "inferred_type": "text (dates are not inferred)",
+      "unique_values_if_at_most_50": [
+        "mph"
+      ]
+    },
+    "WIND_SPEED_QA [column 26]": {
+      "blank_values": 0,
+      "nonblank_values": 211834,
+      "numeric_values": 211834,
+      "integer_values": 211834,
+      "nonfinite_values": 0,
+      "minimum": 1.0,
+      "maximum": 9.0,
+      "inferred_type": "integer",
+      "unique_values_if_at_most_50": [
+        "1",
+        "5",
+        "9"
+      ]
+    },
+    "OBJECTID [column 27]": {
+      "blank_values": 0,
+      "nonblank_values": 211834,
+      "numeric_values": 211834,
+      "integer_values": 211834,
+      "nonfinite_values": 0,
+      "minimum": 27896.0,
+      "maximum": 2135994.0,
+      "inferred_type": "integer",
+      "unique_values_if_at_most_50": "more than 50"
+    },
+    "(unnamed) [column 28]": {
+      "blank_values": 211834,
+      "nonblank_values": 0,
+      "numeric_values": 0,
+      "integer_values": 0,
+      "nonfinite_values": 0,
+      "minimum": null,
+      "maximum": null,
+      "inferred_type": "empty",
+      "unique_values_if_at_most_50": []
+    }
+  },
+  "sample_date_lexical_min": "1953/08/19",
+  "sample_date_lexical_max": "2024/03/25",
+  "qa_9_no_data_counts": {
+    "CELLCOUNT": 19,
+    "SALINITY": 103736,
+    "WATER_TEMP": 105111,
+    "WIND_DIR": 210805,
+    "WIND_SPEED": 209842
+  },
+  "sample_time_missing_placeholders": {
+    "12:00": 1000,
+    "0:00": 0,
+    "00:00": 0
+  },
+  "missing_value_policy": "Only empty/whitespace cells counted as blank. Scientific sentinels require verified metadata; none assumed.",
+  "range_policy": "Ranges include all finite recorded values, without excluding QA flags; no cleaning or imputation.",
+  "raw_unchanged": true
+}

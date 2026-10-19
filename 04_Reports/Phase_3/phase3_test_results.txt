@@ -1,0 +1,26 @@
+test_original_csv_exists_is_readable_and_unchanged (test_dataset.TestRawDataset) ... ok
+test_calendar_features_use_only_recorded_date (test_features.TestFeatures) ... ok
+test_class_counts_reconcile_and_unavailable_labels_not_filled (test_features.TestFeatures) ... ok
+test_features_never_fill_missing_values_or_modify_measurements (test_features.TestFeatures) ... ok
+test_identifiers_and_direct_leakage_are_not_predictors (test_features.TestFeatures) ... ok
+test_input_exists_and_raw_and_phase2_content_unchanged (test_features.TestFeatures) ... ok
+test_metadata_covers_every_candidate_and_feature_role (test_features.TestFeatures) ... ok
+test_qa4_is_retained_qa9_masked_and_metadata_kept (test_features.TestFeatures) ... ok
+test_rows_lineage_and_all_original_source_fields_preserved (test_features.TestFeatures) ... ok
+test_target_is_verbatim_source_category_and_not_binary_or_future_risk (test_features.TestFeatures) ... ok
+test_two_builds_are_deterministic (test_features.TestFeatures) ... ok
+test_all_original_cells_and_rows_preserved_no_added_observations (test_preprocessing.TestPhase2) ... ok
+test_duplicate_report_matches_exact_original_rows (test_preprocessing.TestPhase2) ... ok
+test_missing_and_parsed_timestamps_do_not_invent_times (test_preprocessing.TestPhase2) ... ok
+test_pipeline_runs_and_all_outputs_load (test_preprocessing.TestPhase2) ... ok
+test_qa9_is_exposed_even_when_source_number_present (test_preprocessing.TestPhase2) ... ok
+test_raw_directory_never_written_or_changed (test_preprocessing.TestPhase2) ... ok
+test_raw_exists_and_matches_phase1 (test_preprocessing.TestPhase2) ... ok
+test_reports_cover_every_source_column_and_missingness (test_preprocessing.TestPhase2) ... ok
+test_required_columns_and_row_accounting (test_preprocessing.TestPhase2) ... ok
+test_second_run_and_missing_handling_are_byte_deterministic (test_preprocessing.TestPhase2) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 232.342s
+
+OK

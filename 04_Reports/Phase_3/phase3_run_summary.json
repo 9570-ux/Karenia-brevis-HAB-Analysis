@@ -1,0 +1,67 @@
+{
+  "output_rows": 211834,
+  "candidate_feature_count": 40,
+  "selected_feature_count": 8,
+  "excluded_feature_count": 32,
+  "target_definition": {
+    "name": "observed_abundance_category",
+    "formulation": "Multiclass source-reported contemporaneous Karenia brevis abundance category",
+    "binary_risk_status": "No directly validated binary HAB-risk target was established from the available NOAA fields.",
+    "source_columns": [
+      "CATEGORY",
+      "GENUS",
+      "SPECIES",
+      "CELLCOUNT",
+      "CELLCOUNT_UNIT",
+      "CELLCOUNT_QA"
+    ],
+    "rule": "Copy CATEGORY verbatim when it is documented, organism is Karenia/brevis, cell-count unit is cells/L, count parses finitely and CELLCOUNT_QA is 1 or 5; otherwise blank target with explicit status. No numerical bin thresholds are inferred.",
+    "quality_policy": "QA=1 source good; QA=5 upstream converted, retained with caution in metadata; QA=9 and undocumented/missing QA excluded from supervised-label eligibility only. This is a project eligibility policy, not a NOAA-mandated filter.",
+    "source": "docs/HABSOS_Data_Dictionary.xlsx, Sheet1 A1:C32; docs/dataset.md; docs/phase2_preprocessing.md",
+    "eligible_observations": 210767,
+    "ineligible_observations": 1067,
+    "exclusion_status_counts": {
+      "category_missing": 856,
+      "cellcount_quality_unresolved_or_no_data": 211,
+      "eligible": 210767
+    },
+    "raw_category_distribution": {
+      "(missing)": 856,
+      "high": 3679,
+      "low": 12567,
+      "medium": 11705,
+      "not observed": 164102,
+      "very low": 18925
+    },
+    "class_distribution": {
+      "not observed": {
+        "count": 163936,
+        "percentage_of_eligible": 77.780677
+      },
+      "very low": {
+        "count": 18910,
+        "percentage_of_eligible": 8.971993
+      },
+      "low": {
+        "count": 12546,
+        "percentage_of_eligible": 5.952545
+      },
+      "medium": {
+        "count": 11700,
+        "percentage_of_eligible": 5.551154
+      },
+      "high": {
+        "count": 3675,
+        "percentage_of_eligible": 1.743632
+      }
+    },
+    "imbalance_ratio_largest_to_smallest": 44.60843537414966,
+    "forecast_horizon": null,
+    "claims_not_supported": [
+      "binary harm/toxicity risk",
+      "future bloom onset",
+      "early warning",
+      "validated forecast performance"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "complete_runs": 2,
+  "same_selected_experiment": true,
+  "maximum_metric_absolute_difference": 0.0,
+  "tolerance": 1e-12,
+  "maximum_test_probability_absolute_difference": 1.1102230246251565e-16,
+  "verified": true,
+  "protocol": "Two complete fixed-recipe reproductions; one selected-model test evaluation per run. Second run repeats the frozen experiment; no retuning after test."
+}

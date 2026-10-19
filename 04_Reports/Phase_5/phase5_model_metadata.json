@@ -1,0 +1,2207 @@
+{
+  "scientific_limitation": "The target represents source-recorded abundance categories and is not a validated future HAB-risk or early-warning target.",
+  "selected_experiment": "D_environmental_temporal_spatial_cyclic__random_forest__balanced",
+  "feature_group": "D_environmental_temporal_spatial_cyclic",
+  "model": "random_forest",
+  "class_weight": "balanced",
+  "seed": 42,
+  "experiment_count": 15,
+  "target_definition": {
+    "name": "observed_abundance_category",
+    "formulation": "Multiclass source-reported contemporaneous Karenia brevis abundance category",
+    "binary_risk_status": "No directly validated binary HAB-risk target was established from the available NOAA fields.",
+    "source_columns": [
+      "CATEGORY",
+      "GENUS",
+      "SPECIES",
+      "CELLCOUNT",
+      "CELLCOUNT_UNIT",
+      "CELLCOUNT_QA"
+    ],
+    "rule": "Copy CATEGORY verbatim when it is documented, organism is Karenia/brevis, cell-count unit is cells/L, count parses finitely and CELLCOUNT_QA is 1 or 5; otherwise blank target with explicit status. No numerical bin thresholds are inferred.",
+    "quality_policy": "QA=1 source good; QA=5 upstream converted, retained with caution in metadata; QA=9 and undocumented/missing QA excluded from supervised-label eligibility only. This is a project eligibility policy, not a NOAA-mandated filter.",
+    "source": "docs/HABSOS_Data_Dictionary.xlsx, Sheet1 A1:C32; docs/dataset.md; docs/phase2_preprocessing.md",
+    "eligible_observations": 210767,
+    "ineligible_observations": 1067,
+    "exclusion_status_counts": {
+      "category_missing": 856,
+      "cellcount_quality_unresolved_or_no_data": 211,
+      "eligible": 210767
+    },
+    "raw_category_distribution": {
+      "(missing)": 856,
+      "high": 3679,
+      "low": 12567,
+      "medium": 11705,
+      "not observed": 164102,
+      "very low": 18925
+    },
+    "class_distribution": {
+      "not observed": {
+        "count": 163936,
+        "percentage_of_eligible": 77.780677
+      },
+      "very low": {
+        "count": 18910,
+        "percentage_of_eligible": 8.971993
+      },
+      "low": {
+        "count": 12546,
+        "percentage_of_eligible": 5.952545
+      },
+      "medium": {
+        "count": 11700,
+        "percentage_of_eligible": 5.551154
+      },
+      "high": {
+        "count": 3675,
+        "percentage_of_eligible": 1.743632
+      }
+    },
+    "imbalance_ratio_largest_to_smallest": 44.60843537414966,
+    "forecast_horizon": null,
+    "claims_not_supported": [
+      "binary harm/toxicity risk",
+      "future bloom onset",
+      "early warning",
+      "validated forecast performance"
+    ]
+  },
+  "selected_features": [
+    "WATER_TEMP",
+    "SALINITY",
+    "SAMPLE_DEPTH",
+    "LATITUDE",
+    "LONGITUDE",
+    "month_sin",
+    "month_cos",
+    "day_of_year_sin",
+    "day_of_year_cos"
+  ],
+  "internal_model_features": [
+    "WATER_TEMP",
+    "SALINITY",
+    "SAMPLE_DEPTH",
+    "LATITUDE",
+    "LONGITUDE",
+    "month_sin",
+    "month_cos",
+    "day_of_year_sin",
+    "day_of_year_cos",
+    "missingindicator_WATER_TEMP",
+    "missingindicator_SALINITY",
+    "missingindicator_SAMPLE_DEPTH"
+  ],
+  "validation_metrics": {
+    "A_original8__logistic__balanced": {
+      "accuracy": 0.5975451497783065,
+      "balanced_accuracy": 0.28809309419437434,
+      "macro_precision": 0.22446510347953913,
+      "macro_recall": 0.28809309419437434,
+      "macro_f1": 0.20273098770614473,
+      "weighted_precision": 0.7151323983374285,
+      "weighted_recall": 0.5975451497783065,
+      "weighted_f1": 0.6448570962218586,
+      "per_class": {
+        "not observed": {
+          "precision": 0.864974454626551,
+          "recall": 0.712063555644569,
+          "f1-score": 0.7811058220432077,
+          "support": 14979.0
+        },
+        "very low": {
+          "precision": 0.10721868365180467,
+          "recall": 0.14584837545126353,
+          "f1-score": 0.12358519424900581,
+          "support": 1385.0
+        },
+        "low": {
+          "precision": 0.1,
+          "recall": 0.017769002961500493,
+          "f1-score": 0.030176026823134954,
+          "support": 1013.0
+        },
+        "medium": {
+          "precision": 0.009009009009009009,
+          "recall": 0.0012106537530266344,
+          "f1-score": 0.0021344717182497333,
+          "support": 826.0
+        },
+        "high": {
+          "precision": 0.041123370110330994,
+          "recall": 0.563573883161512,
+          "f1-score": 0.0766534236971255,
+          "support": 291.0
+        }
+      },
+      "class_order": [
+        "not observed",
+        "very low",
+        "low",
+        "medium",
+        "high"
+      ],
+      "confusion_matrix": [
+        [
+          10666,
+          1372,
+          128,
+          85,
+          2728
+        ],
+        [
+          737,
+          202,
+          24,
+          19,
+          403
+        ],
+        [
+          499,
+          144,
+          18,
+          5,
+          347
+        ],
+        [
+          337,
+          132,
+          10,
+          1,
+          346
+        ],
+        [
+          92,
+          34,
+          0,
+          1,
+          164
+        ]
+      ],
+      "log_loss": 1.2751825919954,
+      "probability_column_order": [
+        "high",
+        "low",
+        "medium",
+        "not observed",
+        "very low"
+      ]
+    },
+    "A_original8__random_forest__balanced": {
+      "accuracy": 0.7811182004974586,
+      "balanced_accuracy": 0.19767398524669827,
+      "macro_precision": 0.19610345149729017,
+      "macro_recall": 0.19767398524669827,
+      "macro_f1": 0.18364545566257384,
+      "weighted_precision": 0.6646638669150463,
+      "weighted_recall": 0.7811182004974586,
+      "weighted_f1": 0.7141845066878396,
+      "per_class": {
+        "not observed": {
+          "precision": 0.8078820495571253,
+          "recall": 0.9620802456772816,
+          "f1-score": 0.8782643142273822,
+          "support": 14979.0
+        },
+        "very low": {
+          "precision": 0.06274509803921569,
+          "recall": 0.023104693140794223,
+          "f1-score": 0.033773087071240104,
+          "support": 1385.0
+        },
+        "low": {
+          "precision": 0.07142857142857142,
+          "recall": 0.0019743336623889436,
+          "f1-score": 0.0038424591738712775,
+          "support": 1013.0
+        },
+        "medium": {
+          "precision": 0.038461538461538464,
+          "recall": 0.0012106537530266344,
+          "f1-score": 0.002347417840375587,
+          "support": 826.0
+        },
+        "high": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 291.0
+        }
+      },
+      "class_order": [
+        "not observed",
+        "very low",
+        "low",
+        "medium",
+        "high"
+      ],
+      "confusion_matrix": [
+        [
+          14411,
+          443,
+          18,
+          20,
+          87
+        ],
+        [
+          1346,
+          32,
+          1,
+          1,
+          5
+        ],
+        [
+          992,
+          15,
+          2,
+          4,
+          0
+        ],
+        [
+          814,
+          11,
+          0,
+          1,
+          0
+        ],
+        [
+          275,
+          9,
+          7,
+          0,
+          0
+        ]
+      ],
+      "log_loss": 0.8204479183952794,
+      "probability_column_order": [
+        "high",
+        "low",
+        "medium",
+        "not observed",
+        "very low"
+      ]
+    },
+    "A_original8__hist_gradient__balanced": {
+      "accuracy": 0.7647345084892397,
+      "balanced_accuracy": 0.21056669340516931,
+      "macro_precision": 0.20014640763574904,
+      "macro_recall": 0.21056669340516937,
+      "macro_f1": 0.20055963653011943,
+      "weighted_precision": 0.6702082184622554,
+      "weighted_recall": 0.7647345084892397,
+      "weighted_f1": 0.7128597313322054,
+      "per_class": {
+        "not observed": {
+          "precision": 0.814720222892965,
+          "recall": 0.9370451966085853,
+          "f1-score": 0.8716117614183252,
+          "support": 14979.0
+        },
+        "very low": {
+          "precision": 0.10033076074972437,
+          "recall": 0.06570397111913358,
+          "f1-score": 0.07940663176265271,
+          "support": 1385.0
+        },
+        "low": {
+          "precision": 0.03773584905660377,
+          "recall": 0.0019743336623889436,
+          "f1-score": 0.00375234521575985,
+          "support": 1013.0
+        },
+        "medium": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 826.0
+        },
+        "high": {
+          "precision": 0.04794520547945205,
+          "recall": 0.048109965635738834,
+          "f1-score": 0.048027444253859346,
+          "support": 291.0
+        }
+      },
+      "class_order": [
+        "not observed",
+        "very low",
+        "low",
+        "medium",
+        "high"
+      ],
+      "confusion_matrix": [
+        [
+          14036,
+          695,
+          43,
+          14,
+          191
+        ],
+        [
+          1267,
+          91,
+          4,
+          0,
+          23
+        ],
+        [
+          927,
+          58,
+          2,
+          0,
+          26
+        ],
+        [
+          730,
+          54,
+          4,
+          0,
+          38
+        ],
+        [
+          268,
+          9,
+          0,
+          0,
+          14
+        ]
+      ],
+      "log_loss": 0.831574730624984,
+      "probability_column_order": [
+        "high",
+        "low",
+        "medium",
+        "not observed",
+        "very low"
+      ]
+    },
+    "B_temporal_spatial__logistic__balanced": {
+      "accuracy": 0.6099816156591327,
+      "balanced_accuracy": 0.23334994547218663,
+      "macro_precision": 0.18536418702936291,
+      "macro_recall": 0.23334994547218663,
+      "macro_f1": 0.17585671679716902,
+      "weighted_precision": 0.6810759300736065,
+      "weighted_recall": 0.6099816156591327,
+      "weighted_f1": 0.6404376291185576,
+      "per_class": {
+        "not observed": {
+          "precision": 0.834296001800315,
+          "recall": 0.7425061753121036,
+          "f1-score": 0.7857294242317202,
+          "support": 14979.0
+        },
+        "very low": {
+          "precision": 0.06578947368421052,
+          "recall": 0.032490974729241874,
+          "f1-score": 0.04349927501208313,
+          "support": 1385.0
+        },
+        "low": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 1013.0
+        },
+        "medium": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 826.0
+        },
+        "high": {
+          "precision": 0.02673545966228893,
+          "recall": 0.3917525773195876,
+          "f1-score": 0.050054884742041714,
+          "support": 291.0
+        }
+      },
+      "class_order": [
+        "not observed",
+        "very low",
+        "low",
+        "medium",
+        "high"
+      ],
+      "confusion_matrix": [
+        [
+          11122,
+          554,
+          2,
+          203,
+          3098
+        ],
+        [
+          905,
+          45,
+          0,
+          7,
+          428
+        ],
+        [
+          661,
+          29,
+          0,
+          3,
+          320
+        ],
+        [
+          491,
+          31,
+          0,
+          0,
+          304
+        ],
+        [
+          152,
+          25,
+          0,
+          0,
+          114
+        ]
+      ],
+      "log_loss": 1.3891475689753197,
+      "probability_column_order": [
+        "high",
+        "low",
+        "medium",
+        "not observed",
+        "very low"
+      ]
+    },
+    "B_temporal_spatial__random_forest__balanced": {
+      "accuracy": 0.7763058289174868,
+      "balanced_accuracy": 0.1988248932782264,
+      "macro_precision": 0.18305649311227729,
+      "macro_recall": 0.1988248932782264,
+      "macro_f1": 0.18597619532044013,
+      "weighted_precision": 0.6618072909463372,
+      "weighted_recall": 0.7763058289174868,
+      "weighted_f1": 0.7128776561824121,
+      "per_class": {
+        "not observed": {
+          "precision": 0.8077140275581658,
+          "recall": 0.954870151545497,
+          "f1-score": 0.8751491418606786,
+          "support": 14979.0
+        },
+        "very low": {
+          "precision": 0.0853462157809984,
+          "recall": 0.038267148014440436,
+          "f1-score": 0.05284147557328016,
+          "support": 1385.0
+        },
+        "low": {
+          "precision": 0.022222222222222223,
+          "recall": 0.0009871668311944718,
+          "f1-score": 0.001890359168241966,
+          "support": 1013.0
+        },
+        "medium": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 826.0
+        },
+        "high": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 291.0
+        }
+      },
+      "class_order": [
+        "not observed",
+        "very low",
+        "low",
+        "medium",
+        "high"
+      ],
+      "confusion_matrix": [
+        [
+          14303,
+          527,
+          37,
+          20,
+          92
+        ],
+        [
+          1322,
+          53,
+          2,
+          1,
+          7
+        ],
+        [
+          995,
+          17,
+          1,
+          0,
+          0
+        ],
+        [
+          809,
+          17,
+          0,
+          0,
+          0
+        ],
+        [
+          279,
+          7,
+          5,
+          0,
+          0
+        ]
+      ],
+      "log_loss": 1.363256982960503,
+      "probability_column_order": [
+        "high",
+        "low",
+        "medium",
+        "not observed",
+        "very low"
+      ]
+    },
+    "B_temporal_spatial__hist_gradient__balanced": {
+      "accuracy": 0.7594895641829783,
+      "balanced_accuracy": 0.20131540080626942,
+      "macro_precision": 0.18834557538450855,
+      "macro_recall": 0.20131540080626942,
+      "macro_f1": 0.19105972543846744,
+      "weighted_precision": 0.6674929253036744,
+      "weighted_recall": 0.7594895641829783,
+      "weighted_f1": 0.7094605056991384,
+      "per_class": {
+        "not observed": {
+          "precision": 0.8138381658012951,
+          "recall": 0.9313038253554977,
+          "f1-score": 0.8686176836861769,
+          "support": 14979.0
+        },
+        "very low": {
+          "precision": 0.08558139534883721,
+          "recall": 0.0664259927797834,
+          "f1-score": 0.07479674796747968,
+          "support": 1385.0
+        },
+        "low": {
+          "precision": 0.03225806451612903,
+          "recall": 0.0019743336623889436,
+          "f1-score": 0.0037209302325581397,
+          "support": 1013.0
+        },
+        "medium": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 826.0
+        },
+        "high": {
+          "precision": 0.010050251256281407,
+          "recall": 0.006872852233676976,
+          "f1-score": 0.00816326530612245,
+          "support": 291.0
+        }
+      },
+      "class_order": [
+        "not observed",
+        "very low",
+        "low",
+        "medium",
+        "high"
+      ],
+      "confusion_matrix": [
+        [
+          13950,
+          797,
+          51,
+          17,
+          164
+        ],
+        [
+          1271,
+          92,
+          6,
+          0,
+          16
+        ],
+        [
+          919,
+          82,
+          2,
+          0,
+          10
+        ],
+        [
+          735,
+          82,
+          2,
+          0,
+          7
+        ],
+        [
+          266,
+          22,
+          1,
+          0,
+          2
+        ]
+      ],
+      "log_loss": 0.8544268047266076,
+      "probability_column_order": [
+        "high",
+        "low",
+        "medium",
+        "not observed",
+        "very low"
+      ]
+    },
+    "C_environmental__logistic__balanced": {
+      "accuracy": 0.3002595436357738,
+      "balanced_accuracy": 0.2553014655190175,
+      "macro_precision": 0.22198315603912594,
+      "macro_recall": 0.2553014655190175,
+      "macro_f1": 0.15288020870710095,
+      "weighted_precision": 0.7203602671071815,
+      "weighted_recall": 0.3002595436357738,
+      "weighted_f1": 0.4087196518220124,
+      "per_class": {
+        "not observed": {
+          "precision": 0.8727272727272727,
+          "recall": 0.3364710594832766,
+          "f1-score": 0.4856895056374675,
+          "support": 14979.0
+        },
+        "very low": {
+          "precision": 0.1,
+          "recall": 0.13501805054151625,
+          "f1-score": 0.11490015360983102,
+          "support": 1385.0
+        },
+        "low": {
+          "precision": 0.05442176870748299,
+          "recall": 0.0947680157946693,
+          "f1-score": 0.06913935902052575,
+          "support": 1013.0
+        },
+        "medium": {
+          "precision": 0.059900166389351084,
+          "recall": 0.043583535108958835,
+          "f1-score": 0.050455501051156273,
+          "support": 826.0
+        },
+        "high": {
+          "precision": 0.022866572371522866,
+          "recall": 0.6666666666666666,
+          "f1-score": 0.044216524216524215,
+          "support": 291.0
+        }
+      },
+      "class_order": [
+        "not observed",
+        "very low",
+        "low",
+        "medium",
+        "high"
+      ],
+      "confusion_matrix": [
+        [
+          5040,
+          1446,
+          1429,
+          465,
+          6599
+        ],
+        [
+          288,
+          187,
+          164,
+          46,
+          700
+        ],
+        [
+          228,
+          116,
+          96,
+          49,
+          524
+        ],
+        [
+          173,
+          89,
+          61,
+          36,
+          467
+        ],
+        [
+          46,
+          32,
+          14,
+          5,
+          194
+        ]
+      ],
+      "log_loss": 1.4810617269329955,
+      "probability_column_order": [
+        "high",
+        "low",
+        "medium",
+        "not observed",
+        "very low"
+      ]
+    },
+    "C_environmental__random_forest__balanced": {
+      "accuracy": 0.36974153779604196,
+      "balanced_accuracy": 0.2619854848251709,
+      "macro_precision": 0.22108443434867464,
+      "macro_recall": 0.2619854848251709,
+      "macro_f1": 0.17047451266703076,
+      "weighted_precision": 0.718714915748579,
+      "weighted_recall": 0.36974153779604196,
+      "weighted_f1": 0.47676585996791176,
+      "per_class": {
+        "not observed": {
+          "precision": 0.8713088861420134,
+          "recall": 0.4235262701114894,
+          "f1-score": 0.5699910152740342,
+          "support": 14979.0
+        },
+        "very low": {
+          "precision": 0.08789237668161436,
+          "recall": 0.14151624548736463,
+          "f1-score": 0.10843706777316736,
+          "support": 1385.0
+        },
+        "low": {
+          "precision": 0.06268364348677767,
+          "recall": 0.0631786771964462,
+          "f1-score": 0.06293018682399214,
+          "support": 1013.0
+        },
+        "medium": {
+          "precision": 0.0580168776371308,
+          "recall": 0.06658595641646489,
+          "f1-score": 0.06200676437429538,
+          "support": 826.0
+        },
+        "high": {
+          "precision": 0.0255203877958369,
+          "recall": 0.6151202749140894,
+          "f1-score": 0.04900752908966461,
+          "support": 291.0
+        }
+      },
+      "class_order": [
+        "not observed",
+        "very low",
+        "low",
+        "medium",
+        "high"
+      ],
+      "confusion_matrix": [
+        [
+          6344,
+          1734,
+          780,
+          731,
+          5390
+        ],
+        [
+          432,
+          196,
+          94,
+          97,
+          566
+        ],
+        [
+          263,
+          160,
+          64,
+          56,
+          470
+        ],
+        [
+          179,
+          119,
+          64,
+          55,
+          409
+        ],
+        [
+          63,
+          21,
+          19,
+          9,
+          179
+        ]
+      ],
+      "log_loss": 1.329558927338915,
+      "probability_column_order": [
+        "high",
+        "low",
+        "medium",
+        "not observed",
+        "very low"
+      ]
+    },
+    "C_environmental__hist_gradient__balanced": {
+      "accuracy": 0.35178976965502323,
+      "balanced_accuracy": 0.2615644019523149,
+      "macro_precision": 0.22600270225664626,
+      "macro_recall": 0.2615644019523149,
+      "macro_f1": 0.16851946300760873,
+      "weighted_precision": 0.7247238496911417,
+      "weighted_recall": 0.35178976965502323,
+      "weighted_f1": 0.4609781297070389,
+      "per_class": {
+        "not observed": {
+          "precision": 0.8772520873004248,
+          "recall": 0.3998264236597904,
+          "f1-score": 0.5492983582500229,
+          "support": 14979.0
+        },
+        "very low": {
+          "precision": 0.09614551754006063,
+          "recall": 0.16028880866425993,
+          "f1-score": 0.12019491066594477,
+          "support": 1385.0
+        },
+        "low": {
+          "precision": 0.06878306878306878,
+          "recall": 0.06416584402764067,
+          "f1-score": 0.06639427987742594,
+          "support": 1013.0
+        },
+        "medium": {
+          "precision": 0.06408544726301736,
+          "recall": 0.05811138014527845,
+          "f1-score": 0.06095238095238095,
+          "support": 826.0
+        },
+        "high": {
+          "precision": 0.02374739039665971,
+          "recall": 0.6254295532646048,
+          "f1-score": 0.04575738529226901,
+          "support": 291.0
+        }
+      },
+      "class_order": [
+        "not observed",
+        "very low",
+        "low",
+        "medium",
+        "high"
+      ],
+      "confusion_matrix": [
+        [
+          5989,
+          1780,
+          742,
+          582,
+          5886
+        ],
+        [
+          384,
+          222,
+          82,
+          66,
+          631
+        ],
+        [
+          223,
+          159,
+          65,
+          50,
+          516
+        ],
+        [
+          169,
+          113,
+          47,
+          48,
+          449
+        ],
+        [
+          62,
+          35,
+          9,
+          3,
+          182
+        ]
+      ],
+      "log_loss": 1.372795287133672,
+      "probability_column_order": [
+        "high",
+        "low",
+        "medium",
+        "not observed",
+        "very low"
+      ]
+    },
+    "D_environmental_temporal_spatial_cyclic__logistic__balanced": {
+      "accuracy": 0.5408781226343679,
+      "balanced_accuracy": 0.27224771781725543,
+      "macro_precision": 0.21932127574138574,
+      "macro_recall": 0.2722477178172555,
+      "macro_f1": 0.2047890467248597,
+      "weighted_precision": 0.7118936638935583,
+      "weighted_recall": 0.5408781226343679,
+      "weighted_f1": 0.6096439729211678,
+      "per_class": {
+        "not observed": {
+          "precision": 0.8640864086408641,
+          "recall": 0.640897256158622,
+          "f1-score": 0.7359423511824907,
+          "support": 14979.0
+        },
+        "very low": {
+          "precision": 0.07575757575757576,
+          "recall": 0.08664259927797834,
+          "f1-score": 0.08083529808016167,
+          "support": 1385.0
+        },
+        "low": {
+          "precision": 0.0608187134502924,
+          "recall": 0.05133267522211254,
+          "f1-score": 0.055674518201284794,
+          "support": 1013.0
+        },
+        "medium": {
+          "precision": 0.05263157894736842,
+          "recall": 0.11501210653753027,
+          "f1-score": 0.07221588749524896,
+          "support": 826.0
+        },
+        "high": {
+          "precision": 0.04331210191082802,
+          "recall": 0.46735395189003437,
+          "f1-score": 0.07927717866511222,
+          "support": 291.0
+        }
+      },
+      "class_order": [
+        "not observed",
+        "very low",
+        "low",
+        "medium",
+        "high"
+      ],
+      "confusion_matrix": [
+        [
+          9600,
+          1279,
+          659,
+          1343,
+          2098
+        ],
+        [
+          677,
+          120,
+          77,
+          210,
+          301
+        ],
+        [
+          467,
+          92,
+          52,
+          113,
+          289
+        ],
+        [
+          277,
+          84,
+          54,
+          95,
+          316
+        ],
+        [
+          89,
+          9,
+          13,
+          44,
+          136
+        ]
+      ],
+      "log_loss": 1.3008718014294196,
+      "probability_column_order": [
+        "high",
+        "low",
+        "medium",
+        "not observed",
+        "very low"
+      ]
+    },
+    "D_environmental_temporal_spatial_cyclic__logistic__unweighted": {
+      "accuracy": 0.8098842867957176,
+      "balanced_accuracy": 0.19998664797383003,
+      "macro_precision": 0.1619856161790948,
+      "macro_recall": 0.19998664797383003,
+      "macro_f1": 0.17899139579349904,
+      "weighted_precision": 0.6559918202516116,
+      "weighted_recall": 0.8098842867957176,
+      "weighted_f1": 0.7248599863714779,
+      "per_class": {
+        "not observed": {
+          "precision": 0.809928080895474,
+          "recall": 0.9999332398691502,
+          "f1-score": 0.8949569789674953,
+          "support": 14979.0
+        },
+        "very low": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 1385.0
+        },
+        "low": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 1013.0
+        },
+        "medium": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 826.0
+        },
+        "high": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 291.0
+        }
+      },
+      "class_order": [
+        "not observed",
+        "very low",
+        "low",
+        "medium",
+        "high"
+      ],
+      "confusion_matrix": [
+        [
+          14978,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1385,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1013,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          826,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          291,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "log_loss": 0.7003756018351632,
+      "probability_column_order": [
+        "high",
+        "low",
+        "medium",
+        "not observed",
+        "very low"
+      ]
+    },
+    "D_environmental_temporal_spatial_cyclic__random_forest__balanced": {
+      "accuracy": 0.5844598248080458,
+      "balanced_accuracy": 0.30964866804590296,
+      "macro_precision": 0.2522185346532734,
+      "macro_recall": 0.309648668045903,
+      "macro_f1": 0.25255772755920713,
+      "weighted_precision": 0.7316644089813866,
+      "weighted_recall": 0.5844598248080458,
+      "weighted_f1": 0.6438638321451994,
+      "per_class": {
+        "not observed": {
+          "precision": 0.8786694458919576,
+          "recall": 0.6754122438079979,
+          "f1-score": 0.763748914807685,
+          "support": 14979.0
+        },
+        "very low": {
+          "precision": 0.12243374393430384,
+          "recall": 0.2368231046931408,
+          "f1-score": 0.16141732283464566,
+          "support": 1385.0
+        },
+        "low": {
+          "precision": 0.0863674851820491,
+          "recall": 0.10069101678183613,
+          "f1-score": 0.09298085688240657,
+          "support": 1013.0
+        },
+        "medium": {
+          "precision": 0.11631205673758865,
+          "recall": 0.19854721549636803,
+          "f1-score": 0.14669051878354203,
+          "support": 826.0
+        },
+        "high": {
+          "precision": 0.05730994152046784,
+          "recall": 0.33676975945017185,
+          "f1-score": 0.09795102448775612,
+          "support": 291.0
+        }
+      },
+      "class_order": [
+        "not observed",
+        "very low",
+        "low",
+        "medium",
+        "high"
+      ],
+      "confusion_matrix": [
+        [
+          10117,
+          1902,
+          890,
+          899,
+          1171
+        ],
+        [
+          645,
+          328,
+          103,
+          151,
+          158
+        ],
+        [
+          427,
+          226,
+          102,
+          131,
+          127
+        ],
+        [
+          252,
+          178,
+          76,
+          164,
+          156
+        ],
+        [
+          73,
+          45,
+          10,
+          65,
+          98
+        ]
+      ],
+      "log_loss": 1.06335261777557,
+      "probability_column_order": [
+        "high",
+        "low",
+        "medium",
+        "not observed",
+        "very low"
+      ]
+    },
+    "D_environmental_temporal_spatial_cyclic__random_forest__unweighted": {
+      "accuracy": 0.8099383583865037,
+      "balanced_accuracy": 0.2,
+      "macro_precision": 0.16198767167730074,
+      "macro_recall": 0.2,
+      "macro_f1": 0.17899799838675948,
+      "weighted_precision": 0.6560001443858245,
+      "weighted_recall": 0.8099383583865037,
+      "weighted_f1": 0.72488672483921,
+      "per_class": {
+        "not observed": {
+          "precision": 0.8099383583865037,
+          "recall": 1.0,
+          "f1-score": 0.8949899919337974,
+          "support": 14979.0
+        },
+        "very low": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 1385.0
+        },
+        "low": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 1013.0
+        },
+        "medium": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 826.0
+        },
+        "high": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 291.0
+        }
+      },
+      "class_order": [
+        "not observed",
+        "very low",
+        "low",
+        "medium",
+        "high"
+      ],
+      "confusion_matrix": [
+        [
+          14979,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1385,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1013,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          826,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          291,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "log_loss": 0.6772273572543053,
+      "probability_column_order": [
+        "high",
+        "low",
+        "medium",
+        "not observed",
+        "very low"
+      ]
+    },
+    "D_environmental_temporal_spatial_cyclic__hist_gradient__balanced": {
+      "accuracy": 0.523412998810425,
+      "balanced_accuracy": 0.3314847494282768,
+      "macro_precision": 0.25166867976320106,
+      "macro_recall": 0.33148474942827677,
+      "macro_f1": 0.24166896656479486,
+      "weighted_precision": 0.748464324817186,
+      "weighted_recall": 0.523412998810425,
+      "weighted_f1": 0.6049649976420184,
+      "per_class": {
+        "not observed": {
+          "precision": 0.9006783436266073,
+          "recall": 0.5938981240403232,
+          "f1-score": 0.7158030254264564,
+          "support": 14979.0
+        },
+        "very low": {
+          "precision": 0.12069541959210967,
+          "recall": 0.2606498194945848,
+          "f1-score": 0.1649908592321755,
+          "support": 1385.0
+        },
+        "low": {
+          "precision": 0.100990099009901,
+          "recall": 0.1510365251727542,
+          "f1-score": 0.12104430379746836,
+          "support": 1013.0
+        },
+        "medium": {
+          "precision": 0.07813484562066793,
+          "recall": 0.15012106537530268,
+          "f1-score": 0.1027766266058848,
+          "support": 826.0
+        },
+        "high": {
+          "precision": 0.05784469096671949,
+          "recall": 0.5017182130584192,
+          "f1-score": 0.10373001776198934,
+          "support": 291.0
+        }
+      },
+      "class_order": [
+        "not observed",
+        "very low",
+        "low",
+        "medium",
+        "high"
+      ],
+      "confusion_matrix": [
+        [
+          8896,
+          2147,
+          1083,
+          1175,
+          1678
+        ],
+        [
+          470,
+          361,
+          172,
+          137,
+          245
+        ],
+        [
+          302,
+          265,
+          153,
+          98,
+          195
+        ],
+        [
+          160,
+          187,
+          95,
+          124,
+          260
+        ],
+        [
+          49,
+          31,
+          12,
+          53,
+          146
+        ]
+      ],
+      "log_loss": 1.1637678984752753,
+      "probability_column_order": [
+        "high",
+        "low",
+        "medium",
+        "not observed",
+        "very low"
+      ]
+    },
+    "D_environmental_temporal_spatial_cyclic__hist_gradient__unweighted": {
+      "accuracy": 0.8099383583865037,
+      "balanced_accuracy": 0.2,
+      "macro_precision": 0.16199643108203104,
+      "macro_recall": 0.2,
+      "macro_f1": 0.17900334608030594,
+      "weighted_precision": 0.656035617275263,
+      "weighted_recall": 0.8099383583865037,
+      "weighted_f1": 0.7249083813498709,
+      "per_class": {
+        "not observed": {
+          "precision": 0.8099821554101552,
+          "recall": 1.0,
+          "f1-score": 0.8950167304015296,
+          "support": 14979.0
+        },
+        "very low": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 1385.0
+        },
+        "low": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 1013.0
+        },
+        "medium": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 826.0
+        },
+        "high": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 291.0
+        }
+      },
+      "class_order": [
+        "not observed",
+        "very low",
+        "low",
+        "medium",
+        "high"
+      ],
+      "confusion_matrix": [
+        [
+          14979,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1385,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1012,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          826,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          291,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "log_loss": 0.6677795282662056,
+      "probability_column_order": [
+        "high",
+        "low",
+        "medium",
+        "not observed",
+        "very low"
+      ]
+    }
+  },
+  "test_metrics": {
+    "accuracy": 0.691437802907916,
+    "balanced_accuracy": 0.3034199516735775,
+    "macro_precision": 0.28708659608096876,
+    "macro_recall": 0.3034199516735775,
+    "macro_f1": 0.2925618359931265,
+    "weighted_precision": 0.7365919711012376,
+    "weighted_recall": 0.691437802907916,
+    "weighted_f1": 0.7124735138585937,
+    "per_class": {
+      "not observed": {
+        "precision": 0.8793261307452848,
+        "recall": 0.8126586562870198,
+        "f1-score": 0.8446789797713281,
+        "support": 5909.0
+      },
+      "very low": {
+        "precision": 0.2233632862644416,
+        "recall": 0.24821683309557774,
+        "f1-score": 0.23513513513513515,
+        "support": 701.0
+      },
+      "low": {
+        "precision": 0.17089678510998307,
+        "recall": 0.23433874709976799,
+        "f1-score": 0.19765166340508805,
+        "support": 431.0
+      },
+      "medium": {
+        "precision": 0.14814814814814814,
+        "recall": 0.18855218855218855,
+        "f1-score": 0.16592592592592592,
+        "support": 297.0
+      },
+      "high": {
+        "precision": 0.0136986301369863,
+        "recall": 0.03333333333333333,
+        "f1-score": 0.019417475728155338,
+        "support": 90.0
+      }
+    },
+    "class_order": [
+      "not observed",
+      "very low",
+      "low",
+      "medium",
+      "high"
+    ],
+    "confusion_matrix": [
+      [
+        4802,
+        417,
+        333,
+        194,
+        163
+      ],
+      [
+        385,
+        174,
+        74,
+        45,
+        23
+      ],
+      [
+        158,
+        98,
+        101,
+        63,
+        11
+      ],
+      [
+        94,
+        71,
+        57,
+        56,
+        19
+      ],
+      [
+        22,
+        19,
+        26,
+        20,
+        3
+      ]
+    ],
+    "log_loss": 0.872265059776506,
+    "probability_column_order": [
+      "high",
+      "low",
+      "medium",
+      "not observed",
+      "very low"
+    ]
+  },
+  "test_evaluations_per_run": 1,
+  "hyperparameters": {
+    "bootstrap": true,
+    "ccp_alpha": 0.0,
+    "class_weight": "balanced",
+    "criterion": "gini",
+    "max_depth": 14,
+    "max_features": "sqrt",
+    "max_leaf_nodes": null,
+    "max_samples": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 8,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "n_estimators": 40,
+    "n_jobs": 1,
+    "oob_score": false,
+    "random_state": 42,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "split_summary": {
+    "train": {
+      "rows": 184845,
+      "earliest_date": "1953-08-19",
+      "latest_date": "2020-12-31",
+      "years": [
+        1953,
+        1954,
+        1955,
+        1956,
+        1957,
+        1958,
+        1959,
+        1960,
+        1961,
+        1962,
+        1963,
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1973,
+        1974,
+        1975,
+        1976,
+        1977,
+        1978,
+        1979,
+        1980,
+        1981,
+        1982,
+        1983,
+        1984,
+        1985,
+        1986,
+        1987,
+        1988,
+        1989,
+        1990,
+        1991,
+        1992,
+        1993,
+        1994,
+        1995,
+        1996,
+        1997,
+        1998,
+        1999,
+        2000,
+        2001,
+        2002,
+        2003,
+        2004,
+        2005,
+        2006,
+        2007,
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "class_counts": {
+        "not observed": 143048,
+        "very low": 16824,
+        "low": 11102,
+        "medium": 10577,
+        "high": 3294
+      },
+      "all_classes_present": true,
+      "lineage_sha256": "77c5946b915a815d5d7a8f1e48049b29f1005e608c716ee85c189acf633a286c"
+    },
+    "validation": {
+      "rows": 18494,
+      "earliest_date": "2021-01-01",
+      "latest_date": "2022-12-31",
+      "years": [
+        2021,
+        2022
+      ],
+      "class_counts": {
+        "not observed": 14979,
+        "very low": 1385,
+        "low": 1013,
+        "medium": 826,
+        "high": 291
+      },
+      "all_classes_present": true,
+      "lineage_sha256": "dd4610e009d2e25168d99b49abb2f30e0714f8ff0713f436ac83faa78e230416"
+    },
+    "test": {
+      "rows": 7428,
+      "earliest_date": "2023-01-01",
+      "latest_date": "2024-03-25",
+      "years": [
+        2023,
+        2024
+      ],
+      "class_counts": {
+        "not observed": 5909,
+        "very low": 701,
+        "low": 431,
+        "medium": 297,
+        "high": 90
+      },
+      "all_classes_present": true,
+      "lineage_sha256": "9561dfb929ebd45968d8e3b741553b9c5d1eb95400f22002de8bfcd44f05e6f5"
+    }
+  },
+  "candidate_imputation_audit": [
+    {
+      "experiment": "A_original8__logistic__balanced",
+      "fit_split": "train",
+      "fit_rows": 184845,
+      "fit_row_hash": "77c5946b915a815d5d7a8f1e48049b29f1005e608c716ee85c189acf633a286c",
+      "transformed_columns": [
+        "WATER_TEMP",
+        "SALINITY",
+        "SAMPLE_DEPTH",
+        "LATITUDE",
+        "LONGITUDE",
+        "observation_year",
+        "observation_month",
+        "day_of_year"
+      ],
+      "imputer_statistics": [
+        25.4,
+        33.3,
+        0.5,
+        27.32682,
+        -82.5531,
+        2009.0,
+        7.0,
+        205.0
+      ],
+      "warnings": []
+    },
+    {
+      "experiment": "A_original8__random_forest__balanced",
+      "fit_split": "train",
+      "fit_rows": 184845,
+      "fit_row_hash": "77c5946b915a815d5d7a8f1e48049b29f1005e608c716ee85c189acf633a286c",
+      "transformed_columns": [
+        "WATER_TEMP",
+        "SALINITY",
+        "SAMPLE_DEPTH",
+        "LATITUDE",
+        "LONGITUDE",
+        "observation_year",
+        "observation_month",
+        "day_of_year"
+      ],
+      "imputer_statistics": [
+        25.4,
+        33.3,
+        0.5,
+        27.32682,
+        -82.5531,
+        2009.0,
+        7.0,
+        205.0
+      ],
+      "warnings": []
+    },
+    {
+      "experiment": "A_original8__hist_gradient__balanced",
+      "fit_split": "train",
+      "fit_rows": 184845,
+      "fit_row_hash": "77c5946b915a815d5d7a8f1e48049b29f1005e608c716ee85c189acf633a286c",
+      "transformed_columns": [
+        "WATER_TEMP",
+        "SALINITY",
+        "SAMPLE_DEPTH",
+        "LATITUDE",
+        "LONGITUDE",
+        "observation_year",
+        "observation_month",
+        "day_of_year"
+      ],
+      "imputer_statistics": [
+        25.4,
+        33.3,
+        0.5,
+        27.32682,
+        -82.5531,
+        2009.0,
+        7.0,
+        205.0
+      ],
+      "warnings": []
+    },
+    {
+      "experiment": "B_temporal_spatial__logistic__balanced",
+      "fit_split": "train",
+      "fit_rows": 184845,
+      "fit_row_hash": "77c5946b915a815d5d7a8f1e48049b29f1005e608c716ee85c189acf633a286c",
+      "transformed_columns": [
+        "LATITUDE",
+        "LONGITUDE",
+        "observation_year",
+        "observation_month",
+        "day_of_year"
+      ],
+      "imputer_statistics": [
+        27.32682,
+        -82.5531,
+        2009.0,
+        7.0,
+        205.0
+      ],
+      "warnings": []
+    },
+    {
+      "experiment": "B_temporal_spatial__random_forest__balanced",
+      "fit_split": "train",
+      "fit_rows": 184845,
+      "fit_row_hash": "77c5946b915a815d5d7a8f1e48049b29f1005e608c716ee85c189acf633a286c",
+      "transformed_columns": [
+        "LATITUDE",
+        "LONGITUDE",
+        "observation_year",
+        "observation_month",
+        "day_of_year"
+      ],
+      "imputer_statistics": [
+        27.32682,
+        -82.5531,
+        2009.0,
+        7.0,
+        205.0
+      ],
+      "warnings": []
+    },
+    {
+      "experiment": "B_temporal_spatial__hist_gradient__balanced",
+      "fit_split": "train",
+      "fit_rows": 184845,
+      "fit_row_hash": "77c5946b915a815d5d7a8f1e48049b29f1005e608c716ee85c189acf633a286c",
+      "transformed_columns": [
+        "LATITUDE",
+        "LONGITUDE",
+        "observation_year",
+        "observation_month",
+        "day_of_year"
+      ],
+      "imputer_statistics": [
+        27.32682,
+        -82.5531,
+        2009.0,
+        7.0,
+        205.0
+      ],
+      "warnings": []
+    },
+    {
+      "experiment": "C_environmental__logistic__balanced",
+      "fit_split": "train",
+      "fit_rows": 184845,
+      "fit_row_hash": "77c5946b915a815d5d7a8f1e48049b29f1005e608c716ee85c189acf633a286c",
+      "transformed_columns": [
+        "WATER_TEMP",
+        "SALINITY",
+        "SAMPLE_DEPTH"
+      ],
+      "imputer_statistics": [
+        25.4,
+        33.3,
+        0.5
+      ],
+      "warnings": []
+    },
+    {
+      "experiment": "C_environmental__random_forest__balanced",
+      "fit_split": "train",
+      "fit_rows": 184845,
+      "fit_row_hash": "77c5946b915a815d5d7a8f1e48049b29f1005e608c716ee85c189acf633a286c",
+      "transformed_columns": [
+        "WATER_TEMP",
+        "SALINITY",
+        "SAMPLE_DEPTH"
+      ],
+      "imputer_statistics": [
+        25.4,
+        33.3,
+        0.5
+      ],
+      "warnings": []
+    },
+    {
+      "experiment": "C_environmental__hist_gradient__balanced",
+      "fit_split": "train",
+      "fit_rows": 184845,
+      "fit_row_hash": "77c5946b915a815d5d7a8f1e48049b29f1005e608c716ee85c189acf633a286c",
+      "transformed_columns": [
+        "WATER_TEMP",
+        "SALINITY",
+        "SAMPLE_DEPTH"
+      ],
+      "imputer_statistics": [
+        25.4,
+        33.3,
+        0.5
+      ],
+      "warnings": []
+    },
+    {
+      "experiment": "D_environmental_temporal_spatial_cyclic__logistic__balanced",
+      "fit_split": "train",
+      "fit_rows": 184845,
+      "fit_row_hash": "77c5946b915a815d5d7a8f1e48049b29f1005e608c716ee85c189acf633a286c",
+      "transformed_columns": [
+        "WATER_TEMP",
+        "SALINITY",
+        "SAMPLE_DEPTH",
+        "LATITUDE",
+        "LONGITUDE",
+        "month_sin",
+        "month_cos",
+        "day_of_year_sin",
+        "day_of_year_cos"
+      ],
+      "imputer_statistics": [
+        25.4,
+        33.3,
+        0.5,
+        27.32682,
+        -82.5531,
+        0.0,
+        -1.8369701987210297e-16,
+        -0.22192151300416674,
+        0.03872228089217399
+      ],
+      "warnings": []
+    },
+    {
+      "experiment": "D_environmental_temporal_spatial_cyclic__logistic__unweighted",
+      "fit_split": "train",
+      "fit_rows": 184845,
+      "fit_row_hash": "77c5946b915a815d5d7a8f1e48049b29f1005e608c716ee85c189acf633a286c",
+      "transformed_columns": [
+        "WATER_TEMP",
+        "SALINITY",
+        "SAMPLE_DEPTH",
+        "LATITUDE",
+        "LONGITUDE",
+        "month_sin",
+        "month_cos",
+        "day_of_year_sin",
+        "day_of_year_cos"
+      ],
+      "imputer_statistics": [
+        25.4,
+        33.3,
+        0.5,
+        27.32682,
+        -82.5531,
+        0.0,
+        -1.8369701987210297e-16,
+        -0.22192151300416674,
+        0.03872228089217399
+      ],
+      "warnings": []
+    },
+    {
+      "experiment": "D_environmental_temporal_spatial_cyclic__random_forest__balanced",
+      "fit_split": "train",
+      "fit_rows": 184845,
+      "fit_row_hash": "77c5946b915a815d5d7a8f1e48049b29f1005e608c716ee85c189acf633a286c",
+      "transformed_columns": [
+        "WATER_TEMP",
+        "SALINITY",
+        "SAMPLE_DEPTH",
+        "LATITUDE",
+        "LONGITUDE",
+        "month_sin",
+        "month_cos",
+        "day_of_year_sin",
+        "day_of_year_cos"
+      ],
+      "imputer_statistics": [
+        25.4,
+        33.3,
+        0.5,
+        27.32682,
+        -82.5531,
+        0.0,
+        -1.8369701987210297e-16,
+        -0.22192151300416674,
+        0.03872228089217399
+      ],
+      "warnings": []
+    },
+    {
+      "experiment": "D_environmental_temporal_spatial_cyclic__random_forest__unweighted",
+      "fit_split": "train",
+      "fit_rows": 184845,
+      "fit_row_hash": "77c5946b915a815d5d7a8f1e48049b29f1005e608c716ee85c189acf633a286c",
+      "transformed_columns": [
+        "WATER_TEMP",
+        "SALINITY",
+        "SAMPLE_DEPTH",
+        "LATITUDE",
+        "LONGITUDE",
+        "month_sin",
+        "month_cos",
+        "day_of_year_sin",
+        "day_of_year_cos"
+      ],
+      "imputer_statistics": [
+        25.4,
+        33.3,
+        0.5,
+        27.32682,
+        -82.5531,
+        0.0,
+        -1.8369701987210297e-16,
+        -0.22192151300416674,
+        0.03872228089217399
+      ],
+      "warnings": []
+    },
+    {
+      "experiment": "D_environmental_temporal_spatial_cyclic__hist_gradient__balanced",
+      "fit_split": "train",
+      "fit_rows": 184845,
+      "fit_row_hash": "77c5946b915a815d5d7a8f1e48049b29f1005e608c716ee85c189acf633a286c",
+      "transformed_columns": [
+        "WATER_TEMP",
+        "SALINITY",
+        "SAMPLE_DEPTH",
+        "LATITUDE",
+        "LONGITUDE",
+        "month_sin",
+        "month_cos",
+        "day_of_year_sin",
+        "day_of_year_cos"
+      ],
+      "imputer_statistics": [
+        25.4,
+        33.3,
+        0.5,
+        27.32682,
+        -82.5531,
+        0.0,
+        -1.8369701987210297e-16,
+        -0.22192151300416674,
+        0.03872228089217399
+      ],
+      "warnings": []
+    },
+    {
+      "experiment": "D_environmental_temporal_spatial_cyclic__hist_gradient__unweighted",
+      "fit_split": "train",
+      "fit_rows": 184845,
+      "fit_row_hash": "77c5946b915a815d5d7a8f1e48049b29f1005e608c716ee85c189acf633a286c",
+      "transformed_columns": [
+        "WATER_TEMP",
+        "SALINITY",
+        "SAMPLE_DEPTH",
+        "LATITUDE",
+        "LONGITUDE",
+        "month_sin",
+        "month_cos",
+        "day_of_year_sin",
+        "day_of_year_cos"
+      ],
+      "imputer_statistics": [
+        25.4,
+        33.3,
+        0.5,
+        27.32682,
+        -82.5531,
+        0.0,
+        -1.8369701987210297e-16,
+        -0.22192151300416674,
+        0.03872228089217399
+      ],
+      "warnings": []
+    }
+  ],
+  "final_fit_rows": 203339,
+  "final_imputer_statistics": [
+    25.5,
+    33.06,
+    0.5,
+    27.3316,
+    -82.5533,
+    0.0,
+    -1.8369701987210297e-16,
+    -0.20510449986861926,
+    0.03872228089217399
+  ],
+  "resampling": "none; no synthetic observations",
+  "preprocessing": "Group selection/cycles then training-fitted median+indicators; scaling only logistic; refit pool train+validation only",
+  "interpretation_method": "Final refitted forest impurity-based model-associated feature importance; biased by correlations/feature cardinality; not causal",
+  "versions": {
+    "python": "3.10.0",
+    "sklearn": "1.7.2",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "joblib": "1.5.3",
+    "matplotlib": "3.10.9",
+    "scipy": "1.15.3",
+    "threadpoolctl": "3.6.0"
+  },
+  "locked_hashes": {
+    "data/ml/feature_metadata.json": "127cba9b3e2399ebcc49be264a9681b254536a13e9b80262175c459822c23de0",
+    "data/ml/features.csv": "6ba376f4330930e6d7a8b46cea9f3fe2347b231f9708fda24ee4db72b6880bc6",
+    "data/ml/row_metadata.csv": "e6f9b87867c035948afe0cdea4ea396b72e8a74bdbbf1a55c7ddbf99ccad9d4d",
+    "data/ml/target.csv": "94eb6914d314768b4b5c77fa23a9c090238d6896fc860893c8e78f0d6e375eb3",
+    "data/processed/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "data/processed/habsos_cleaned.csv": "c7747c215658d3155f8227a5668ddf97635cf50b90c01eee99e5e0696696b2ec",
+    "data/raw/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "data/raw/habsos_20240430.csv": "0c561afc3239fc885afd161bbc0c3e9826969019f8266ffaade4adca7f700596",
+    "docs/dataset.md": "684c16feb4ecd0aae38df1400ba4047d8341dfcddc7a94bcbb21199e716fdfc2",
+    "docs/download_manifest.json": "f7f935fa95c817f8d7c4b79607c4b9bb05b99f1b8fbbf89bc902c91151916726",
+    "docs/HABSOS_Data_Dictionary.xlsx": "c53bc9c2baedc95d089468ded2fc00ffec23d348e306b17899e2eacc436aafbb",
+    "docs/inspection_report.json": "1372cfd387d104f762779ef79e1645e8dfa2b46f2bda788667b9326473571fb1",
+    "docs/phase1_commands.md": "9c47d7b7e4588bbed3650bb3623293394b2974fab29b68b31c4e76ccf5947c21",
+    "docs/phase2_preprocessing.md": "77abfd88dd3d73f65d4505c6750989174fbe2ef11d093bd911a1d4de78fa9871",
+    "docs/phase3_feature_engineering.md": "a7e7f020fe9e66c59af19aff37baf4365c0581c2b16d424675fc2361f6f8a3a3",
+    "docs/phase4_machine_learning.md": "a4ad461efc606844b46fed4634eb4e12b950dd274e9637f6f3db2722254bb5f1",
+    "models/best_model.joblib": "d8ac284cd76d12f162903f2fe54d11a6bcf2fa741bbb24a6d6044b4d9d4bcdda",
+    "reports/feature_importance.csv": "cd537f454e06d211db214fff5ec922869aff3c8fd01c95de00da8b5e99bb584f",
+    "reports/figures/confusion_matrix.pdf": "840956d4236fe6e229b3315280941dacf9e676599a266a107237e01cce546056",
+    "reports/figures/confusion_matrix.png": "88e9aa1951e9a37ff836adec0c6901c5fffa72fb3ce4c17bbfdc2d587fcae19e",
+    "reports/figures/confusion_matrix.svg": "7b55c1d4318eac7cc40b525c02e07bc7205ad6e8f1a0b15b6783cb70d6fe6b5c",
+    "reports/figures/feature_importance.pdf": "c742769a635d819a559358785c3009833b375f8a45e306d685ba99bf299f94a3",
+    "reports/figures/feature_importance.png": "a2576c93db962ec17cdef64420a53fbe75052c830c605f28c15b902910dc52a8",
+    "reports/figures/feature_importance.svg": "5b3dfb27bb0272deade0a8a3c87ec8c7937b58fe6ea7042f06431c585339daca",
+    "reports/final_test_metrics.json": "bd65ee8c14473c6916ccfc0f7c035dd46060dac56ce5e50ef1353bfef9217739",
+    "reports/logistic_coefficients.csv": "bb334ae305c6fef61d4e68d8b1e5e14d61ef236c0061a438329808ef2501a2a5",
+    "reports/model_comparison.csv": "ce28363615ebf5828493a11d9922b3f8bc0bf456f3f0a21eff4d9768e93ab1d0",
+    "reports/model_metadata.json": "14628387dd60b81d14a9d2462e35cff4e2cc30606033c0cccc2ea8f200a1e4df",
+    "reports/phase2_data_quality_report.json": "6976987c54b6e41fbb61e6d3bd4c575212edda2cfad351fedc7ff73e6a9f5b2e",
+    "reports/phase2_record_issues.csv": "7c4ac7992516c75879d7c2732adab3039d86003a22ae73fe9760bbfc92e4c07e",
+    "reports/phase2_run_summary.json": "6a497174b2b2de925d7affbcfe20d79edd250698de622ec10a3e0657f275c962",
+    "reports/phase2_test_results.txt": "79017609000f56e1ff89ef510e97afd2fd3fe7d99b74568665405c7083362323",
+    "reports/phase3_feature_report.json": "2eaf15551e566f62091b5457707725673d2a23e8dffd1007f188fba066c153a6",
+    "reports/phase3_run_summary.json": "5b5f3558b536ea31d847c25f9a6ccb350f6a5e2ec3c0099fd67f4e3551747a9f",
+    "reports/phase3_test_results.txt": "f35bf857139aa1f0534727ad935ecd7cbc9a68615f59e48afd1e808622f5dedd",
+    "reports/phase4_selection.json": "87f006cfbf10d435fc77f5656f6add67097a13acef0ef2c1c8619eb27f687364",
+    "reports/phase4_split_assignments.csv": "841f803594585c33f1beae9b7b299e6323d8c82e52cf836a799be14f9f7c4fcc",
+    "reports/phase4_split_summary.json": "06eac90276a1146bd8ddae279d95f8087286452cc84fe84937bf306ef7170a9c",
+    "reports/phase4_test_predictions.csv": "97ce4ddaa3ed8675324b7dd15031ca6f4b67737d8336849a310accdcc170302e",
+    "reports/phase4_test_results.txt": "ba4248dd693205dda85a5d8821530a5137bd07a70dc63ec4b0de3a15c8a7091a",
+    "reports/phase4_training_log.txt": "975b8baeb5512a17388bc5f240b8a97e0229b66e7ff49059de9f494612450971",
+    "reports/validation_metrics.json": "0da4dc1268cd939201dda3bb6169fd14391332181bc338171938132a123fc9d3",
+    "requirements_phase4.txt": "b4f03af260fe254a121ad1ea50f076a2a1aaa28e068e2e668a43178f55367871",
+    "scripts/build_features.py": "9ffd388669b03997c0810cfb2932ca5b6d9adc9868c4dbd32a7e5b07fa5f8dc5",
+    "scripts/download_dataset.py": "9534c6f82f34fd59198bb728aaaeee34d81ec4b6b5c1aaaadab1a1fb0d4022a6",
+    "scripts/inspect_dataset.py": "ab03bb50a72bc6017025c761093781579dbb94dae76e21aa667552f48bab12cb",
+    "scripts/preprocess_dataset.py": "c137ca5abfa154bdf95077ccebc91ae46dc15e27974d147617a648fc5b0e2044",
+    "scripts/train_models.py": "dc6707dac1e7082ac81d65f4a27a48bd4e010225f6ae8ce7024f7ecbd19d4414",
+    "tests/test_dataset.py": "9fb859e8ba2f989cd4ccc5350e09b0e7e0c851a2a768a86536403f49c8e276f6",
+    "tests/test_features.py": "af882b7433eb0de7ab21e60ff4df1c33a8561877d8bcfdc88974109ec759d779",
+    "tests/test_models.py": "7659f012f71ae41e1dc0e80a2414a49709be03e53a043999317984b5b4a5dcce",
+    "tests/test_preprocessing.py": "d1f58f6a3ff036dd0cbe574b36ba52339eed3228626ea8a829b7b56656aa755d"
+  },
+  "phase1_to_4_unchanged": true,
+  "plan_sha256": "73e912bcd6b6f5018855f6641400969436f667a649c10df223e364df985482bd",
+  "model_sha256": "a4809c0f2549b51344749393a0ec5bf2e2db6e10b5b42f866bde8be270fcc734",
+  "test_macro_f1_delta_vs_phase4": 0.09558722641311229,
+  "test_macro_f1_improved": true,
+  "limitations": [
+    "Same previously examined 2023–2024 test reused by explicit Phase 5 design, not independent external validation",
+    "Phase 4 descriptive error audit does not establish causal failure mechanism",
+    "Engineered group bundles cyclic encoding and removal of absolute year, not an isolated intervention",
+    "Sampling/site/time dependence, missingness and source-category quality persist",
+    "No validated future HAB-risk, toxicity, health-risk or early-warning capability"
+  ]
+}

@@ -1,0 +1,20 @@
+test_calendar_consistency_and_leap_year (tests.test_inference.TestInference) ... ok
+test_exact_classes_and_probability_mapping (tests.test_inference.TestInference) ... ok
+test_finite_normalized_probabilities (tests.test_inference.TestInference) ... ok
+test_identical_input_repeats_exactly (tests.test_inference.TestInference) ... ok
+test_invalid_calendar_bounds (tests.test_inference.TestInference) ... ok
+test_invalid_numeric_rejected (tests.test_inference.TestInference) ... ok
+test_missing_environmental_real_row_uses_saved_imputer (tests.test_inference.TestInference) ... ok
+test_model_exists_and_loads_with_correct_schema (tests.test_inference.TestInference) ... ok
+test_no_new_dataset_or_dashboard_hardware_files (tests.test_inference.TestInference) ... ok
+test_no_writes_during_inference (tests.test_inference.TestInference) ... ok
+test_omitted_environmental_equals_none (tests.test_inference.TestInference) ... ok
+test_raw_and_all_prior_artifacts_unchanged (tests.test_inference.TestInference) ... ok
+test_required_context_and_coordinates (tests.test_inference.TestInference) ... ok
+test_schema_rejects_unknown_missing_and_nonmapping (tests.test_inference.TestInference) ... ok
+test_valid_real_row_prediction (tests.test_inference.TestInference) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 2.076s
+
+OK

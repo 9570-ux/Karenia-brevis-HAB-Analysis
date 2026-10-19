@@ -1,0 +1,1362 @@
+{
+  "phase": 2,
+  "raw": {
+    "filename": "data/raw/habsos_20240430.csv",
+    "rows": 211834,
+    "columns": 28,
+    "column_names": [
+      "STATE_ID",
+      "DESCRIPTION",
+      "",
+      "LATITUDE",
+      "LONGITUDE",
+      "SAMPLE_DATE",
+      "SAMPLE_TIME",
+      "SAMPLE_DEPTH",
+      "GENUS",
+      "SPECIES",
+      "CATEGORY",
+      "CELLCOUNT",
+      "CELLCOUNT_UNIT",
+      "CELLCOUNT_QA",
+      "SALINITY",
+      "SALINITY_UNIT",
+      "SALINITY_QA",
+      "WATER_TEMP",
+      "WATER_TEMP_UNIT",
+      "WATER_TEMP_QA",
+      "WIND_DIR",
+      "WIND_DIR_UNIT",
+      "WIND_DIR_QA",
+      "WIND_SPEED",
+      "WIND_SPEED_UNIT",
+      "WIND_SPEED_QA",
+      "OBJECTID",
+      ""
+    ],
+    "sha256": "0c561afc3239fc885afd161bbc0c3e9826969019f8266ffaade4adca7f700596",
+    "size_bytes": 29951499
+  },
+  "processed": {
+    "filename": "data/processed/habsos_cleaned.csv",
+    "rows": 211834,
+    "columns": 37,
+    "column_names": [
+      "STATE_ID",
+      "DESCRIPTION",
+      "RAW_UNNAMED_3",
+      "LATITUDE",
+      "LONGITUDE",
+      "SAMPLE_DATE",
+      "SAMPLE_TIME",
+      "SAMPLE_DEPTH",
+      "GENUS",
+      "SPECIES",
+      "CATEGORY",
+      "CELLCOUNT",
+      "CELLCOUNT_UNIT",
+      "CELLCOUNT_QA",
+      "SALINITY",
+      "SALINITY_UNIT",
+      "SALINITY_QA",
+      "WATER_TEMP",
+      "WATER_TEMP_UNIT",
+      "WATER_TEMP_QA",
+      "WIND_DIR",
+      "WIND_DIR_UNIT",
+      "WIND_DIR_QA",
+      "WIND_SPEED",
+      "WIND_SPEED_UNIT",
+      "WIND_SPEED_QA",
+      "OBJECTID",
+      "RAW_UNNAMED_28",
+      "SOURCE_ROW_NUMBER",
+      "SAMPLE_DATE_ISO",
+      "SAMPLE_TIME_UTC_PARSED",
+      "SAMPLE_DATETIME_UTC",
+      "TIME_STATUS",
+      "INVALID_FIELDS",
+      "SUSPICIOUS_FIELDS",
+      "QA_NO_DATA_FIELDS",
+      "EXACT_DUPLICATE_OF_SOURCE_ROW"
+    ],
+    "sha256": "c7747c215658d3155f8227a5668ddf97635cf50b90c01eee99e5e0696696b2ec",
+    "size_bytes": 45757355
+  },
+  "raw_directory_unchanged": true,
+  "raw_directory_hashes": {
+    "data/raw/.gitkeep": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "data/raw/habsos_20240430.csv": "0c561afc3239fc885afd161bbc0c3e9826969019f8266ffaade4adca7f700596"
+  },
+  "metadata_source": "docs/HABSOS_Data_Dictionary.xlsx, Sheet1 A1:C32; docs/dataset.md",
+  "dictionary_sha256": "c53bc9c2baedc95d089468ded2fc00ffec23d348e306b17899e2eacc436aafbb",
+  "duplicates": {
+    "definition": "All 28 original CSV fields equal, including OBJECTID; no normalization",
+    "extra_records": 0,
+    "removed": 0,
+    "records": [],
+    "decision": "Retain all records; repetition alone does not prove accidental collection/ingestion"
+  },
+  "invalid_values": {
+    "detected_cells": 0,
+    "by_column": {},
+    "removed_cells": 0,
+    "removed_records": 0,
+    "definition": "Invalid representation only: malformed numeric/date/time. No invented scientific thresholds."
+  },
+  "date_time": {
+    "date_format": "%Y/%m/%d",
+    "time_format": "%H:%M (one/two digit input hour)",
+    "timezone": "UTC per NOAA dictionary",
+    "earliest_date": "1953-08-19",
+    "latest_date": "2024-03-25",
+    "earliest_complete_timestamp": "1954-02-05T08:55Z",
+    "latest_complete_timestamp": "2024-03-25T14:40Z",
+    "date_status_counts": {
+      "valid": 211834
+    },
+    "time_status_counts": {
+      "metadata_missing_placeholder": 1000,
+      "missing": 48920,
+      "valid": 161914
+    },
+    "missing_combined_timestamp": 49920
+  },
+  "columns": [
+    {
+      "name": "STATE_ID",
+      "raw_name": "STATE_ID",
+      "position": 1,
+      "total": 211834,
+      "meaning": "State postal abbreviation",
+      "unit": null,
+      "data_type": "text",
+      "missing": 0,
+      "missing_percentage": 0.0,
+      "documented_missing_including_qa_or_placeholder": 0,
+      "documented_missing_percentage": 0.0,
+      "unique_nonblank_count": 4,
+      "categorical_values": {
+        "AL": 2481,
+        "FL": 205168,
+        "MS": 1050,
+        "TX": 3135
+      },
+      "minimum": null,
+      "maximum": null,
+      "median": null,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "DESCRIPTION",
+      "raw_name": "DESCRIPTION",
+      "position": 2,
+      "total": 211834,
+      "meaning": "Sample location description",
+      "unit": null,
+      "data_type": "text",
+      "missing": 23,
+      "missing_percentage": 0.010858,
+      "documented_missing_including_qa_or_placeholder": 23,
+      "documented_missing_percentage": 0.010858,
+      "unique_nonblank_count": 29494,
+      "categorical_values": null,
+      "minimum": null,
+      "maximum": null,
+      "median": null,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [
+        [
+          "R. G. Kreusler Park",
+          "R. G. Kreusler park"
+        ],
+        [
+          "Tropical Drive; E of",
+          "Tropical drive; E of"
+        ],
+        [
+          "off upper Keys; Atlantic",
+          "off upper keys; Atlantic"
+        ],
+        [
+          "Matheson Hammock Park; Canal N of",
+          "Matheson Hammock Park; canal N of"
+        ],
+        [
+          "St. Lucie Co.; Jetty Park Beach",
+          "St. Lucie Co.; Jetty Park beach"
+        ],
+        [
+          "Fort Pierce Inlet; South causeway",
+          "Fort Pierce Inlet; south causeway"
+        ],
+        [
+          "Tavernier Creek",
+          "Tavernier creek"
+        ],
+        [
+          "off Middle Keys",
+          "off middle Keys",
+          "off middle keys"
+        ],
+        [
+          "Eau Gallie Spillway",
+          "Eau Gallie spillway"
+        ],
+        [
+          "Indian River; 520 Bridge",
+          "Indian River; 520 bridge"
+        ],
+        [
+          "Broad River; Mouth of",
+          "Broad River; mouth of"
+        ],
+        [
+          "Sandspur Beach",
+          "Sandspur beach"
+        ],
+        [
+          "Naples Offshore",
+          "Naples offshore"
+        ],
+        [
+          "St. Augustine Inlet; South Jetty",
+          "St. Augustine Inlet; south jetty"
+        ],
+        [
+          "off Lower Keys",
+          "off lower Keys",
+          "off lower keys"
+        ],
+        [
+          "Cape Romano; South of",
+          "Cape Romano; south of"
+        ],
+        [
+          "Kemp Channel Bridge; 1.6 mi SE of",
+          "Kemp Channel bridge; 1.6 mi SE of"
+        ],
+        [
+          "NW of Key West",
+          "NW of Key west"
+        ],
+        [
+          "Gordon Pass; 5 mi West",
+          "Gordon Pass; 5 mi west"
+        ],
+        [
+          "FSBC Inside Station 10",
+          "FSBC inside Station 10"
+        ],
+        [
+          "Sanibel Lighthouse",
+          "Sanibel lighthouse"
+        ],
+        [
+          "Sanibel Isl; Lighthouse Beach",
+          "Sanibel isl; Lighthouse Beach"
+        ],
+        [
+          "Sanibel Ramp",
+          "Sanibel ramp"
+        ],
+        [
+          "Merwin Key",
+          "Merwin key"
+        ],
+        [
+          "Sanibel Isl; Piney Point",
+          "Sanibel isl; Piney Point"
+        ],
+        [
+          "Peace River; Mouth of",
+          "Peace River; mouth of"
+        ],
+        [
+          "Ponce De Leon Park (Charlotte Harbor)",
+          "Ponce de Leon Park (Charlotte Harbor)"
+        ],
+        [
+          "Ponce De Leon Park; W of (Charlotte Harbor)",
+          "Ponce de Leon Park; W of (Charlotte Harbor)"
+        ],
+        [
+          "FT 01",
+          "Ft 01"
+        ],
+        [
+          "Sanibel Island LT; 13.4 mi SW of",
+          "Sanibel Island Lt; 13.4 mi SW of"
+        ],
+        [
+          "Charlotte Harbor Preserve State Park; E of (Charlotte Harbor)",
+          "Charlotte Harbor Preserve State Park; E of (Charlotte harbor)"
+        ],
+        [
+          "FSBC Inside Station 2",
+          "FSBC inside Station 2"
+        ],
+        [
+          "Pine Island",
+          "Pine island"
+        ],
+        [
+          "Sanibel Isl; Bowman''s Beach",
+          "Sanibel isl; Bowman''s Beach"
+        ],
+        [
+          "FSBC Inside Station 1",
+          "FSBC inside Station 1"
+        ],
+        [
+          "Captiva Pass; Pine Island Sound",
+          "Captiva Pass; Pine Island sound"
+        ],
+        [
+          "Sanibel Island LT; 19.5 mi SW of",
+          "Sanibel Island Lt; 19.5 mi SW of"
+        ],
+        [
+          "Charlotte Harbor; Lease Site",
+          "Charlotte Harbor; Lease site"
+        ],
+        [
+          "Redfish Pass; 5 mi West",
+          "Redfish Pass; 5 mi west"
+        ],
+        [
+          "ECOHAB Synoptic Station 72",
+          "ECOHAB synoptic station 72"
+        ],
+        [
+          "ECOHAB Synoptic Station 73",
+          "ECOHAB synoptic station 73"
+        ],
+        [
+          "Boca Grande Pass; 6 mi West",
+          "Boca Grande Pass; 6 mi west"
+        ],
+        [
+          "2A",
+          "2a"
+        ],
+        [
+          "ECOHAB Synoptic Station 74",
+          "ECOHAB synoptic station 74"
+        ],
+        [
+          "East of Skyway",
+          "East of skyway"
+        ],
+        [
+          "TECO Discharge Canal",
+          "TECO discharge canal"
+        ],
+        [
+          "Venice Fishing Pier",
+          "Venice fishing pier"
+        ],
+        [
+          "South Venice; W of",
+          "South Venice; w of"
+        ],
+        [
+          "Venice Pier",
+          "Venice pier"
+        ],
+        [
+          "Lyons Bay; Canal N of",
+          "Lyons Bay; canal N of"
+        ],
+        [
+          "Cockroach Bay Boat Ramp",
+          "Cockroach Bay boat ramp"
+        ],
+        [
+          "Tampa Bay Shipping Channel Station 5 bottom",
+          "Tampa Bay shipping channel station 5 bottom"
+        ],
+        [
+          "Tampa Bay Shipping Channel Station 5 surface",
+          "Tampa Bay shipping channel station 5 surface"
+        ],
+        [
+          "Tampa Bay Shipping Channel Station 6 surface",
+          "Tampa Bay shipping channel station 6 surface"
+        ],
+        [
+          "Port Boca Grande LT; 14.6 mi SW of",
+          "Port Boca Grande Lt; 14.6 mi SW of"
+        ],
+        [
+          "Tampa Bay Shipping Channel Station 4 surface",
+          "Tampa Bay shipping channel station 4 surface"
+        ],
+        [
+          "Tampa Bay Shipping Channel Station 4 bottom",
+          "Tampa Bay shipping channel station 4 bottom"
+        ],
+        [
+          "5A",
+          "5a"
+        ],
+        [
+          "Philippe Creek; Canal W of",
+          "Philippe Creek; canal W of"
+        ],
+        [
+          "Landings Nature Trail Dock",
+          "Landings Nature Trail dock"
+        ],
+        [
+          "SERF pump station",
+          "Serf pump station"
+        ],
+        [
+          "St-n 10-1 Dup",
+          "st-n 10-1 Dup"
+        ],
+        [
+          "Tampa Bay Shipping Channel Station 3 surface",
+          "Tampa Bay shipping channel station 3 surface"
+        ],
+        [
+          "Tampa Bay Shipping Channel Station 3 bottom",
+          "Tampa Bay shipping channel station 3 bottom"
+        ],
+        [
+          "Howard Franklin Bridge; S of",
+          "Howard Franklin bridge; S of"
+        ],
+        [
+          "Courtney Campbell Causeway; Boat Ramp",
+          "Courtney Campbell Causeway; boat ramp"
+        ],
+        [
+          "Howard Franklin Bridge; N of",
+          "Howard Franklin bridge; N of"
+        ],
+        [
+          "Tampa Bay Shipping Channel Station 2 surface",
+          "Tampa Bay shipping channel station 2 surface"
+        ],
+        [
+          "Tampa Bay Shipping Channel Station 2 bottom",
+          "Tampa Bay shipping channel station 2 bottom"
+        ],
+        [
+          "ECOHAB Synoptic Station 80",
+          "ECOHAB synoptic station 80"
+        ],
+        [
+          "Longboat Pass (Sarasota Bay)",
+          "Longboat pass (Sarasota Bay)"
+        ],
+        [
+          "Beer Can Island PIer",
+          "Beer Can Island Pier"
+        ],
+        [
+          "Fort DeSoto East Beach (Lower Tampa Bay)",
+          "Fort Desoto East Beach (Lower Tampa Bay)"
+        ],
+        [
+          "Fort DeSoto East Beach; SW of (Lower Tampa Bay)",
+          "Fort Desoto East Beach; SW of (Lower Tampa Bay)"
+        ],
+        [
+          "Hudson Beach Park",
+          "Hudson Beach park"
+        ],
+        [
+          "Tampa Bay Shipping Channel Station 1 bottom",
+          "Tampa Bay shipping channel station 1 bottom"
+        ],
+        [
+          "Tampa Bay Shipping Channel Station 1 surface",
+          "Tampa Bay shipping channel station 1 surface"
+        ],
+        [
+          "Fort DeSoto Dog Beach (Lower Tampa Bay)",
+          "Fort Desoto Dog Beach (Lower Tampa Bay)"
+        ],
+        [
+          "Pass-A-Grille channel",
+          "Pass-a-Grille Channel"
+        ],
+        [
+          "7th Avenue Pier (Pass-A-Grille Channel)",
+          "7th Avenue Pier (Pass-a-Grille Channel)"
+        ],
+        [
+          "Pass-A-Grille",
+          "Pass-a-Grille"
+        ],
+        [
+          "Pass-A-Grille Beach",
+          "Pass-a-Grille Beach"
+        ],
+        [
+          "Pass-A-Grille Southwest Beach",
+          "Pass-a-Grille Southwest Beach"
+        ],
+        [
+          "Pass-A-Grille Pier",
+          "Pass-a-Grille Pier"
+        ],
+        [
+          "Treasure Island Beach",
+          "Treasure island Beach"
+        ],
+        [
+          "ECOHAB Synoptic Station 1",
+          "ECOHAB synoptic station 1"
+        ],
+        [
+          "Marina Del Ray Court; S of (Clearwater Harbor)",
+          "Marina del Ray Court; S of (Clearwater Harbor)"
+        ],
+        [
+          "Clearwater Reef",
+          "Clearwater reef"
+        ],
+        [
+          "Cedar Key Offshore",
+          "Cedar Key offshore"
+        ],
+        [
+          "St. Joseph Bay; Boat Ramp",
+          "St. Joseph Bay; boat ramp"
+        ],
+        [
+          "Mexico Beach",
+          "Mexico beach"
+        ],
+        [
+          "Eastwind Drive; NE of (St. Joseph Bay)",
+          "Eastwind drive; NE of (St. Joseph Bay)"
+        ],
+        [
+          "St. Joseph State Park; Gulfside",
+          "St. Joseph State Park; gulfside"
+        ],
+        [
+          "Mexico Beach; Pier",
+          "Mexico Beach; pier"
+        ],
+        [
+          "St. Andrew State Park Jetty",
+          "St. Andrew State Park jetty"
+        ],
+        [
+          "Bid-a-Wee Beach",
+          "Bid-a-wee Beach"
+        ],
+        [
+          "10 mi from Station 1",
+          "10 mi from station 1"
+        ],
+        [
+          "Inlet Beach",
+          "Inlet beach"
+        ],
+        [
+          "Pensacola; 3 mi Bridge",
+          "Pensacola; 3 mi bridge"
+        ],
+        [
+          "Florabama Bar; Alabama/Florida State Line",
+          "Florabama Bar; Alabama/Florida state line"
+        ],
+        [
+          "MAT 18",
+          "Mat 18"
+        ],
+        [
+          "Copano Bay near Causeway",
+          "Copano Bay near causeway"
+        ],
+        [
+          "UTMSI Pier",
+          "UTMSI pier"
+        ]
+      ],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "RAW_UNNAMED_3",
+      "raw_name": "",
+      "position": 3,
+      "total": 211834,
+      "meaning": "Empty source column",
+      "unit": null,
+      "data_type": "text",
+      "missing": 211834,
+      "missing_percentage": 100.0,
+      "documented_missing_including_qa_or_placeholder": 211834,
+      "documented_missing_percentage": 100.0,
+      "unique_nonblank_count": 0,
+      "categorical_values": {
+        "": 211834
+      },
+      "minimum": null,
+      "maximum": null,
+      "median": null,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "LATITUDE",
+      "raw_name": "LATITUDE",
+      "position": 4,
+      "total": 211834,
+      "meaning": "Sample latitude",
+      "unit": "decimal degrees",
+      "data_type": "float",
+      "missing": 0,
+      "missing_percentage": 0.0,
+      "documented_missing_including_qa_or_placeholder": 0,
+      "documented_missing_percentage": 0.0,
+      "unique_nonblank_count": 30008,
+      "categorical_values": null,
+      "minimum": 24.0,
+      "maximum": 30.7149,
+      "median": 27.3316,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "LONGITUDE",
+      "raw_name": "LONGITUDE",
+      "position": 5,
+      "total": 211834,
+      "meaning": "Sample longitude",
+      "unit": "decimal degrees",
+      "data_type": "float",
+      "missing": 0,
+      "missing_percentage": 0.0,
+      "documented_missing_including_qa_or_placeholder": 0,
+      "documented_missing_percentage": 0.0,
+      "unique_nonblank_count": 29585,
+      "categorical_values": null,
+      "minimum": -97.66535,
+      "maximum": -78.2789,
+      "median": -82.5562,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "SAMPLE_DATE",
+      "raw_name": "SAMPLE_DATE",
+      "position": 6,
+      "total": 211834,
+      "meaning": "Sampling date",
+      "unit": null,
+      "data_type": "text",
+      "missing": 0,
+      "missing_percentage": 0.0,
+      "documented_missing_including_qa_or_placeholder": 0,
+      "documented_missing_percentage": 0.0,
+      "unique_nonblank_count": 11502,
+      "categorical_values": null,
+      "minimum": null,
+      "maximum": null,
+      "median": null,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "SAMPLE_TIME",
+      "raw_name": "SAMPLE_TIME",
+      "position": 7,
+      "total": 211834,
+      "meaning": "Sampling time in UTC",
+      "unit": null,
+      "data_type": "text",
+      "missing": 48920,
+      "missing_percentage": 23.093554,
+      "documented_missing_including_qa_or_placeholder": 49920,
+      "documented_missing_percentage": 23.565622,
+      "unique_nonblank_count": 1426,
+      "categorical_values": null,
+      "minimum": null,
+      "maximum": null,
+      "median": null,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "SAMPLE_DEPTH",
+      "raw_name": "SAMPLE_DEPTH",
+      "position": 8,
+      "total": 211834,
+      "meaning": "Depth below surface",
+      "unit": "m",
+      "data_type": "float",
+      "missing": 5503,
+      "missing_percentage": 2.597789,
+      "documented_missing_including_qa_or_placeholder": 5503,
+      "documented_missing_percentage": 2.597789,
+      "unique_nonblank_count": 560,
+      "categorical_values": null,
+      "minimum": 0.0,
+      "maximum": 600.0,
+      "median": 0.5,
+      "zeros": 4211,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "GENUS",
+      "raw_name": "GENUS",
+      "position": 9,
+      "total": 211834,
+      "meaning": "HAB organism genus",
+      "unit": null,
+      "data_type": "text",
+      "missing": 0,
+      "missing_percentage": 0.0,
+      "documented_missing_including_qa_or_placeholder": 0,
+      "documented_missing_percentage": 0.0,
+      "unique_nonblank_count": 1,
+      "categorical_values": {
+        "Karenia": 211834
+      },
+      "minimum": null,
+      "maximum": null,
+      "median": null,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "SPECIES",
+      "raw_name": "SPECIES",
+      "position": 10,
+      "total": 211834,
+      "meaning": "HAB organism species",
+      "unit": null,
+      "data_type": "text",
+      "missing": 0,
+      "missing_percentage": 0.0,
+      "documented_missing_including_qa_or_placeholder": 0,
+      "documented_missing_percentage": 0.0,
+      "unique_nonblank_count": 1,
+      "categorical_values": {
+        "brevis": 211834
+      },
+      "minimum": null,
+      "maximum": null,
+      "median": null,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "CATEGORY",
+      "raw_name": "CATEGORY",
+      "position": 11,
+      "total": 211834,
+      "meaning": "Source cell-count bin",
+      "unit": null,
+      "data_type": "text",
+      "missing": 856,
+      "missing_percentage": 0.40409,
+      "documented_missing_including_qa_or_placeholder": 856,
+      "documented_missing_percentage": 0.40409,
+      "unique_nonblank_count": 5,
+      "categorical_values": {
+        "": 856,
+        "high": 3679,
+        "low": 12567,
+        "medium": 11705,
+        "not observed": 164102,
+        "very low": 18925
+      },
+      "minimum": null,
+      "maximum": null,
+      "median": null,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "CELLCOUNT",
+      "raw_name": "CELLCOUNT",
+      "position": 12,
+      "total": 211834,
+      "meaning": "Karenia brevis abundance",
+      "unit": "cells/L",
+      "data_type": "integer",
+      "missing": 0,
+      "missing_percentage": 0.0,
+      "documented_missing_including_qa_or_placeholder": 19,
+      "documented_missing_percentage": 0.008969,
+      "unique_nonblank_count": 6386,
+      "categorical_values": null,
+      "minimum": 0.0,
+      "maximum": 388400000.0,
+      "median": 0.0,
+      "zeros": 164197,
+      "suspicious_values": 19,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "CELLCOUNT_UNIT",
+      "raw_name": "CELLCOUNT_UNIT",
+      "position": 13,
+      "total": 211834,
+      "meaning": "Unit label",
+      "unit": null,
+      "data_type": "text",
+      "missing": 0,
+      "missing_percentage": 0.0,
+      "documented_missing_including_qa_or_placeholder": 0,
+      "documented_missing_percentage": 0.0,
+      "unique_nonblank_count": 1,
+      "categorical_values": {
+        "cells/L": 211834
+      },
+      "minimum": null,
+      "maximum": null,
+      "median": null,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "CELLCOUNT_QA",
+      "raw_name": "CELLCOUNT_QA",
+      "position": 14,
+      "total": 211834,
+      "meaning": "QA flag",
+      "unit": null,
+      "data_type": "integer",
+      "missing": 192,
+      "missing_percentage": 0.090637,
+      "documented_missing_including_qa_or_placeholder": 192,
+      "documented_missing_percentage": 0.090637,
+      "unique_nonblank_count": 3,
+      "categorical_values": null,
+      "minimum": 1.0,
+      "maximum": 9.0,
+      "median": 1.0,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "SALINITY",
+      "raw_name": "SALINITY",
+      "position": 15,
+      "total": 211834,
+      "meaning": "Sample salinity",
+      "unit": "ppt",
+      "data_type": "float",
+      "missing": 103736,
+      "missing_percentage": 48.97042,
+      "documented_missing_including_qa_or_placeholder": 103736,
+      "documented_missing_percentage": 48.97042,
+      "unique_nonblank_count": 6532,
+      "categorical_values": null,
+      "minimum": 0.0,
+      "maximum": 86.0,
+      "median": 33.0,
+      "zeros": 3,
+      "suspicious_values": 18,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "SALINITY_UNIT",
+      "raw_name": "SALINITY_UNIT",
+      "position": 16,
+      "total": 211834,
+      "meaning": "Unit label",
+      "unit": null,
+      "data_type": "text",
+      "missing": 103736,
+      "missing_percentage": 48.97042,
+      "documented_missing_including_qa_or_placeholder": 103736,
+      "documented_missing_percentage": 48.97042,
+      "unique_nonblank_count": 1,
+      "categorical_values": {
+        "": 103736,
+        "ppt": 108098
+      },
+      "minimum": null,
+      "maximum": null,
+      "median": null,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "SALINITY_QA",
+      "raw_name": "SALINITY_QA",
+      "position": 17,
+      "total": 211834,
+      "meaning": "QA flag",
+      "unit": null,
+      "data_type": "integer",
+      "missing": 0,
+      "missing_percentage": 0.0,
+      "documented_missing_including_qa_or_placeholder": 0,
+      "documented_missing_percentage": 0.0,
+      "unique_nonblank_count": 3,
+      "categorical_values": null,
+      "minimum": 1.0,
+      "maximum": 9.0,
+      "median": 1.0,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "WATER_TEMP",
+      "raw_name": "WATER_TEMP",
+      "position": 18,
+      "total": 211834,
+      "meaning": "Water temperature",
+      "unit": "deg. C",
+      "data_type": "float",
+      "missing": 105110,
+      "missing_percentage": 49.619041,
+      "documented_missing_including_qa_or_placeholder": 105111,
+      "documented_missing_percentage": 49.619513,
+      "unique_nonblank_count": 2187,
+      "categorical_values": null,
+      "minimum": 4.0,
+      "maximum": 39.9,
+      "median": 25.4,
+      "zeros": 0,
+      "suspicious_values": 650,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "WATER_TEMP_UNIT",
+      "raw_name": "WATER_TEMP_UNIT",
+      "position": 19,
+      "total": 211834,
+      "meaning": "Unit label",
+      "unit": null,
+      "data_type": "text",
+      "missing": 105110,
+      "missing_percentage": 49.619041,
+      "documented_missing_including_qa_or_placeholder": 105110,
+      "documented_missing_percentage": 49.619041,
+      "unique_nonblank_count": 1,
+      "categorical_values": {
+        "": 105110,
+        "deg. C": 106724
+      },
+      "minimum": null,
+      "maximum": null,
+      "median": null,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "WATER_TEMP_QA",
+      "raw_name": "WATER_TEMP_QA",
+      "position": 20,
+      "total": 211834,
+      "meaning": "QA flag",
+      "unit": null,
+      "data_type": "integer",
+      "missing": 0,
+      "missing_percentage": 0.0,
+      "documented_missing_including_qa_or_placeholder": 0,
+      "documented_missing_percentage": 0.0,
+      "unique_nonblank_count": 4,
+      "categorical_values": null,
+      "minimum": 1.0,
+      "maximum": 9.0,
+      "median": 4.0,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "WIND_DIR",
+      "raw_name": "WIND_DIR",
+      "position": 21,
+      "total": 211834,
+      "meaning": "Wind direction",
+      "unit": "deg",
+      "data_type": "float",
+      "missing": 210805,
+      "missing_percentage": 99.514242,
+      "documented_missing_including_qa_or_placeholder": 210805,
+      "documented_missing_percentage": 99.514242,
+      "unique_nonblank_count": 15,
+      "categorical_values": null,
+      "minimum": 22.5,
+      "maximum": 360.0,
+      "median": 135.0,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "WIND_DIR_UNIT",
+      "raw_name": "WIND_DIR_UNIT",
+      "position": 22,
+      "total": 211834,
+      "meaning": "Unit label",
+      "unit": null,
+      "data_type": "text",
+      "missing": 210805,
+      "missing_percentage": 99.514242,
+      "documented_missing_including_qa_or_placeholder": 210805,
+      "documented_missing_percentage": 99.514242,
+      "unique_nonblank_count": 1,
+      "categorical_values": {
+        "": 210805,
+        "deg": 1029
+      },
+      "minimum": null,
+      "maximum": null,
+      "median": null,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "WIND_DIR_QA",
+      "raw_name": "WIND_DIR_QA",
+      "position": 23,
+      "total": 211834,
+      "meaning": "QA flag",
+      "unit": null,
+      "data_type": "integer",
+      "missing": 0,
+      "missing_percentage": 0.0,
+      "documented_missing_including_qa_or_placeholder": 0,
+      "documented_missing_percentage": 0.0,
+      "unique_nonblank_count": 2,
+      "categorical_values": null,
+      "minimum": 5.0,
+      "maximum": 9.0,
+      "median": 9.0,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "WIND_SPEED",
+      "raw_name": "WIND_SPEED",
+      "position": 24,
+      "total": 211834,
+      "meaning": "Wind speed",
+      "unit": "mph",
+      "data_type": "float",
+      "missing": 209842,
+      "missing_percentage": 99.059641,
+      "documented_missing_including_qa_or_placeholder": 209842,
+      "documented_missing_percentage": 99.059641,
+      "unique_nonblank_count": 164,
+      "categorical_values": null,
+      "minimum": 0.0,
+      "maximum": 34.5,
+      "median": 10.0,
+      "zeros": 63,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "WIND_SPEED_UNIT",
+      "raw_name": "WIND_SPEED_UNIT",
+      "position": 25,
+      "total": 211834,
+      "meaning": "Unit label",
+      "unit": null,
+      "data_type": "text",
+      "missing": 209842,
+      "missing_percentage": 99.059641,
+      "documented_missing_including_qa_or_placeholder": 209842,
+      "documented_missing_percentage": 99.059641,
+      "unique_nonblank_count": 1,
+      "categorical_values": {
+        "": 209842,
+        "mph": 1992
+      },
+      "minimum": null,
+      "maximum": null,
+      "median": null,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "WIND_SPEED_QA",
+      "raw_name": "WIND_SPEED_QA",
+      "position": 26,
+      "total": 211834,
+      "meaning": "QA flag",
+      "unit": null,
+      "data_type": "integer",
+      "missing": 0,
+      "missing_percentage": 0.0,
+      "documented_missing_including_qa_or_placeholder": 0,
+      "documented_missing_percentage": 0.0,
+      "unique_nonblank_count": 3,
+      "categorical_values": null,
+      "minimum": 1.0,
+      "maximum": 9.0,
+      "median": 9.0,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "OBJECTID",
+      "raw_name": "OBJECTID",
+      "position": 27,
+      "total": 211834,
+      "meaning": "Source database identifier",
+      "unit": null,
+      "data_type": "integer",
+      "missing": 0,
+      "missing_percentage": 0.0,
+      "documented_missing_including_qa_or_placeholder": 0,
+      "documented_missing_percentage": 0.0,
+      "unique_nonblank_count": 211834,
+      "categorical_values": null,
+      "minimum": 27896.0,
+      "maximum": 2135994.0,
+      "median": 1705073.5,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    },
+    {
+      "name": "RAW_UNNAMED_28",
+      "raw_name": "",
+      "position": 28,
+      "total": 211834,
+      "meaning": "Empty source column",
+      "unit": null,
+      "data_type": "text",
+      "missing": 211834,
+      "missing_percentage": 100.0,
+      "documented_missing_including_qa_or_placeholder": 211834,
+      "documented_missing_percentage": 100.0,
+      "unique_nonblank_count": 0,
+      "categorical_values": {
+        "": 211834
+      },
+      "minimum": null,
+      "maximum": null,
+      "median": null,
+      "zeros": 0,
+      "suspicious_values": 0,
+      "invalid_values": 0,
+      "surrounding_whitespace": 0,
+      "case_or_whitespace_variants": [],
+      "action": "retain original values and blanks; no imputation",
+      "reason": "Preserve source observations; no justified replacement measurement"
+    }
+  ],
+  "qa_counts": {
+    "CELLCOUNT": {
+      "(blank)": 192,
+      "1": 211049,
+      "5": 574,
+      "9": 19
+    },
+    "SALINITY": {
+      "1": 108080,
+      "4": 18,
+      "9": 103736
+    },
+    "WATER_TEMP": {
+      "1": 105403,
+      "4": 649,
+      "5": 671,
+      "9": 105111
+    },
+    "WIND_DIR": {
+      "5": 1029,
+      "9": 210805
+    },
+    "WIND_SPEED": {
+      "1": 1791,
+      "5": 201,
+      "9": 209842
+    }
+  },
+  "quality_rules": [
+    {
+      "rule": "metadata_missing_time_placeholder",
+      "source_or_reason": "docs/HABSOS_Data_Dictionary.xlsx, Sheet1 A1:C32; docs/dataset.md",
+      "affected_cells": 1000,
+      "affected_records": 1000,
+      "record_locations": "reports/phase2_record_issues.csv"
+    },
+    {
+      "rule": "noaa_qa4_exceeds_normals",
+      "source_or_reason": "docs/HABSOS_Data_Dictionary.xlsx, Sheet1 A1:C32; docs/dataset.md",
+      "affected_cells": 667,
+      "affected_records": 666,
+      "record_locations": "reports/phase2_record_issues.csv"
+    },
+    {
+      "rule": "populated_measurement_with_qa9",
+      "source_or_reason": "docs/HABSOS_Data_Dictionary.xlsx, Sheet1 A1:C32; docs/dataset.md",
+      "affected_cells": 20,
+      "affected_records": 20,
+      "record_locations": "reports/phase2_record_issues.csv"
+    }
+  ],
+  "record_issues_file": "reports/phase2_record_issues.csv",
+  "transformations": [
+    "Retain all original rows in source order and all original cell strings",
+    "Name empty headers RAW_UNNAMED_3 and RAW_UNNAMED_28; no source columns removed",
+    "Append source record number, parsed date/time, documented missing-time status, quality flags and duplicate linkage",
+    "Serialize processed CSV as UTF-8 with LF newlines; raw bytes untouched"
+  ],
+  "columns_removed": [],
+  "columns_added": [
+    "SOURCE_ROW_NUMBER",
+    "SAMPLE_DATE_ISO",
+    "SAMPLE_TIME_UTC_PARSED",
+    "SAMPLE_DATETIME_UTC",
+    "TIME_STATUS",
+    "INVALID_FIELDS",
+    "SUSPICIOUS_FIELDS",
+    "QA_NO_DATA_FIELDS",
+    "EXACT_DUPLICATE_OF_SOURCE_ROW"
+  ],
+  "unavailable_variables": [
+    "pH",
+    "turbidity",
+    "TDS",
+    "dissolved oxygen",
+    "chlorophyll-a"
+  ],
+  "limitations": [
+    "QA=9 is missing even when a numeric value is populated; original number is retained and flagged",
+    "No scientific outlier thresholds applied; QA=4 provides the source-defined suspicious flag",
+    "Blank QA flags are unresolved; observed range/median includes all finite recorded values regardless of QA",
+    "CATEGORY is a same-observation cell-count bin, not a future-risk outcome",
+    "Irregular sampling, environmental missingness and sparse wind measurements remain",
+    "No inference, merging, scaling, clipping, imputation, or model training",
+    "Unusual unflagged measurements remain unassessed, not automatically valid"
+  ]
+}

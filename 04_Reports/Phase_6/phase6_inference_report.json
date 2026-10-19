@@ -1,0 +1,189 @@
+{
+  "phase": 6,
+  "model": {
+    "artifact": "models/phase5_best_model.joblib",
+    "sha256": "a4809c0f2549b51344749393a0ec5bf2e2db6e10b5b42f866bde8be270fcc734",
+    "identity": "D_environmental_temporal_spatial_cyclic__random_forest__balanced",
+    "inference_version": "phase6-inference-1",
+    "training_versions": {
+      "python": "3.10.0",
+      "sklearn": "1.7.2",
+      "numpy": "2.2.6",
+      "pandas": "2.3.3",
+      "joblib": "1.5.3",
+      "matplotlib": "3.10.9",
+      "scipy": "1.15.3",
+      "threadpoolctl": "3.6.0"
+    },
+    "runtime_versions": {
+      "python": "3.10.0",
+      "sklearn": "1.7.2",
+      "numpy": "2.2.6",
+      "pandas": "2.3.3",
+      "joblib": "1.5.3"
+    }
+  },
+  "supported_input_fields": [
+    "temperature",
+    "salinity",
+    "depth",
+    "latitude",
+    "longitude",
+    "year",
+    "month",
+    "day_of_year"
+  ],
+  "required_input_fields": [
+    "latitude",
+    "longitude",
+    "year",
+    "month",
+    "day_of_year"
+  ],
+  "optional_missing_fields": [
+    "temperature",
+    "salinity",
+    "depth"
+  ],
+  "source_column_mapping": {
+    "temperature": "WATER_TEMP",
+    "salinity": "SALINITY",
+    "depth": "SAMPLE_DEPTH",
+    "latitude": "LATITUDE",
+    "longitude": "LONGITUDE",
+    "year": "observation_year",
+    "month": "observation_month",
+    "day_of_year": "day_of_year"
+  },
+  "output_classes": [
+    "not observed",
+    "very low",
+    "low",
+    "medium",
+    "high"
+  ],
+  "serialized_class_order": [
+    "high",
+    "low",
+    "medium",
+    "not observed",
+    "very low"
+  ],
+  "example": {
+    "source": "data/ml/features.csv",
+    "SOURCE_ROW_NUMBER": "18",
+    "observation": {
+      "temperature": 26.0,
+      "salinity": 36.0,
+      "depth": 0.5,
+      "latitude": 29.1058,
+      "longitude": -79.5015,
+      "year": 1980,
+      "month": 12,
+      "day_of_year": 346
+    },
+    "result": {
+      "terminology": "Predicted recorded abundance category",
+      "predicted_class": "very low",
+      "class_probabilities": {
+        "not observed": 0.32206464501926535,
+        "very low": 0.32250169327297074,
+        "low": 0.12946320549654336,
+        "medium": 0.19000639230432698,
+        "high": 0.035964063906894564
+      },
+      "input_validation": {
+        "status": "PASS",
+        "missing_environmental_fields": [],
+        "missing_policy": "Saved fitted median imputer and missingness indicators only"
+      },
+      "model": {
+        "artifact": "models/phase5_best_model.joblib",
+        "sha256": "a4809c0f2549b51344749393a0ec5bf2e2db6e10b5b42f866bde8be270fcc734",
+        "identity": "D_environmental_temporal_spatial_cyclic__random_forest__balanced",
+        "inference_version": "phase6-inference-1",
+        "training_versions": {
+          "python": "3.10.0",
+          "sklearn": "1.7.2",
+          "numpy": "2.2.6",
+          "pandas": "2.3.3",
+          "joblib": "1.5.3",
+          "matplotlib": "3.10.9",
+          "scipy": "1.15.3",
+          "threadpoolctl": "3.6.0"
+        },
+        "runtime_versions": {
+          "python": "3.10.0",
+          "sklearn": "1.7.2",
+          "numpy": "2.2.6",
+          "pandas": "2.3.3",
+          "joblib": "1.5.3"
+        }
+      },
+      "scientific_limitation": "The target represents source-recorded abundance categories and is not a validated future HAB-risk or early-warning target."
+    },
+    "recorded_date": "1980-12-11",
+    "recorded_category_for_context_only": "not observed"
+  },
+  "validation": "Strict named numeric schema; finite values; integer consistent calendar and leap-year day bounds; valid angular coordinates. Missing environment values are None/omitted, passed as NaN only to saved imputer.",
+  "compatibility_changes": {
+    "scripts/phase5_model_improvement.py": {
+      "before_sha256": "c37ad963edb6bdc14e0b29f75dcd8ec1f249968e7fcd3af4e9d4f9c4ed49a548",
+      "after_sha256": "e9e79090077db7afe394a81658da8316a21e84791710352c955ef05b8cee45cc",
+      "reason": "Frozen Phase 5 lock inventory now checks the existing manifest paths, allowing later phase files without weakening original hashes."
+    }
+  },
+  "reproducibility": {
+    "identical_inference_output": true,
+    "separate_process_cli_identical": true
+  },
+  "tests": {
+    "dedicated": {
+      "passed": 15,
+      "status": "PASS",
+      "log": "reports/phase6_dedicated_test_results.txt"
+    },
+    "complete_suite": {
+      "passed": 60,
+      "status": "PASS",
+      "log": "reports/phase6_test_results.txt"
+    }
+  },
+  "limitations": [
+    "The target represents source-recorded abundance categories and is not a validated future HAB-risk or early-warning target.",
+    "Rare high category remains unreliable: Phase 5 missed 87 of 90 recorded high observations.",
+    "No measurement QA codes are supplied to this API; caller must apply the existing source-QA policy and correct units.",
+    "No spatial, future-date or operational generalization validated."
+  ],
+  "retrained": false,
+  "new_scientific_observations_written": false,
+  "phase7_implemented": false,
+  "phase8_implemented": false,
+  "commands": [
+    "python scripts/run_inference.py --help",
+    "python scripts/run_inference.py --temperature 26.0 --salinity 36.0 --depth 0.5 --latitude 29.1058 --longitude -79.5015 --year 1980 --month 12 --day-of-year 346",
+    "python -B -m unittest tests.test_inference -v",
+    "python -B -m unittest discover -s tests -v"
+  ],
+  "integrity": {
+    "prior_file_count": 74,
+    "prior_files_byte_unchanged": 73,
+    "compatibility_source_changes": [
+      "scripts/phase5_model_improvement.py"
+    ],
+    "original_phase5_lock_entries_verified": 52,
+    "raw_sha256": "0c561afc3239fc885afd161bbc0c3e9826969019f8266ffaade4adca7f700596",
+    "datasets_models_results_unchanged": true
+  },
+  "files_created": [
+    "scripts/inference.py",
+    "scripts/run_inference.py",
+    "tests/test_inference.py",
+    "tests/__init__.py",
+    "docs/phase6_inference.md",
+    "reports/phase6_integrity_baseline.json",
+    "reports/phase6_inference_report.json",
+    "reports/phase6_dedicated_test_results.txt",
+    "reports/phase6_test_results.txt"
+  ]
+}

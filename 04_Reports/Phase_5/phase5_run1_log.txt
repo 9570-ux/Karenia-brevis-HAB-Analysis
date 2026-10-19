@@ -1,0 +1,32 @@
+Phase 5 experiment: A_original8__logistic__balanced
+validation macro F1=0.202731; high recall=0.563574
+Phase 5 experiment: A_original8__random_forest__balanced
+validation macro F1=0.183645; high recall=0.000000
+Phase 5 experiment: A_original8__hist_gradient__balanced
+validation macro F1=0.200560; high recall=0.048110
+Phase 5 experiment: B_temporal_spatial__logistic__balanced
+validation macro F1=0.175857; high recall=0.391753
+Phase 5 experiment: B_temporal_spatial__random_forest__balanced
+validation macro F1=0.185976; high recall=0.000000
+Phase 5 experiment: B_temporal_spatial__hist_gradient__balanced
+validation macro F1=0.191060; high recall=0.006873
+Phase 5 experiment: C_environmental__logistic__balanced
+validation macro F1=0.152880; high recall=0.666667
+Phase 5 experiment: C_environmental__random_forest__balanced
+validation macro F1=0.170475; high recall=0.615120
+Phase 5 experiment: C_environmental__hist_gradient__balanced
+validation macro F1=0.168519; high recall=0.625430
+Phase 5 experiment: D_environmental_temporal_spatial_cyclic__logistic__balanced
+validation macro F1=0.204789; high recall=0.467354
+Phase 5 experiment: D_environmental_temporal_spatial_cyclic__logistic__unweighted
+validation macro F1=0.178991; high recall=0.000000
+Phase 5 experiment: D_environmental_temporal_spatial_cyclic__random_forest__balanced
+validation macro F1=0.252558; high recall=0.336770
+Phase 5 experiment: D_environmental_temporal_spatial_cyclic__random_forest__unweighted
+validation macro F1=0.178998; high recall=0.000000
+Phase 5 experiment: D_environmental_temporal_spatial_cyclic__hist_gradient__balanced
+validation macro F1=0.241669; high recall=0.501718
+Phase 5 experiment: D_environmental_temporal_spatial_cyclic__hist_gradient__unweighted
+validation macro F1=0.179003; high recall=0.000000
+Phase 5 validation selection frozen: D_environmental_temporal_spatial_cyclic__random_forest__balanced
+{"selected": "D_environmental_temporal_spatial_cyclic__random_forest__balanced", "validation_macro_f1": 0.25255772755920713, "test_macro_f1": 0.2925618359931265, "delta_vs_phase4": 0.09558722641311229, "locked_artifacts_unchanged": true}

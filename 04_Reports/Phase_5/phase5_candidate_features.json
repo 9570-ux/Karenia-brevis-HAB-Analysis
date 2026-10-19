@@ -1,0 +1,547 @@
+{
+  "source": "NOAA dictionary and unchanged Phase 1–3 documentation/metadata",
+  "candidates": [
+    {
+      "name": "WATER_TEMP",
+      "source_column": "WATER_TEMP",
+      "meaning": "Water temperature",
+      "unit": "deg. C",
+      "missing_percentage": 49.619513,
+      "included": true,
+      "reason": "Existing approved Phase 3 predictor; controlled group ablation",
+      "leakage_risk": "No direct target content; collection/spatial/temporal confounding remains",
+      "available_at_observation_time": "Recorded at collection; prospective sensor availability not validated"
+    },
+    {
+      "name": "SALINITY",
+      "source_column": "SALINITY",
+      "meaning": "Sample salinity",
+      "unit": "ppt",
+      "missing_percentage": 48.97042,
+      "included": true,
+      "reason": "Existing approved Phase 3 predictor; controlled group ablation",
+      "leakage_risk": "No direct target content; collection/spatial/temporal confounding remains",
+      "available_at_observation_time": "Recorded at collection; prospective sensor availability not validated"
+    },
+    {
+      "name": "SAMPLE_DEPTH",
+      "source_column": "SAMPLE_DEPTH",
+      "meaning": "Depth below surface",
+      "unit": "m",
+      "missing_percentage": 2.597789,
+      "included": true,
+      "reason": "Existing approved Phase 3 predictor; controlled group ablation",
+      "leakage_risk": "No direct target content; collection/spatial/temporal confounding remains",
+      "available_at_observation_time": "Recorded at collection; prospective sensor availability not validated"
+    },
+    {
+      "name": "LATITUDE",
+      "source_column": "LATITUDE",
+      "meaning": "Sample latitude",
+      "unit": "decimal degrees",
+      "missing_percentage": 0.0,
+      "included": true,
+      "reason": "Existing approved Phase 3 predictor; controlled group ablation",
+      "leakage_risk": "No direct target content; collection/spatial/temporal confounding remains",
+      "available_at_observation_time": "Date/location context known at collection"
+    },
+    {
+      "name": "LONGITUDE",
+      "source_column": "LONGITUDE",
+      "meaning": "Sample longitude",
+      "unit": "decimal degrees",
+      "missing_percentage": 0.0,
+      "included": true,
+      "reason": "Existing approved Phase 3 predictor; controlled group ablation",
+      "leakage_risk": "No direct target content; collection/spatial/temporal confounding remains",
+      "available_at_observation_time": "Date/location context known at collection"
+    },
+    {
+      "name": "observation_year",
+      "source_column": "SAMPLE_DATE",
+      "meaning": "Recorded calendar component",
+      "unit": "calendar year",
+      "missing_percentage": 0.0,
+      "included": true,
+      "reason": "Existing approved Phase 3 predictor; controlled group ablation",
+      "leakage_risk": "No direct target content; collection/spatial/temporal confounding remains",
+      "available_at_observation_time": "Date/location context known at collection"
+    },
+    {
+      "name": "observation_month",
+      "source_column": "SAMPLE_DATE",
+      "meaning": "Recorded calendar component",
+      "unit": "calendar month",
+      "missing_percentage": 0.0,
+      "included": true,
+      "reason": "Existing approved Phase 3 predictor; controlled group ablation",
+      "leakage_risk": "No direct target content; collection/spatial/temporal confounding remains",
+      "available_at_observation_time": "Date/location context known at collection"
+    },
+    {
+      "name": "day_of_year",
+      "source_column": "SAMPLE_DATE",
+      "meaning": "Recorded calendar component",
+      "unit": "calendar day index",
+      "missing_percentage": 0.0,
+      "included": true,
+      "reason": "Existing approved Phase 3 predictor; controlled group ablation",
+      "leakage_risk": "No direct target content; collection/spatial/temporal confounding remains",
+      "available_at_observation_time": "Date/location context known at collection"
+    },
+    {
+      "name": "month_sin",
+      "source_column": "Phase 3 observation_month/day_of_year/observation_year from SAMPLE_DATE",
+      "meaning": "Deterministic calendar-cycle coordinate, not a marine season label",
+      "unit": "dimensionless",
+      "missing_percentage": 0,
+      "included": true,
+      "reason": "Represent calendar wrap-around without a learned phase or physical threshold",
+      "leakage_risk": "Same-observation date only; no future value",
+      "available_at_observation_time": "Calendar context known at collection"
+    },
+    {
+      "name": "month_cos",
+      "source_column": "Phase 3 observation_month/day_of_year/observation_year from SAMPLE_DATE",
+      "meaning": "Deterministic calendar-cycle coordinate, not a marine season label",
+      "unit": "dimensionless",
+      "missing_percentage": 0,
+      "included": true,
+      "reason": "Represent calendar wrap-around without a learned phase or physical threshold",
+      "leakage_risk": "Same-observation date only; no future value",
+      "available_at_observation_time": "Calendar context known at collection"
+    },
+    {
+      "name": "day_of_year_sin",
+      "source_column": "Phase 3 observation_month/day_of_year/observation_year from SAMPLE_DATE",
+      "meaning": "Deterministic calendar-cycle coordinate, not a marine season label",
+      "unit": "dimensionless",
+      "missing_percentage": 0,
+      "included": true,
+      "reason": "Represent calendar wrap-around without a learned phase or physical threshold",
+      "leakage_risk": "Same-observation date only; no future value",
+      "available_at_observation_time": "Calendar context known at collection"
+    },
+    {
+      "name": "day_of_year_cos",
+      "source_column": "Phase 3 observation_month/day_of_year/observation_year from SAMPLE_DATE",
+      "meaning": "Deterministic calendar-cycle coordinate, not a marine season label",
+      "unit": "dimensionless",
+      "missing_percentage": 0,
+      "included": true,
+      "reason": "Represent calendar wrap-around without a learned phase or physical threshold",
+      "leakage_risk": "Same-observation date only; no future value",
+      "available_at_observation_time": "Calendar context known at collection"
+    },
+    {
+      "name": "STATE_ID",
+      "source_column": "STATE_ID",
+      "meaning": "State postal abbreviation",
+      "unit": null,
+      "missing_percentage": 0.0,
+      "included": false,
+      "reason": "Retain as geography/sampling metadata; initial matrix uses measured coordinates without invented regions",
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "DESCRIPTION",
+      "source_column": "DESCRIPTION",
+      "meaning": "Sample location description",
+      "unit": null,
+      "missing_percentage": 0.010858,
+      "included": false,
+      "reason": "High-cardinality site description with unresolved spelling variants; no site-identity encoding",
+      "leakage_risk": "sampling_or_quality_proxy",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "RAW_UNNAMED_3",
+      "source_column": "RAW_UNNAMED_3",
+      "meaning": "Empty source column",
+      "unit": null,
+      "missing_percentage": 100.0,
+      "included": false,
+      "reason": "Empty source column",
+      "leakage_risk": "sampling_or_quality_proxy",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "SAMPLE_DATE",
+      "source_column": "SAMPLE_DATE",
+      "meaning": "Sampling date",
+      "unit": null,
+      "missing_percentage": 0.0,
+      "included": false,
+      "reason": "Date/time or derived metadata retained for lineage; selected temporal fields derive only from SAMPLE_DATE",
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "SAMPLE_TIME",
+      "source_column": "SAMPLE_TIME",
+      "meaning": "Sampling time in UTC",
+      "unit": null,
+      "missing_percentage": 23.093554,
+      "included": false,
+      "reason": "Date/time or derived metadata retained for lineage; selected temporal fields derive only from SAMPLE_DATE",
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "GENUS",
+      "source_column": "GENUS",
+      "meaning": "HAB organism genus",
+      "unit": null,
+      "missing_percentage": 0.0,
+      "included": false,
+      "reason": "Target definition/context or direct abundance proxy; prevent label leakage",
+      "leakage_risk": "direct_or_target_context",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "SPECIES",
+      "source_column": "SPECIES",
+      "meaning": "HAB organism species",
+      "unit": null,
+      "missing_percentage": 0.0,
+      "included": false,
+      "reason": "Target definition/context or direct abundance proxy; prevent label leakage",
+      "leakage_risk": "direct_or_target_context",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "CATEGORY",
+      "source_column": "CATEGORY",
+      "meaning": "Source cell-count bin",
+      "unit": null,
+      "missing_percentage": 0.40409,
+      "included": false,
+      "reason": "Target definition/context or direct abundance proxy; prevent label leakage",
+      "leakage_risk": "direct_or_target_context",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "CELLCOUNT",
+      "source_column": "CELLCOUNT",
+      "meaning": "Karenia brevis abundance",
+      "unit": "cells/L",
+      "missing_percentage": 0.0,
+      "included": false,
+      "reason": "Target definition/context or direct abundance proxy; prevent label leakage",
+      "leakage_risk": "direct_or_target_context",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "CELLCOUNT_UNIT",
+      "source_column": "CELLCOUNT_UNIT",
+      "meaning": "Unit label",
+      "unit": null,
+      "missing_percentage": 0.0,
+      "included": false,
+      "reason": "Target definition/context or direct abundance proxy; prevent label leakage",
+      "leakage_risk": "direct_or_target_context",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "CELLCOUNT_QA",
+      "source_column": "CELLCOUNT_QA",
+      "meaning": "QA flag",
+      "unit": null,
+      "missing_percentage": 0.090637,
+      "included": false,
+      "reason": "Target definition/context or direct abundance proxy; prevent label leakage",
+      "leakage_risk": "direct_or_target_context",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "SALINITY_UNIT",
+      "source_column": "SALINITY_UNIT",
+      "meaning": "Unit label",
+      "unit": null,
+      "missing_percentage": 48.97042,
+      "included": false,
+      "reason": "Measurement metadata; units checked, no predictive encoding",
+      "leakage_risk": "sampling_or_quality_proxy",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "SALINITY_QA",
+      "source_column": "SALINITY_QA",
+      "meaning": "QA flag",
+      "unit": null,
+      "missing_percentage": 0.0,
+      "included": false,
+      "reason": "Quality/capture process metadata, used only for quality handling",
+      "leakage_risk": "sampling_or_quality_proxy",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "WATER_TEMP_UNIT",
+      "source_column": "WATER_TEMP_UNIT",
+      "meaning": "Unit label",
+      "unit": null,
+      "missing_percentage": 49.619041,
+      "included": false,
+      "reason": "Measurement metadata; units checked, no predictive encoding",
+      "leakage_risk": "sampling_or_quality_proxy",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "WATER_TEMP_QA",
+      "source_column": "WATER_TEMP_QA",
+      "meaning": "QA flag",
+      "unit": null,
+      "missing_percentage": 0.0,
+      "included": false,
+      "reason": "Quality/capture process metadata, used only for quality handling",
+      "leakage_risk": "sampling_or_quality_proxy",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "WIND_DIR",
+      "source_column": "WIND_DIR",
+      "meaning": "Wind direction",
+      "unit": "deg",
+      "missing_percentage": 99.514242,
+      "included": false,
+      "reason": "Only 1,029 recorded values; direction origin/from-to convention undocumented; no cyclic/vector conversion",
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "WIND_DIR_UNIT",
+      "source_column": "WIND_DIR_UNIT",
+      "meaning": "Unit label",
+      "unit": null,
+      "missing_percentage": 99.514242,
+      "included": false,
+      "reason": "Measurement metadata; units checked, no predictive encoding",
+      "leakage_risk": "sampling_or_quality_proxy",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "WIND_DIR_QA",
+      "source_column": "WIND_DIR_QA",
+      "meaning": "QA flag",
+      "unit": null,
+      "missing_percentage": 0.0,
+      "included": false,
+      "reason": "Quality/capture process metadata, used only for quality handling",
+      "leakage_risk": "sampling_or_quality_proxy",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "WIND_SPEED",
+      "source_column": "WIND_SPEED",
+      "meaning": "Wind speed",
+      "unit": "mph",
+      "missing_percentage": 99.059641,
+      "included": false,
+      "reason": "Only 1,992 recorded values; exclude from initial candidate matrix rather than manufacture wind coverage",
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "WIND_SPEED_UNIT",
+      "source_column": "WIND_SPEED_UNIT",
+      "meaning": "Unit label",
+      "unit": null,
+      "missing_percentage": 99.059641,
+      "included": false,
+      "reason": "Measurement metadata; units checked, no predictive encoding",
+      "leakage_risk": "sampling_or_quality_proxy",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "WIND_SPEED_QA",
+      "source_column": "WIND_SPEED_QA",
+      "meaning": "QA flag",
+      "unit": null,
+      "missing_percentage": 0.0,
+      "included": false,
+      "reason": "Quality/capture process metadata, used only for quality handling",
+      "leakage_risk": "sampling_or_quality_proxy",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "OBJECTID",
+      "source_column": "OBJECTID",
+      "meaning": "Source database identifier",
+      "unit": null,
+      "missing_percentage": 0.0,
+      "included": false,
+      "reason": "Identifier/row linkage; never a predictor",
+      "leakage_risk": "identifier",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "RAW_UNNAMED_28",
+      "source_column": "RAW_UNNAMED_28",
+      "meaning": "Empty source column",
+      "unit": null,
+      "missing_percentage": 100.0,
+      "included": false,
+      "reason": "Empty source column",
+      "leakage_risk": "sampling_or_quality_proxy",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "SOURCE_ROW_NUMBER",
+      "source_column": "SOURCE_ROW_NUMBER",
+      "meaning": "Source metadata",
+      "unit": null,
+      "missing_percentage": 0.0,
+      "included": false,
+      "reason": "Identifier/row linkage; never a predictor",
+      "leakage_risk": "identifier",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "SAMPLE_DATE_ISO",
+      "source_column": "SAMPLE_DATE_ISO",
+      "meaning": "Source metadata",
+      "unit": null,
+      "missing_percentage": 0.0,
+      "included": false,
+      "reason": "Date/time or derived metadata retained for lineage; selected temporal fields derive only from SAMPLE_DATE",
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "SAMPLE_TIME_UTC_PARSED",
+      "source_column": "SAMPLE_TIME_UTC_PARSED",
+      "meaning": "Source metadata",
+      "unit": null,
+      "missing_percentage": 23.565622,
+      "included": false,
+      "reason": "Date/time or derived metadata retained for lineage; selected temporal fields derive only from SAMPLE_DATE",
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "SAMPLE_DATETIME_UTC",
+      "source_column": "SAMPLE_DATETIME_UTC",
+      "meaning": "Source metadata",
+      "unit": null,
+      "missing_percentage": 23.565622,
+      "included": false,
+      "reason": "Date/time or derived metadata retained for lineage; selected temporal fields derive only from SAMPLE_DATE",
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "TIME_STATUS",
+      "source_column": "TIME_STATUS",
+      "meaning": "Source metadata",
+      "unit": null,
+      "missing_percentage": 0.0,
+      "included": false,
+      "reason": "Date/time or derived metadata retained for lineage; selected temporal fields derive only from SAMPLE_DATE",
+      "leakage_risk": "no_direct_target_content; sampling/spatiotemporal correlation remains",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "INVALID_FIELDS",
+      "source_column": "INVALID_FIELDS",
+      "meaning": "Source metadata",
+      "unit": null,
+      "missing_percentage": 100.0,
+      "included": false,
+      "reason": "Compound quality fields may disclose CELLCOUNT information; metadata only",
+      "leakage_risk": "direct_or_target_context",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "SUSPICIOUS_FIELDS",
+      "source_column": "SUSPICIOUS_FIELDS",
+      "meaning": "Source metadata",
+      "unit": null,
+      "missing_percentage": 99.676162,
+      "included": false,
+      "reason": "Compound quality fields may disclose CELLCOUNT information; metadata only",
+      "leakage_risk": "direct_or_target_context",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "QA_NO_DATA_FIELDS",
+      "source_column": "QA_NO_DATA_FIELDS",
+      "meaning": "Source metadata",
+      "unit": null,
+      "missing_percentage": 0.050511,
+      "included": false,
+      "reason": "Compound quality fields may disclose CELLCOUNT information; metadata only",
+      "leakage_risk": "direct_or_target_context",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    },
+    {
+      "name": "EXACT_DUPLICATE_OF_SOURCE_ROW",
+      "source_column": "EXACT_DUPLICATE_OF_SOURCE_ROW",
+      "meaning": "Source metadata",
+      "unit": null,
+      "missing_percentage": 100.0,
+      "included": false,
+      "reason": "Identifier/row linkage; never a predictor",
+      "leakage_risk": "identifier",
+      "available_at_observation_time": "Not used; laboratory/admin timing or sensor availability not established"
+    }
+  ],
+  "groups": {
+    "A_original8": [
+      "WATER_TEMP",
+      "SALINITY",
+      "SAMPLE_DEPTH",
+      "LATITUDE",
+      "LONGITUDE",
+      "observation_year",
+      "observation_month",
+      "day_of_year"
+    ],
+    "B_temporal_spatial": [
+      "LATITUDE",
+      "LONGITUDE",
+      "observation_year",
+      "observation_month",
+      "day_of_year"
+    ],
+    "C_environmental": [
+      "WATER_TEMP",
+      "SALINITY",
+      "SAMPLE_DEPTH"
+    ],
+    "D_environmental_temporal_spatial_cyclic": [
+      "WATER_TEMP",
+      "SALINITY",
+      "SAMPLE_DEPTH",
+      "LATITUDE",
+      "LONGITUDE",
+      "month_sin",
+      "month_cos",
+      "day_of_year_sin",
+      "day_of_year_cos"
+    ]
+  },
+  "new_scientific_variables_added": [],
+  "formulas": {
+    "month_angle": "2*pi*(month-1)/12",
+    "day_angle": "2*pi*(day_of_year-1)/(366 if leap year else 365)",
+    "cyclic_coordinates": "sin(angle), cos(angle)"
+  },
+  "calendar_design": "D replaces raw year/month/day with four calendar-cycle coordinates. This bundles cyclic encoding with absolute-year removal; ablation cannot isolate these effects.",
+  "rejected_transformations": {
+    "wind_vectors": "Reference/from-to convention undocumented and measurements extremely sparse",
+    "spatial_distance_or_bins": "No documented coordinate datum/projection or scientifically justified region/site bins",
+    "environmental_log_or_interactions": "No prespecified scientific/measurement rationale for additional transforms; tree models already allow nonlinear associations",
+    "additional_sensors": "pH, turbidity, TDS, oxygen, chlorophyll-a unavailable"
+  },
+  "leakage_exclusions": [
+    "CATEGORY",
+    "CELLCOUNT",
+    "CELLCOUNT_QA",
+    "GENUS",
+    "SPECIES",
+    "OBJECTID",
+    "SOURCE_ROW_NUMBER",
+    "compound target-quality flags"
+  ]
+}

@@ -1,0 +1,16 @@
+Training and reproducibility check: majority_baseline
+majority_baseline: validation macro F1=0.178998
+Training and reproducibility check: logistic_unweighted
+logistic_unweighted: validation macro F1=0.178991
+Training and reproducibility check: random_forest_unweighted
+random_forest_unweighted: validation macro F1=0.178991
+Training and reproducibility check: hist_gradient_unweighted
+hist_gradient_unweighted: validation macro F1=0.178912
+Training and reproducibility check: logistic_balanced
+logistic_balanced: validation macro F1=0.202731
+Training and reproducibility check: random_forest_balanced
+random_forest_balanced: validation macro F1=0.185304
+Training and reproducibility check: hist_gradient_balanced
+hist_gradient_balanced: validation macro F1=0.190108
+Validation-selected model: logistic_balanced
+{"selected_model": "logistic_balanced", "test_macro_f1": 0.19697460958001423, "test_accuracy": 0.6441841680129241, "protected_inputs_unchanged": true}

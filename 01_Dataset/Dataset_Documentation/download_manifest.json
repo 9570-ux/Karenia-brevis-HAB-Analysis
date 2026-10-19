@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.ncei.noaa.gov/data/oceans/archive/arc0069/0120767/8.8/data/0-data/habsos_20240430.csv",
+  "accession": "0120767",
+  "version": "8.8",
+  "filename": "habsos_20240430.csv",
+  "size_bytes": 29951499,
+  "sha256": "0c561afc3239fc885afd161bbc0c3e9826969019f8266ffaade4adca7f700596",
+  "etag": "\"1c9060b-61765e4f98bd3\"",
+  "last_modified": "Wed, 01 May 2024 15:11:00 GMT",
+  "accessed_date": "2026-10-14",
+  "transport": "HTTP byte ranges validated and assembled without rewriting CSV"
+}

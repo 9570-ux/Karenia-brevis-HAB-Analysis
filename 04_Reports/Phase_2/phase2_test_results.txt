@@ -1,0 +1,16 @@
+test_original_csv_exists_is_readable_and_unchanged (test_dataset.TestRawDataset) ... ok
+test_all_original_cells_and_rows_preserved_no_added_observations (test_preprocessing.TestPhase2) ... ok
+test_duplicate_report_matches_exact_original_rows (test_preprocessing.TestPhase2) ... ok
+test_missing_and_parsed_timestamps_do_not_invent_times (test_preprocessing.TestPhase2) ... ok
+test_pipeline_runs_and_all_outputs_load (test_preprocessing.TestPhase2) ... ok
+test_qa9_is_exposed_even_when_source_number_present (test_preprocessing.TestPhase2) ... ok
+test_raw_directory_never_written_or_changed (test_preprocessing.TestPhase2) ... ok
+test_raw_exists_and_matches_phase1 (test_preprocessing.TestPhase2) ... ok
+test_reports_cover_every_source_column_and_missingness (test_preprocessing.TestPhase2) ... ok
+test_required_columns_and_row_accounting (test_preprocessing.TestPhase2) ... ok
+test_second_run_and_missing_handling_are_byte_deterministic (test_preprocessing.TestPhase2) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 119.890s
+
+OK
