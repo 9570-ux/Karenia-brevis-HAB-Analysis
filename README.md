@@ -1,40 +1,90 @@
-# A Reproducible Machine Learning Framework for Karenia brevis Abundance Analysis Using NOAA HABSOS Data
+# Karenia brevis HAB Analysis
 
-## Overview and research objective
+*A reproducible machine-learning framework for source-recorded abundance analysis using NOAA HABSOS data.*
 
-This package preserves the completed Phase 1–7 research/software demonstration. Its objective is reproducible analysis and classification of the **source-recorded contemporaneous abundance category of Karenia brevis** using genuine NOAA HABSOS data. It is **not a validated future HAB early-warning system**, confirmed toxicity detector or health-risk assessment.
+> **Research/software demonstration:** this project classifies contemporaneous recorded abundance categories. It is **not a validated future HAB forecasting or early-warning system**, toxicity detector or human-health risk assessment.
 
-Original source: `C:\Users\mahad\OneDrive\Desktop\Fog and Edge Computing`. All copied files retain their original bytes. Packaging does not train models, change results or create scientific observations. Only README.md, PROJECT_INVENTORY.md and GOOGLE_DRIVE_UPLOAD_GUIDE.md are new packaging documents.
+## 1. Project Overview
 
-## Dataset description and provenance
+The project uses genuine NOAA Harmful Algal BloomS Observing System (HABSOS) observations to study and classify the source-recorded abundance category of *Karenia brevis*. It preserves dataset provenance, documents quality and missingness, compares classical classifiers using chronological splits, and exposes the selected saved model through a reusable inference API and Streamlit dashboard.
 
-NOAA National Centers for Environmental Information, HABSOS accession 0120767, version 8.8. Original CSV: habsos_20240430.csv; 211,834 observations, 29,951,499 bytes, recorded 1953-08-19 through 2024-03-25, with recorded states AL, FL, MS and TX. Original values, missingness and row order remain unchanged.
+Phases 1–7 are represented in this organized sharing repository. Raw observations, processed files, model artifacts, locked experiment results and regression-test evidence are included. No synthetic research observations or future bloom labels are introduced.
 
-[Official metadata](https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.nodc:0120767) · [Original archived CSV](https://www.ncei.noaa.gov/data/oceans/archive/arc0069/0120767/8.8/data/0-data/habsos_20240430.csv)
+## 2. Problem Statement
 
-DOI: not provided in the inspected official metadata. The exact official dataset title and supplied citation are copied in 01_Dataset/Dataset_Documentation/dataset.md and 07_Documentation/dataset.md. No DOI or citation has been invented.
+Historical coastal observations contain missing environmental measurements, unequal sampling effort and strongly imbalanced abundance categories. A classifier can achieve a high overall accuracy while failing to identify rare categories. The research problem is therefore to evaluate how well available environmental, spatial and calendar information distinguishes **recorded same-observation abundance categories**, with transparent temporal evaluation and explicit reporting of minority-class errors.
 
-Raw SHA-256: `0c561afc3239fc885afd161bbc0c3e9826969019f8266ffaade4adca7f700596`.
+This study does not establish a future prediction horizon, toxin threshold or operational alert rule.
 
-Approved source predictors are temperature (degrees C), salinity (ppt), depth (meters), latitude/longitude (decimal degrees), recorded year, month and day_of_year. pH, turbidity, TDS, dissolved oxygen and chlorophyll-a are **not available in this dataset**. Salinity is not a measured TDS value.
+## 3. Objectives
 
-## Phase 1–7 and software architecture
+- Preserve the official dataset, dictionary, original values and source-row lineage.
+- Document data quality, missingness and a defensible source-recorded target.
+- Prepare approved predictors without adding cell counts, labels or identifiers as model features.
+- Compare classical models and class-weighted variants using validation-based selection.
+- Report reproducible results, including rare-category failures.
+- Provide saved-model inference and an informative software dashboard without modifying scientific datasets.
 
-| Phase | Preserved implementation |
+## 4. Dataset
+
+**NOAA** is the U.S. National Oceanic and Atmospheric Administration. Its National Centers for Environmental Information (NCEI) archives the HABSOS physical and biological observations used here.
+
+| Property | Verified project information |
 |---|---|
-| 1 | Official NOAA dataset collection, metadata and dictionary |
-| 2 | Lossless preprocessing and quality/missingness reports |
-| 3 | Approved features, recorded target eligibility and source-row lineage |
-| 4 | Fixed chronological baseline machine-learning comparison |
-| 5 | Controlled model improvement and error analysis |
-| 6 | Reusable validated single-observation inference |
-| 7 | Streamlit dashboard using the unchanged Phase 6 API |
+| Source | NOAA NCEI, HABSOS accession **0120767**, version **8.8** |
+| Original CSV | [habsos_20240430.csv](01_Dataset/Raw_Dataset/habsos_20240430.csv) |
+| Original records | **211,834** |
+| Recorded date coverage | **1953-08-19–2024-03-25** |
+| Recorded states | AL, FL, MS, TX |
+| Organism | *Karenia brevis* |
+| Derived target | `observed_abundance_category`, copied from original `CATEGORY` under documented eligibility rules |
+| Eligible supervised labels | **210,767**; 1,067 ineligible rows remain traceable |
+| DOI | Not provided in the inspected official metadata |
 
-Architecture: original NOAA CSV → lossless processed context → approved predictors/eligible recorded labels → validation-selected saved pipeline → Phase 6 inference → Phase 7 dashboard. Edge/fog hardware and live sensor integration are not implemented.
+The five unchanged abundance categories are:
 
-## Machine-learning methodology and temporal splits
+- `not observed`
+- `very low`
+- `low`
+- `medium`
+- `high`
 
-Labels are not observed, very low, low, medium and high, copied from recorded CATEGORY under the documented eligibility policy. No new abundance thresholds or future-risk target are invented. There are 210,767 eligible labels and 1,067 ineligible rows retained for traceability.
+Labels describe source-recorded contemporaneous abundance bins. They are not reconstructed from invented thresholds or converted into future HAB-risk labels. Eligibility uses the existing organism, units, finite count and source count-quality policy; missing or unresolved labels are not fabricated.
+
+See the [verified dataset documentation and citation](07_Documentation/dataset.md), [original dictionary](01_Dataset/Dataset_Documentation/HABSOS_Data_Dictionary.xlsx) and [target definition](07_Documentation/phase3_feature_engineering.md). pH, turbidity, TDS, dissolved oxygen and chlorophyll-a are **not available in this dataset**. Salinity is not a measured TDS value.
+
+## 5. Methodology
+
+```text
+NOAA HABSOS Dataset
+        ↓
+Data Preprocessing
+        ↓
+Feature Engineering
+        ↓
+Chronological Train/Validation/Test Split
+        ↓
+ML Model Comparison
+        ↓
+Class-Balanced Training
+        ↓
+Validation-Based Model Selection
+        ↓
+Final Balanced Random Forest
+        ↓
+Inference
+        ↓
+Streamlit Dashboard
+```
+
+1. **Collection:** archive the official original CSV, supporting dictionary and verified source metadata.
+2. **Preprocessing:** preserve source records and values while parsing dates and recording quality/missingness issues.
+3. **Feature engineering:** prepare eight approved source predictors, recorded calendar components and traceable eligible labels; exclude target-derived fields.
+4. **Temporal split:** use recorded years to prevent random mixing across the fixed evaluation periods.
+5. **Model comparison:** compare Logistic Regression, Random Forest and HistGradientBoosting configurations.
+6. **Class-balanced training:** evaluate class-weighted candidates within that comparison. Weights come from current fitting labels; no synthetic oversampling or altered test distribution is used. This is part of candidate fitting, not a separate post-test adjustment.
+7. **Selection:** rank candidates on validation Macro F1, freeze the winner and refit on train+validation only.
+8. **Inference and interface:** apply the saved fitted pipeline to validated individual inputs and display its unchanged outputs.
 
 | Split | Recorded dates | Eligible observations |
 |---|---|---:|
@@ -42,54 +92,161 @@ Labels are not observed, very low, low, medium and high, copied from recorded CA
 | Validation | 2021-01-01–2022-12-31 | 18,494 |
 | Test | 2023-01-01–2024-03-25 | 7,428 |
 
-No random cross-time split or synthetic resampling is used. Phase 5 compares 15 fixed recipes and selects by validation macro F1 with the documented minority-recall/name tie rules. Final fitting uses 203,339 train+validation rows and excludes test. Phase 5 reuses the already inspected Phase 4 test cohort; it is not independent prospective validation.
+Final refitting uses **203,339 train+validation rows**, excluding test. Details are preserved in the [Phase 4 methodology](07_Documentation/phase4_machine_learning.md) and [Phase 5 study](07_Documentation/phase5_model_improvement.md).
 
-## Final model and main existing results
+## 6. Features Used
 
-Selected experiment: `D_environmental_temporal_spatial_cyclic__random_forest__balanced`. Balanced Random Forest: 40 trees, max_depth 14, min_samples_leaf 8, seed 42, one job. The saved pipeline accepts the original eight predictors, performs deterministic cyclic calendar engineering and applies its already fitted median imputer plus missingness indicators. Computational imputation is not new scientific measurement. Absolute year provides leap-year context rather than a direct classifier feature in the selected group.
+The saved inference pipeline accepts the same **eight source predictors**:
 
-Phase 5 model: 03_Models/phase5_best_model.joblib. Locked Phase 4 baseline: 03_Models/best_model.joblib. Original model metadata accompanies both. The Phase 5 custom transformer phase5_transformers.py must remain importable. Model SHA-256: `a4809c0f2549b51344749393a0ec5bf2e2db6e10b5b42f866bde8be270fcc734`.
+| Group | Public input | Existing predictor | Unit / role |
+|---|---|---|---|
+| Environmental | temperature | `WATER_TEMP` | Degrees Celsius |
+| Environmental | salinity | `SALINITY` | Parts per thousand (ppt) |
+| Environmental | depth | `SAMPLE_DEPTH` | Meters |
+| Spatial | latitude | `LATITUDE` | Decimal degrees |
+| Spatial | longitude | `LONGITUDE` | Decimal degrees |
+| Temporal | year | `observation_year` | Recorded calendar year |
+| Temporal | month | `observation_month` | Recorded month |
+| Temporal | day_of_year | `day_of_year` | Recorded calendar day |
 
-| Locked Phase 5 test metric | Value |
+The selected Phase 5 feature group actually implements these additional deterministic representations inside its saved pipeline:
+
+| Derived feature | Definition | Unit |
+|---|---|---|
+| `month_sin`, `month_cos` | sin/cos of `2π(month − 1)/12` | Dimensionless |
+| `day_of_year_sin`, `day_of_year_cos` | sin/cos of `2π(day_of_year − 1)/days_in_year` | Dimensionless |
+
+`days_in_year` is 365 or 366 according to the recorded year's leap-year status. In this selected group, the classifier uses three environmental values, two coordinates and four cyclic features; absolute year/raw month/raw day are not direct classifier predictors. Three fitted missingness indicators give **12 internal model dimensions**. These are preprocessing representations, not additional NOAA measurements.
+
+The [original transformer](02_Source_Code/Phase_5_Model_Improvement/phase5_transformers.py) contains the exact formulas. Source count, original category, quality flags and row IDs are not added to the eight-predictor input.
+
+## 7. Machine Learning Algorithms
+
+| Algorithm | What it does in this project | Balanced version |
+|---|---|---|
+| Logistic Regression | Learns multiclass linear decision relationships from imputed, standardized predictors. It supplies an interpretable classical comparison. | Uses `class_weight='balanced'` to give less frequent fitting labels greater influence. |
+| Random Forest | Combines decision trees to represent nonlinear relationships among environmental, spatial and calendar inputs. | Uses balanced class weights within the fitted forest; this is the final selected family. |
+| HistGradientBoosting | Sequentially builds histogram-based boosted trees to improve classification of patterns missed by earlier trees. | Uses balanced class weighting in the existing implementation. |
+
+The **Majority Class baseline is a reference predictor, not one of the ML algorithms under comparison**: it always predicts the training-majority category. Its purpose is to expose how misleading accuracy can be under class imbalance.
+
+All candidate preprocessing is fitted on training rows only. Pipelines contain a median imputer and missingness indicators; Logistic Regression additionally uses scaling. Phase 4 compared the majority reference and balanced/unweighted variants of the three families. Phase 5 used **15 fixed recipes** across four approved feature groups: balanced candidates across all groups, with unweighted controls for the cyclic group. It was not a full factorial weighting search.
+
+## 8. Model Selection
+
+The primary selection criterion is **validation Macro F1**, which weights the five category F1 scores equally. Phase 5 resolves exact ties using mean validation recall across low/medium/high, then experiment name.
+
+**Final selected model: Balanced Random Forest.**
+
+- Selected experiment: `D_environmental_temporal_spatial_cyclic__random_forest__balanced`.
+- Configuration: 40 trees, maximum depth 14, minimum leaf size 8, balanced class weights, seed 42 and one job.
+- Artifact: [phase5_best_model.joblib](03_Models/phase5_best_model.joblib).
+- Metadata: [Phase 5 model metadata](03_Models/phase5_model_metadata.json).
+- Locked Phase 4 model: [best_model.joblib](03_Models/best_model.joblib), a balanced Logistic Regression.
+
+**The test set was not used for model selection or tuning.** Selection used validation data; the frozen winner was then refitted on train+validation and evaluated on test. However, Phase 5 reused the previously inspected Phase 4 test cohort. It is therefore **not a new independent holdout or prospective validation cohort**.
+
+## 9. Experimental Results
+
+The following values come from the existing locked metadata and [Phase 4/5 comparison](04_Reports/Phase_5/phase5_vs_phase4.csv). Macro F1 values are fractions; accuracy and recall values are percentages.
+
+| Metric | Phase 4: balanced Logistic Regression | Phase 5: balanced Random Forest |
+|---|---:|---:|
+| Validation Macro F1 | 0.202731 | 0.252558 |
+| Test Macro F1 | 0.196975 | 0.292562 |
+| Test accuracy | 64.42% | 69.14% |
+| Test balanced accuracy | 19.79% | 30.34% |
+
+| Phase 5 test category | Recall |
 |---|---:|
-| Accuracy | 69.1438% |
-| Macro F1 | 29.2562% |
-| Balanced accuracy | 30.3420% |
-| High recall | 3.3333% |
-| High precision | 1.3699% |
+| Low | 23.43% |
+| Medium | 18.86% |
+| High | 3.33% |
 
-Only 3 of 90 high observations were classified correctly; 87 were missed. Rare **high** performance remains weak. Phase 4 macro F1 was 19.6975%, compared with Phase 5 29.2562% on the reused cohort. These existing results are not new experiment runs, statistical-significance claims or evidence of operational alert reliability.
+**High-class performance remains weak: only 3 of 90 high observations were correctly classified; 87 were missed.** High precision was only **1.37%**, with 216 false high predictions. Improved aggregate metrics do not establish a reliable rare-high detector or operational warning capability. No significance claim is made from this reused test comparison.
 
-## Dashboard information
+Existing figures: [Phase 5 confusion matrix](04_Reports/Phase_5/figures/phase5_final_confusion_matrix.png) and [feature importance](04_Reports/Phase_5/figures/phase5_feature_importance.png). Importance is model-associated, not causal.
 
-The local Streamlit interface provides Overview, Prediction, Historical Data, Model Performance, Dataset Information and About/Limitations. It delegates directly to scripts/inference.py. Missing optional environmental values use only the saved fitted imputer. User inputs remain in session memory and are never appended to scientific datasets. Historical plots use real records, including documented display-only location subsampling.
+## 10. Prediction / Inference
 
-Correct output wording: **Predicted Recorded Abundance Category**. Estimated class probabilities are not future bloom probabilities, calibrated confidence or health-risk scores.
+The [Phase 6 API](02_Source_Code/Phase_6_Inference/inference.py) validates a single supplied observation and applies the unchanged saved pipeline:
 
-## Folder structure
+```text
+User Input
+    ↓
+Input Validation
+    ↓
+Saved Preprocessing Pipeline
+    ├─ Feature Transformation: approved cyclic calendar representation
+    └─ Fitted Imputation: saved medians and missingness indicators
+    ↓
+Balanced Random Forest
+    ↓
+Predicted Recorded Abundance Category
+    ↓
+Class Probabilities for all five categories
+```
 
-- 01_Dataset/Raw_Dataset: original NOAA CSV and existing integrity placeholder.
-- 01_Dataset/Processed_Dataset: unchanged Phase 2 CSV; ML_Ready contains existing Phase 3 predictors, targets, metadata and lineage.
-- 01_Dataset/Dataset_Documentation: verified metadata/dictionary and collection/inspection scripts.
-- 02_Source_Code: phase-specific code, original test suite and dependency pins.
-- 03_Models: both saved models and original metadata.
-- 04_Reports: Phase 2–7 reports, audits, predictions, logs and unchanged figures.
-- 05_Test_Results: existing dedicated and complete-suite test evidence.
-- 06_Dashboard: original dashboard files, usage documentation and dashboard reports.
-- 07_Documentation: all existing documentation and provenance metadata.
-- 08_Paper: empty; no existing paper source found.
-- 09_Presentation: empty; no existing presentation found.
-- New folder: pre-existing destination directory, preserved untouched.
+**Actual saved order:** cyclic transformation precedes imputation. No transformation or imputation statistics are refitted during prediction.
 
-Some files intentionally appear in multiple requested sections, including dashboard files, documentation, model metadata and test logs. They are identical archive copies, not additional observations or alternative results. Existing confusion-matrix/feature-importance PDFs are report figures, not a paper or slide deck.
+Required context is latitude, longitude, year, month and day_of_year. Temperature, salinity and depth are optional: None/omitted inputs remain missing until the saved fitted imputer handles them. Numeric inputs must be finite; coordinates and integer calendar fields must be valid and month/day_of_year must agree for the recorded year. The API rejects invalid inputs before prediction.
 
-## Reproducibility commands: restore the original layout first
+Returned values include predicted category, correctly mapped class probabilities, input validation status, missing environmental fields and model/version metadata. Probability mapping follows the saved model's class order rather than assuming a display order. Inputs and predictions are not appended to the scientific dataset.
 
-**This organized archive is not directly runnable from the phase folders or 06_Dashboard.** Original code resolves scripts/data/models/reports/tests relative to a common project root. Do not rewrite the archived code or its historical manifests.
+> The prediction represents the source-recorded abundance category and is not a validated future HAB-risk or early-warning prediction.
 
-The optional commands below reconstruct the exact original relative layout inside a separate Reproduction_Workspace within this package. They are instructions only: no reconstruction, dependency installation, model training or test rerun was performed while packaging.
+The [CLI](02_Source_Code/Phase_6_Inference/run_inference.py) exposes the same behavior. See [inference documentation](07_Documentation/phase6_inference.md) for its schema and limitations.
 
-Open PowerShell in this package root:
+## 11. Streamlit Dashboard
+
+The [dashboard](06_Dashboard/app.py) uses the existing inference API, with no duplicated model training or manual preprocessing.
+
+| Page | Contents |
+|---|---|
+| Overview | Dataset scope, selected model, phases, categories and visible limitations |
+| Prediction | Eight supported inputs, genuine-row example, validation, actual prediction and all class probabilities |
+| Historical Data | Recorded category/year/month counts, environmental distributions, missingness and historical coordinate display |
+| Model Performance | Locked Phase 5 metrics, Phase 4/5 comparison and unchanged figures |
+| Dataset Information | Official provenance, predictor units, coverage, missingness and unavailable variables |
+| About / Limitations | Implemented phases, scientific interpretation, known weaknesses and unimplemented hardware scope |
+
+Historical charts do not impute missing measurements. The coordinate display uses an explicitly documented source-order subset of at most 4,000 actual points, not real-time HAB locations. User inputs remain session-only. Details: [Phase 7 dashboard documentation](07_Documentation/phase7_dashboard.md).
+
+## 12. System Architecture
+
+```text
+NOAA HABSOS
+     ↓
+Raw Data
+     ↓
+Preprocessing
+     ↓
+Feature Engineering
+     ↓
+Temporal Split
+     ↓
+Model Comparison
+     ↓
+Validation-Based Selection
+     ↓
+Balanced Random Forest
+     ↓
+Saved Model
+     ↓
+Inference
+     ↓
+Streamlit Dashboard
+```
+
+The implemented architecture is a reproducible software workflow. No live edge/fog network, sensor feed, ESP32, MQTT or hardware alert subsystem is implemented.
+
+## 13. Reproducibility
+
+### Restore the runnable layout
+
+This repository is an **organized archive**, not the original runnable folder layout. Code resolves `data/`, `scripts/`, `models/`, `reports/`, `docs/` and `tests/` relative to a common root. Running `streamlit run app.py` inside `06_Dashboard/` alone will not supply those paths.
+
+The existing [inventory](PROJECT_INVENTORY.md) maps every copy to its original relative path and SHA-256. From this repository root, the commands below restore unchanged files into a separate `Reproduction_Workspace`, verify their hashes, install the original pinned dependencies, and show the existing inference/test/dashboard commands. They are **instructions only**; no restoration, installation, test run or retraining was performed for this README edit.
 
 ```powershell
 @'
@@ -126,18 +283,102 @@ python -B -m unittest discover -s tests -v
 streamlit run app.py
 ```
 
-The example is the genuine existing source row 18, recorded 1980-12-11; actual category not observed, model output very low. This demonstrates inference behavior, not a correct classification. Use the documented Python 3.10/scikit-learn 1.7.2 environment and original pinned requirements. Installed third-party libraries and caches are intentionally omitted.
+Use the documented Python 3.10 scientific environment with scikit-learn 1.7.2; dependency pins are in [requirements_phase4.txt](02_Source_Code/Phase_4_Baseline_ML/requirements_phase4.txt) and [requirements_phase7.txt](06_Dashboard/requirements_phase7.txt).
 
-Existing Phase 2/3 tests may rebuild their output copies byte-identically in the reproduction workspace. Training scripts are archived for research reproducibility; running the dashboard requires no retraining. Preserved provenance files may reference historical absolute source paths.
+The CLI example is genuine source row 18, recorded 1980-12-11. Its recorded category is `not observed` while the model predicts `very low`; it demonstrates inference, not a correct classification. The dashboard requires no retraining.
 
-## Testing information and archive verification
+### Training scripts: optional research reproduction
 
-Existing logs record **16 dedicated Phase 7 tests passed** and **76 complete project tests passed**. These are copied historical results, not tests rerun during packaging. The original dashboard report records successful launch/health verification and its unavailable browser screenshot verification.
+The original entry points are [train_models.py](02_Source_Code/Phase_4_Baseline_ML/train_models.py) and [phase5_model_improvement.py](02_Source_Code/Phase_5_Model_Improvement/phase5_model_improvement.py). They write experiment outputs and enforce frozen manifests. **Do not run them in this archive or over existing locked results.** The Phase 5 script explicitly requires the balanced Logistic Regression baseline, and can stop if a newly retrained Phase 4 baseline differs. Training commands are therefore not presented as a safe one-command reproduction over this locked package. Consult the preserved [Phase 4](07_Documentation/phase4_machine_learning.md) and [Phase 5](07_Documentation/phase5_model_improvement.md) protocols before planning a separate experiment.
 
-All 119 copied file hashes match their sources. The entire source inventory of 1758 files, including excluded libraries/caches, was hashed before and after copying and remains unchanged. PROJECT_INVENTORY.md lists every copy with original path, purpose and SHA-256.
+The earlier-phase regression tests can rebuild their output copies byte-identically in the reproduction workspace. Preserved provenance JSON may contain original absolute paths; those are historical records, not a reason to edit scientific artifacts.
 
-## Important limitations and future work
+## 14. Testing
 
-Historical missing measurements/times, QA cautions/conversions, strong imbalance, source-reported labels, uneven collection, spatial/temporal dependence and unspecified coordinate datum remain. Partial-year 2024 is not a complete annual sample. Geographic generalization, prospective bloom onset, toxicity and health risk are not validated.
+Verified existing log counts are shown with their scope to avoid double-counting:
 
-Future work requires separate authorization and defensible study design, potentially independent official variables/sources and prospective evaluation. No new sources were combined here. No Phase 8 hardware, ESP32, sensors, LED/buzzer or MQTT implementation is included. No paper, presentation, references or scientific observations were fabricated. No Git/GitHub operations or cloud upload occurred.
+| Phase / evidence | Verified tests | Scope |
+|---|---:|---|
+| [Phase 4 log](05_Test_Results/phase4_test_results.txt) | 33 | Cumulative Phase 1–4 suite |
+| [Phase 5 log](05_Test_Results/phase5_test_results.txt) | 45 | Cumulative Phase 1–5 suite |
+| [Phase 6 log](05_Test_Results/phase6_dedicated_test_results.txt) | 15 | Dedicated inference tests; cumulative total became 60 |
+| [Phase 7 log](05_Test_Results/phase7_dashboard_test_results.txt) | 16 | Dedicated dashboard tests |
+| [Complete project log](05_Test_Results/phase7_test_results.txt) | **76** | Complete Phase 1–7 suite: 45 + 15 + 16 |
+
+The [test sources](02_Source_Code/Tests/) verify raw/data/model hashes, source-row lineage, target eligibility, temporal splits, fitted preprocessing, saved results, class-probability mapping, missing/invalid input handling, repeatability and dashboard rendering/interactions. These are preserved passing logs, not tests newly rerun during this documentation update.
+
+## 15. Project Structure
+
+```text
+Karenia brevis HAB Analysis - Project/
+├── 01_Dataset/
+│   ├── Raw_Dataset/habsos_20240430.csv
+│   ├── Processed_Dataset/
+│   │   ├── habsos_cleaned.csv
+│   │   └── ML_Ready/                 # features, targets and lineage
+│   └── Dataset_Documentation/
+├── 02_Source_Code/
+│   ├── Phase_2_Preprocessing/
+│   ├── Phase_3_Feature_Engineering/
+│   ├── Phase_4_Baseline_ML/
+│   ├── Phase_5_Model_Improvement/
+│   ├── Phase_6_Inference/
+│   ├── Phase_7_Dashboard/
+│   └── Tests/
+├── 03_Models/
+│   ├── best_model.joblib
+│   └── phase5_best_model.joblib
+├── 04_Reports/                       # Phase_2 through Phase_7; figures
+├── 05_Test_Results/
+├── 06_Dashboard/
+│   ├── app.py
+│   ├── dashboard.py
+│   └── requirements_phase7.txt
+├── 07_Documentation/
+├── 08_Paper/                         # empty locally; no paper source
+├── 09_Presentation/                  # empty locally; no presentation
+├── .gitignore
+├── README.md
+├── PROJECT_INVENTORY.md
+└── GOOGLE_DRIVE_UPLOAD_GUIDE.md
+```
+
+The pre-existing local `New folder` remains untouched. Git does not represent empty directories, so the empty paper/presentation directories may not appear after cloning. Several copies intentionally appear in multiple archive sections; the [inventory](PROJECT_INVENTORY.md) identifies their original paths. [Manual Drive-upload guidance](GOOGLE_DRIVE_UPLOAD_GUIDE.md) is also preserved.
+
+## 16. Limitations
+
+- **Severe class imbalance:** eligible labels have an approximately 44.61:1 largest/smallest class ratio; accuracy alone is inadequate.
+- **Weak rare-class performance:** low and medium recall remain limited and high recall is only 3.33%.
+- **Observational dataset:** historical collection practices, missing measurements, source conversions/cautions and uneven effort affect interpretation.
+- **Recorded-abundance target:** labels are source-reported contemporaneous categories, not independently validated toxicity, harm or future bloom outcomes.
+- **No validated future forecasting:** no future horizon, prospective bloom-onset target or unseen-site generalization has been established.
+- **No validated operational early-warning capability:** the model is unsuitable for dependable HAB alerts or health-risk decisions.
+- **Evaluation dependence:** Phase 5 reused the Phase 4 test cohort; chronological splitting does not guarantee spatial independence.
+- **Coverage and interpretation:** 2024 is partial, coordinate datum is unspecified in the inspected dictionary, probabilities are not calibrated confidence, and feature importance is not causal.
+- **Unavailable measurements:** pH, turbidity, TDS, dissolved oxygen and chlorophyll-a are absent. No fake replacement values or silent cross-source combinations are used.
+
+## 17. Future Work
+
+The following are possibilities, **not implemented results**:
+
+- Obtain independent prospective evaluation data and investigate temporal/spatial shift.
+- Study rare-category errors and assess uncertainty/calibration under an appropriate validation design.
+- Evaluate documented quality-policy sensitivity and defensible sampling/site dependence.
+- Consider additional official variables only after explicit source selection, alignment and scientific justification.
+- Define and validate a genuine future-outcome target before making any forecasting or early-warning claim.
+- Consider separately authorized hardware/edge/fog demonstrations; Phase 8 remains unimplemented.
+
+## 18. Research References
+
+Only sources already cited in the preserved project documentation are listed here.
+
+1. NOAA National Centers for Environmental Information (2014). *Physical and biological data collected along the Texas, Mississippi, Alabama, and Florida coasts in the Gulf of America as part of the Harmful Algal BloomS Observing System from 1953-08-19 to 2024-03-25 (NCEI Accession 0120767).* Full original CSV `habsos_20240430.csv`, version 8.8. NOAA National Centers for Environmental Information. Dataset. https://www.ncei.noaa.gov/archive/accession/0120767. Accessed 2026-10-14.
+2. **NOAA HABSOS supporting dictionary**, archived with accession 0120767 version 8.8: [official dictionary](https://www.ncei.noaa.gov/data/oceans/archive/arc0069/0120767/8.8/data/0-data/Support%20Documents/HABSOS_Data_Dictionary.xlsx) and [unchanged local copy](01_Dataset/Dataset_Documentation/HABSOS_Data_Dictionary.xlsx).
+3. **scikit-learn implementation references** from the [Phase 4 documentation](07_Documentation/phase4_machine_learning.md): [Pipeline](https://scikit-learn.org/1.7/modules/generated/sklearn.pipeline.Pipeline.html), [HistGradientBoostingClassifier](https://scikit-learn.org/1.7/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html), and [permutation importance](https://scikit-learn.org/1.7/modules/generated/sklearn.inspection.permutation_importance.html).
+4. **Streamlit implementation references** from the [Phase 7 documentation](07_Documentation/phase7_dashboard.md): [AppTest](https://docs.streamlit.io/develop/api-reference/app-testing/st.testing.v1.apptest) and [number_input](https://docs.streamlit.io/develop/api-reference/widgets/st.number_input).
+
+Software documentation is an implementation reference, not additional scientific data or evidence of HAB forecasting capability. No journal paper, author, DOI or research finding has been invented.
+
+## 19. Authors
+
+Research author names and affiliations are **not specified in the existing project documentation**. They are therefore not inferred from a local account name, Git identity or repository ownership. Contributor-supplied authorship details are needed before listing authors.
